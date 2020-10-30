@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+.wrap{
+    
+    width: 95%;
+    margin:auto;
+
+}
+header.wrap {
+    padding-top: 10.5rem;
+    padding-bottom: 6rem;
+
+}
+
+
+.depa-list{
+    
+    background-color: #fff;
+    margin-top: 50px;
+    padding: 1% 1%;
+    border: #ccc 2px solid;
+    border-radius: 5px;
+}
+.depa-item{
+    padding: 0% 0%;
+    background-color: #fff;
+  
+   
+}
+input, select{
+    font-size: 20px;
+    width: 50%;
+    padding: 10px;
+    border: gray 1px solid;
+}
+.input-contenedor{
+    text-align: right;
+    display: inline-block;
+    width: 30%;
+}
+.aserv{
+    width: 20%;
+    border: gray 1px solid;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    
+    text-align: center;
+    color: black; 
+}
+.tituloaa{
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 25px;
+    width: 30%;
+    margin-left: 1px;
+    
+    
+}
+.contenedor{
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+}
+
+
+.fotoaa{
+    display: inline-block;
+    width: 30%;
+    padding-left: 2px;
+  
+    
+}
+.input-contenedor{
+    margin-bottom: 5px;
+    
+    
+}
+.store-wrapper{
+    display: flex;
+    
+}
+.texto{
+    display: inline;
+    background-color:red;
+
+    
+}

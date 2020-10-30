@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+.wrap{
+    
+    width: 95%;
+    margin:auto;
+
+}
+header.wrap {
+    padding-top: 10.5rem;
+    padding-bottom: 6rem;
+
+}
+.depa-list{
+    
+    background-color: #fff;
+    margin-top: 50px;
+    padding: 1% 1%;
+    border: #ccc 2px solid;
+    border-radius: 5px;
+}
+.depa-item{
+    padding: 0% 0%;
+    background-color: #fff;
+  
+   
+}
+.fotoaa{
+    display: inline-block;
+    width: 30%;
+  
+    position: absolute;
+}
+.tituloaa{
+    display: inline-block;
+    
+    margin-bottom: 25px;
+    width: 60%;
+    margin-left: 105px;
+    
+}
