@@ -33,7 +33,9 @@
         main.src=img.src;
         main.alt=img.alt;
         }
-    
+        window.onload = function(){
+            cambiarimagen(document.getElementById('0'));
+        };
     </script>
 <?php
     include "../../includes/navbar.php";
@@ -65,7 +67,7 @@
             } 
             echo '</div> 
                 <div class="fotoaa">
-                            <img id="imgMain" src="'.IMG.'/nodispon.png" onload="cambiarimagen(document.getElementById(\'0\'))" alt="aaa" style="height:316px; width: 450px;">
+                            <img id="imgMain" src="'.IMG.'/nodispon.png" alt="aaa" style="height:316px; width: 450px;">
                         </div>
                     <div  category="dep1">
                         
