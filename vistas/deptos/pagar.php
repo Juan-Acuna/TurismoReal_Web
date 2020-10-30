@@ -13,26 +13,26 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="src"<?php echo CSS;?>/styles.css" rel="stylesheet" />
         
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/jquery-ui.css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/bootstrap.min.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/jquery-ui.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/owl.carousel.min.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/owl.theme.default.min.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/owl.theme.default.min.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/bootstrap-datepicker.css">
     <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/style.css">   
-    <link href="../css/styles.css" rel="stylesheet" />
-        <link href="../css/stylish-portfolio.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="../css/style.css">  
-    <link rel="stylesheet" href="../css/pagar.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/aos.css">
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/style.css">   
+    <link href="src"<?php echo CSS;?>/styles.css" rel="stylesheet" />
+        <link href="src"<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/style.css">  
+    <link rel="stylesheet" href="src"<?php echo CSS;?>/pagar.css">
 </head>
 <body>
 <?php

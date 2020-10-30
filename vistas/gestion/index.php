@@ -14,18 +14,18 @@
         <!-- Google fonts-->
 
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../../css/styles.css" rel="stylesheet" />
-        <link href="../../css/stylish-portfolio.min.css" rel="stylesheet">
+        <link href="../src"<?php echo CSS;?>/styles.css" rel="stylesheet" />
+        <link href="../src"<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/jquery-ui.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/bootstrap.min.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/jquery-ui.css">
    
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 
 
-        <link rel="stylesheet" href="../../css/gestion.css"> 
+        <link rel="stylesheet" href="../src"<?php echo CSS;?>/gestion.css"> 
     </head>
 <body>
     <?php

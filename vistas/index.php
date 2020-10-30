@@ -451,11 +451,11 @@
   </a>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src"<?php echo BOOSTRAP;?>/jquery/jquery.min.js"></script>
+  <script src"<?php echo BOOSTRAP;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src"<?php echo BOOSTRAP;?>/jquery-easing/jquery.easing.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="<?php echo JS;?>/stylish-portfolio.min.js"></script>
   <!-- Bootstrap core JS-->

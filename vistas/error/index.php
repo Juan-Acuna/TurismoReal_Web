@@ -14,21 +14,21 @@
        
         
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../css/styles.css" rel="stylesheet" />
-    <link href="../../css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="../src"<?php echo CSS;?>/styles.css" rel="stylesheet" />
+    <link href="../src"<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/jquery-ui.css">
-    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../../css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="../../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/bootstrap.min.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/jquery-ui.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/owl.carousel.min.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/bootstrap-datepicker.css">
     <link rel="stylesheet" href="../../fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="../../css/aos.css">
-    <link rel="stylesheet" href="../../css/style.css">   
-    <link href="../css/stylish-portfolio.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="../../css/error.css"> 
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/aos.css">
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/style.css">   
+    <link href="src"<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="../src"<?php echo CSS;?>/error.css"> 
     </head>
 
 <body>
@@ -60,13 +60,13 @@
 
 
 
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src"<?php echo BOOSTRAP;?>/jquery/jquery.min.js"></script>
+  <script src"<?php echo BOOSTRAP;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src"<?php echo BOOSTRAP;?>/jquery-easing/jquery.easing.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="../../js/stylish-portfolio.min.js"></script>
+  <script src"<?php echo JS;?>/stylish-portfolio.min.js"></script>
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
@@ -76,6 +76,6 @@
   <script src="<?php echo ASSETS;?>/mail/jqBootstrapValidation.js"></script>
   <script src="<?php echo ASSETS;?>/mail/contact_me.js"></script>
   <!-- Core theme JS-->
-  <script src="../../js/scripts.js"></script>
+  <script src"<?php echo JS;?>/scripts.js"></script>
     </body>
 </html>
