@@ -18,7 +18,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<?php echo CSS;?>/styles.css" rel="stylesheet" />
         <link href="<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./fonts/icomoon/style.css">
+        <!--<link rel="stylesheet" href="./fonts/icomoon/style.css">-->
     <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo CSS;?>/jquery-ui.css">
     <link rel="stylesheet" href="<?php echo CSS;?>/owl.carousel.min.css">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="<?php echo CSS;?>/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?php echo CSS;?>/jquery.fancybox.min.css">
     <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../../fonts/flaticon/font/flaticon.css">
+    <!--<link rel="stylesheet" href="../../fonts/flaticon/font/flaticon.css">-->
     <link rel="stylesheet" href="<?php echo CSS;?>/aos.css">
     <link rel="stylesheet" href="<?php echo CSS;?>/style.css">   
         <link href="<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet"> 
@@ -99,7 +99,7 @@
             </div>
             
               <div style="text-align:justify!important  ;display:inline;margin-right:5px;">
-                <a class="btn btn-primary btn-xxl text-uppercase" style="display:inline-block;" href="'.VISTAS.'/">Editar perfil</a>
+                <a class="btn btn-primary btn-xxl text-uppercase" style="display:inline-block;" href="'.CUENTAS.'/editar.php">Editar perfil</a>
               
                 <a class="btn btn-primary btn-xxl text-uppercase" style="display:inline-block" href="'.VISTAS.'/">Volver</a>
             
@@ -139,8 +139,8 @@
   <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   <!-- Contact form JS-->
-  <script src="../../assets/mail/jqBootstrapValidation.js"></script>
-  <script src="../../assets/mail/contact_me.js"></script>
+  <script src="<?php echo ASSETS;?>/mail/jqBootstrapValidation.js"></script>
+  <script src="<?php echo ASSETS;?>/mail/contact_me.js"></script>
   <!-- Core theme JS-->
   <script src="../../js/scripts.js"></script>
     </body>

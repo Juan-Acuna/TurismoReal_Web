@@ -14,7 +14,7 @@
     <link href="<?php echo CSS;?>/styles.css" rel="stylesheet"  >
     <link href="<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo CSS;?>/recuperar.css" th:href="@{<?php echo CSS;?>/recuperar.css}">
-    <link href="./fonts/icomoon/style.css" rel="stylesheet">
+    <!--<link href="./fonts/icomoon/style.css" rel="stylesheet">-->
     <link href="<?php echo CSS;?>/bootstrap.min.css"  rel="stylesheet">
     <link href="<?php echo CSS;?>/jquery-ui.css" rel="stylesheet">
     <link href="<?php echo CSS;?>/owl.carousel.min.css"  rel="stylesheet">
@@ -22,7 +22,7 @@
     <link href="<?php echo CSS;?>/owl.theme.default.min.css" rel="stylesheet">
     <link href="<?php echo CSS;?>/jquery.fancybox.min.css"  rel="stylesheet">
     <link href="<?php echo CSS;?>/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="../fonts/flaticon/font/flaticon.css" rel="stylesheet">
+    <!--<link href="../fonts/flaticon/font/flaticon.css" rel="stylesheet">-->
     <link href="<?php echo CSS;?>/aos.css" rel="stylesheet">
    
     

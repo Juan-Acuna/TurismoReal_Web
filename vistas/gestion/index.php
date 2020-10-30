@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Turismo Real</title>
-        <link rel="icon" type="image/x-icon" href="../assets/img/cropped-favicon-tr.ico"  />
+        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS;?>/img/cropped-favicon-tr.ico"  />
         
         <!-- Font Awesome icons (free version)-->
         

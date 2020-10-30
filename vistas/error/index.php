@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Turismo Real</title>
-    <link rel="icon" type="image/x-icon" href="../assets/img/cropped-favicon-tr.ico"  />
+    <link rel="icon" type="image/x-icon" href="<?php echo ASSETS;?>/img/cropped-favicon-tr.ico"  />
         
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -40,7 +40,7 @@
         <div class="row">
         <div class="descripcion borde col-sm-6">El servidor ha encontrado un error temporal y no puede responder a tu petición</div>
             
-            <img class="borde col-sm-6" src="../../assets/img/fotoerror.jpg" height="400px" alt="" />
+            <img class="borde col-sm-6" src="<?php echo ASSETS;?>/img/fotoerror.jpg" height="400px" alt="" />
         </div>
     </div>
 
@@ -73,8 +73,8 @@
   <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   <!-- Contact form JS-->
-  <script src="../../assets/mail/jqBootstrapValidation.js"></script>
-  <script src="../../assets/mail/contact_me.js"></script>
+  <script src="<?php echo ASSETS;?>/mail/jqBootstrapValidation.js"></script>
+  <script src="<?php echo ASSETS;?>/mail/contact_me.js"></script>
   <!-- Core theme JS-->
   <script src="../../js/scripts.js"></script>
     </body>

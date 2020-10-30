@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" type="image/x-icon" href="../assets/img/cropped-favicon-tr.ico"  />
+    <link rel="icon" type="image/x-icon" href="<?php echo ASSETS;?>/img/cropped-favicon-tr.ico"  />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" type="text/css" href="/Descargas/Agencia/css/registro.css" th:href="@{/Descargas/Agencia/css/registro.css}">
 </head>

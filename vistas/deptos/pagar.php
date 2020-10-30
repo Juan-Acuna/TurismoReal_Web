@@ -5,7 +5,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Turismo Real</title>
-        <link rel="icon" type="image/x-icon" href="../assets/img/cropped-favicon-tr.ico"  />
+        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS;?>/img/cropped-favicon-tr.ico"  />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -59,7 +59,7 @@
                     <a class="btn btn-primary btn-xxl text-uppercase "href="../vistas/depadetalle.php"> Pagar</a>
                     
             </div>   
-            <img class="fotoaa" src="../assets/img/depa/depa1.jpg" alt="aaa" width="510x700" >
+            <img class="fotoaa" src="<?php echo ASSETS;?>/img/depa/depa1.jpg" alt="aaa" width="510x700" >
             
         </div>
         

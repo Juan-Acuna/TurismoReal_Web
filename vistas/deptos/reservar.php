@@ -49,9 +49,6 @@ function restaFechas(f1,f2)
  var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
  return dias;
  }
-function CalcularEstadia(){
-
-}
 </script>
 <?php
         include "../../includes/navbar.php";
@@ -69,7 +66,14 @@ function CalcularEstadia(){
             echo '<header class="wrap">
     
             <section class="depa-list">
-        
+        <script>
+        function CalcularEstadia(){
+            costo.innerText="$"+('.$depto['arriendo'].'*restaFechas(dtI.value,tdF.value));
+        }
+        function desbloquear(){
+            dtF.enabled=true;
+        }
+        </script>
                 <div class="depa-item" category="dep1">  
                
                     <img class="fotoaa" src="'.$actual.'" alt="aaa" width="510x700" >
@@ -92,20 +96,20 @@ function CalcularEstadia(){
                 <div class="input-contenedor" >
                     
                     <label>Fin Estadia</label>
-                    <input id="dtI" type="date" name="iestadia" />
+                    <input id="dtI" type="date" name="iestadia" onvaluechange="desbloquear()"/>
                     </br>
                     <label>Inicio Estadia</label>
 
                     <input id="dtF" type="date" name="festadia" />
                 </div>
-                <h2 style="display:inline-block; margin-left:10%;">Costo Estadia: <span id="costo">$219.000</span></h2>
+                <h2 style="display:inline-block; margin-left:10%;">Costo Estadia: <span id="costo">$0</span></h2>
 
             </div>
 </section>
             <section class="depa-list">        
             <div class="contenedor">
                 <H1>Añadir Servicios</h1>
-                <buttom class="aserv" type="submit">Añadir Servicios</buttom>
+                <buttom class="aserv" >Añadir Servicios</buttom>
                 <br>
                 <div class="input-contenedor" >
                     <label>Servicio 1</label>
@@ -130,7 +134,7 @@ function CalcularEstadia(){
             <section class="depa-list"> 
             <div class="contenedor">
                 <H1>Agregar Acompañante</h1>
-                <buttom class="aserv" type="submit">Agregar Acompañante</buttom>
+                <buttom class="aserv" >Agregar Acompañante</buttom>
                 <br>
                 <div class="input-contenedor" >
                     <label>Servicio 1</label>
@@ -170,7 +174,13 @@ function CalcularEstadia(){
 ?>
 <script>
 var dtI = document.getElementById("dtI");
-var dtI = document.getElementById("dtF");
+var dtF = document.getElementById("dtF");
 var costo = document.getElementById("costo");
+$('#dtI').datepicker().on('changeDate', function (ev) {
+       CalcularEstadia();
+});
+$('#dtF').datepicker().on('changeDate', function (ev) {
+       CalcularEstadia();
+});
 </script>
 </body>

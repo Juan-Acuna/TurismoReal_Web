@@ -10,6 +10,7 @@
         <title>Turismo Real</title>
         <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
         <!-- Font Awesome icons (free version)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
        
@@ -18,21 +19,9 @@
         
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/jquery-ui.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/aos.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/style.css">   
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700" rel="stylesheet"> 
     <link href="<?php echo CSS;?>/styles.css" rel="stylesheet" />
     <link href="<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="<?php echo CSS;?>/style.css">  
     <link rel="stylesheet" href="<?php echo CSS;?>/depadetalle.css">
 
 </head>
@@ -98,18 +87,8 @@
     }
 ?>
 
-<script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="<?php echo JS;?>/stylish-portfolio.min.js"></script>
-  <!-- Bootstrap core JS-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-  <!-- Third party plugin JS-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  <!-- Contact form JS-->
-  <!-- Core theme JS-->
-  <script src="<?php echo JS;?>/scripts.js"></script>
+
+ 
 </body>
 
 <html>

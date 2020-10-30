@@ -33,7 +33,7 @@
                  <p>
                     <h4>Empresa dedicada al rubro del servicio de paquetes turisticos y alojamiento. Entregamos un servicio de cálidad para hacer de nuestro servicio uno inolvidable para cada cliente</h4>
                  </p>
-                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="verdepa.php">Reservar un Departamento</a>
+                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo DEPTOS;?>">Reservar un Departamento</a>
             </div>
         </header>
         
@@ -253,7 +253,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="<?php echo IMG;?>/img/portfolio/cabin.png" alt="" />
+                                    <img class="img-fluid rounded mb-5" src="<?php echo IMG;?>/portfolio/cabin.png" alt="" />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <div class="info"><button type="button" class="btn btn-info">Info</button> </div>  
@@ -441,8 +441,8 @@
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Contact form JS-->
-        <script src="../assets/mail/jqBootstrapValidation.js"></script>
-        <script src="../assets/mail/contact_me.js"></script>
+        <script src="<?php echo ASSETS;?>/mail/jqBootstrapValidation.js"></script>
+        <script src="<?php echo ASSETS;?>/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="<?php echo JS;?>/scripts.js"></script>
         <!-- Scroll de la página -->
@@ -464,8 +464,8 @@
   <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   <!-- Contact form JS-->
-  <script src="../assets/mail/jqBootstrapValidation.js"></script>
-  <script src="../assets/mail/contact_me.js"></script>
+  <script src="<?php echo ASSETS;?>/mail/jqBootstrapValidation.js"></script>
+  <script src="<?php echo ASSETS;?>/mail/contact_me.js"></script>
   <!-- Core theme JS-->
   <script src="<?php echo JS;?>/scripts.js"></script>
     </body>
