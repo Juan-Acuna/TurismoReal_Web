@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <?php
     include_once 'global.php';
@@ -16,25 +17,15 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
+        <script src="<?php echo BOOSTRAP;?>/js/boostrap.js"></script>
         <link href="<?php echo CSS;?>/styles.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/jquery-ui.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/aos.css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/style.css">   
     <link href="<?php echo CSS;?>/styles.css" rel="stylesheet" />
-        <link href="<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="<?php echo CSS;?>/style.css">  
+        <link href="<?php echo CSS;?>/stylish-portfolio.min.css" rel="stylesheet">  
     <link rel="stylesheet" href="<?php echo CSS;?>/compradepa.css">
 </head>
 <body>
@@ -176,11 +167,14 @@ function restaFechas(f1,f2)
 var dtI = document.getElementById("dtI");
 var dtF = document.getElementById("dtF");
 var costo = document.getElementById("costo");
-$('#dtI').datepicker().on('changeDate', function (ev) {
-       CalcularEstadia();
-});
-$('#dtF').datepicker().on('changeDate', function (ev) {
-       CalcularEstadia();
+$(document).ready(function(){
+    
+    $('#dtI').on('changeDate', function (ev) {
+        CalcularEstadia();
+    });
+    $('#dtF').on('changeDate', function (ev) {
+        CalcularEstadia();
+    });
 });
 </script>
 </body>
