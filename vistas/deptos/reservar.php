@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
 <?php
     include_once 'global.php';
@@ -127,7 +126,7 @@
                 <H1>Añadir Servicios</h1>
                 <buttom class="aserv" >Añadir Servicios</buttom>
                 <br>
-                <div class="input-contenedor" >
+                <!--<div class="input-contenedor" >
                     <label>Servicio 1</label>
                     <select  name="serv1" placeholder="Servicio 1" id="servicio1"> </select>
                     </br>
@@ -143,7 +142,7 @@
                     <label>Servicio 5 </label>
                     <select  name="serv5" placeholder="Servicio 5" id="servicio5"> </select>
                     </br>
-                </div>
+                </div>-->
 
             </div>
             </section>
