@@ -37,16 +37,16 @@ input, select{
     border: gray 1px solid;
 }
 .input-contenedor{
-    text-align: right;
+    text-align: left;
     display: inline-block;
     width: 30%;
 }
 .aserv{
     width: 20%;
     border: gray 1px solid;
-    padding: 15px 0;
+    padding: 15px 7px;
     margin-bottom: 20px;
-    
+    position: relative;
     text-align: center;
     color: black; 
 }

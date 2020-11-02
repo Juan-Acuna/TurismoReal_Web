@@ -1,5 +1,5 @@
 <?php
-
+    include_once 'global.php';
     include 'peticion.php';
     if($_GET['origen']=='web')
    {

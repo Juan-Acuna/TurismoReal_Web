@@ -33,14 +33,14 @@
                 <div class=" js-scroll-trigger" class=" navbar navbar-expand-lg navbar-dark btn-filter " style="position:absolute;z-index:100;top:50px;">
                     <div>
                         <a class="mx-0 mx-lg-1 btn btn-xxl text-uppercase btn-filter"  data-toggle="collapse" data-target="#filtro" aria-controls="filtro" aria-expanded="false" aria-label="Toggle navigation" >
-                        Filtros
+                        Localidades
                         <i class="fas fa-bars ml-1"></i>
                     </a>
                 </div>
 
                     <div class="collapse navbar-collapse" id="filtro"><br>
                         <ul class="  navbar-nav ml-auto ">
-                            <li class=" mx-0 mx-lg-1"><a href="#" ><a class="categoryDepa btn btn-primary btn-xxl text-uppercase btn-filter " category="all">Todo</a></li><br>
+                            <li class=" mx-0 mx-lg-1"><a href="#" ><a class="categoryDepa btn btn-primary btn-xxl text-uppercase btn-filter " category="all">Todas</a></li><br>
                             <?php
                             $resultado = peticion_http('http://turismoreal.xyz/api/Localidad');
                             if($resultado['statusCode']==200)

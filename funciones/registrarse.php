@@ -1,4 +1,6 @@
-<?php include 'peticion.php';
+<?php 
+include 'peticion.php';
+include_once 'global.php';
 if(!empty($_POST['rut'])||!empty($_POST['nombres'])||!empty($_POST['apellidos'])||!empty($_POST['fnacimiento'])||!empty($_POST['email'])||!empty($_POST['telefono'])||!empty($_POST['direccion'])||!empty($_POST['comuna'])||!empty($_POST['region'])||!empty($_POST['sexo'])||!empty($_POST['usuario'])||!empty($_POST['password']))
 {
         $body = array('Usuario' => array(

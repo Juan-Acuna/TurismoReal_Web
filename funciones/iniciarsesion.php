@@ -1,4 +1,7 @@
-<?php include 'peticion.php';
+<?php 
+include 'peticion.php';
+include_once 'global.php';
+
 if(!empty($_POST['usuario'])||!empty($_POST['password']))
 {
     $body=array('username'=>$_POST['usuario'],'clave'=>$_POST['password']);

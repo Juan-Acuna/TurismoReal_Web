@@ -64,30 +64,36 @@
                     echo'<img id="'.$i.'" onclick="cambiarimagen(this)"  src="'.$actual.'" alt="aaa" style="height:79px" >';
                     
                 }
-                
+                $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto['id_localidad']))['contenido'];
+                $h= "un dormitorio";
+                if($depto['habitaciones']>1){
+                    $h= $depto['habitaciones']." dormitorios";
+                }
+                $b= "un baño";
+                if($depto['banos']>1){
+                    $b= $depto['banos']." baños";
+                }
             } 
             echo '</div> 
-                <div class="fotoaa">
+                    <div class="fotoaa">
                             <img id="imgMain" src="'.IMG.'/nodispon.png" alt="aaa" style="height:316px; width: 450px;">
                         </div>
-                    <div  category="dep1">
+                        <div style="margin-left:1%;">
                         
                         <div style="height:250px">
                             <H3 >'.$depto['nombre'].'</H3>
-                            <a>Departamento de '.$depto['habitaciones'].' dormitorios, '.$depto['banos'].' baños asdas asd asdas adsad dasdsa sdfsd sdfsd fdsfds fsdf sdfsd fsdf sd fsd fsdfsd fds dsfs dfsd fsdf sds sdd </a>
+                            <a>Departamento de '.$depto['mts_cuadrados'].' metros cuadrados, ubicado en la localidad de '.$loc['nombre'].', este cuenta con '.$h.', '.$b.', cocina y una amplia sala de estar.</a>
                             
-                        </div>  
-                        <a style="float:right; "class="btn btn-primary btn-xl text-uppercase " href="'.DEPTOS.'/reservar.php?depaid='.$depto['id_depto'].'"> Reservar</a>
-                            
-                        
+                        </div>  <a style="float:right; "class="btn btn-primary btn-xl text-uppercase " href="'.DEPTOS.'/reservar.php?depaid='.$depto['id_depto'].'"> Reservar</a>
                     </div>
-
-                   
                 </section> 
-                     
         </header>';
         }
     }
+    //
+    //<img id="imgMain" src="'.IMG.'/nodispon.png" alt="aaa" style="height:316px; width: 450px;">
+
+
 ?>
 
 
