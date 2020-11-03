@@ -32,23 +32,24 @@ header.wrap {
 }
 input, select{
     font-size: 20px;
-    width: 50%;
+    width: 60%;
     padding: 10px;
     border: gray 1px solid;
 }
 .input-contenedor{
-    text-align: left;
+    text-align: center;
     display: inline-block;
-    width: 30%;
+    width: 27%;
+    height:auto!important;
 }
 .aserv{
-    width: 20%;
     border: gray 1px solid;
-    padding: 15px 7px;
-    margin-bottom: 20px;
+    padding: 8px 12px;
+    margin:0px 0px 0.5% 0px;
     position: relative;
     text-align: center;
     color: black; 
+    display:inline-block;
 }
 .tituloaa{
     display: inline-block;
@@ -87,4 +88,36 @@ input, select{
     background-color:red;
 
     
+}
+.txt-opciones{
+    font-size:20px;
+    margin-bottom:0%;
+}
+.cont-seleccion{
+    display:inline-block;
+    padding:1%;
+    background-color:#ddd;
+    border-radius:5px;
+    margin:0% 1% 1% 0%;
+    width:24%;
+}
+.t-seleccion{
+    margin:0px;
+}
+.l-seleccion{
+    border-color:#000;
+    margin: 0px 0px 3px 0px;
+}
+.txt-seleccion, .subt-seleccion{
+    margin:0% 0% 1% 0%;
+}
+.txt-seleccion{
+    color:#000;
+}
+.subt-seleccion{
+    color:#666;
+}
+.txt-costo{
+    display:inline-block;
+    margin-left:10%;
 }

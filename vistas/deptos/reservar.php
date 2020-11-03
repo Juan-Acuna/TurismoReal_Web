@@ -48,6 +48,7 @@
     var cuentaA = 0;
     var cuentaI = 0;
     /* VARIABLES PARA TOTAL */
+    var idDepto = 0;
     var json = "";
     var carga = {};
     var costoTotal = 0;
@@ -77,7 +78,7 @@
             }
             cantDias = d;
             costoDias = arriendo*d;
-            CalcularTotal();
+            actualizarJson();
         }
     }
     window.onload = function(){
@@ -139,7 +140,7 @@
                 }else{
                 txtServicios.innerText="";
                 }
-                CalcularTotal();
+                actualizarJson();
             }
         }
     </script>
@@ -178,7 +179,7 @@
                 <div class="depa-item" category="dep1">  
                
                     <img class="fotoaa" src="'.$actual.'" alt="aaa" width="510x700" >
-                
+                    
                     <div class="tituloaa" style="width:35%;">
                             <H3>'.$depto['nombre'].'</H3>
                             <a>Departamento de '.$depto['mts_cuadrados'].' metros cuadrados, ubicado en la
@@ -192,7 +193,9 @@
                 </div>
                 
             </section> ';
-    echo '<script>arriendo='.$depto['arriendo'].'</script>
+    echo '<script>arriendo='.$depto['arriendo'].';
+            idDepto='.$depto['id_depto'].';
+          </script>
     <section class="depa-list">
     <div class="depa-item" category="dep1">  
         <div class="formcompra">
@@ -304,6 +307,7 @@ function actualizarJson(){
     CalcularTotal();
     json = toJson();
     document.getElementById("sender").value=json;
+    console.log(json);
 }
 function toJson(){
     var inicio = dtI.value;
@@ -312,6 +316,18 @@ function toJson(){
     var acompanantes = [];
     var inventario = [];
     //SE LLENAN LOS ARREGLOS
+    var sers = document.getElementsByClassName("CONT-SERV");
+    for(var i=0; i< sers.length;i++){
+        servicios.push({
+        "id_servicio": parseInt(sers[i].getAttribute("data-id")),
+        "nombre": sers[i].getAttribute("data-nombre"),
+        "centro": sers[i].getAttribute("data-centro"),
+        "cupos": parseInt(sers[i].getAttribute("data-cupos")),
+        "costo": parseInt(sers[i].getAttribute("data-costo")),
+        "inicio": sers[i].getAttribute("data-desde"),
+        "fin": sers[i].getAttribute("data-hasta")
+    });
+    }
     var estadia = {
         "inicio":inicio,
         "fin":fin,
@@ -319,6 +335,7 @@ function toJson(){
         "costo":costoDias
     };
     carga = {
+        "id_depto":idDepto,
         "estadia":estadia,
         "servicios":servicios,
         "acompanantes":acompanantes,
@@ -332,7 +349,10 @@ costoTotal = costoDias + costoServicios + costoInventario + costoAcompanante;
 txtTotal.innerText=costoTotal;
 }
 function crearContenedorServicio(id,nombre,centro,cupos,totalCupos,costo,desde,hasta,index){
-    var plantilla ="<div id= \"serv-{ID}\"class=\"cont-seleccion\">"
+    var plantilla ="<div id=\"serv-{ID}\"class=\"cont-seleccion CONT-SERV\" "
+                +"data-id=\"{ID}\" data-nombre=\"{NOMBRE}\" data-centro=\"{CENTRO}\" "
+                +"data-cupos=\"{CUPOS}\" data-costo=\"{COSTO}\" data-desde=\"{DESDE}\""
+                +" data-hasta=\"{HASTA}\">"
                 +"<h4 class=\"t-seleccion\">{NOMBRE}</h4>"
                 +"<hr class=\"l-seleccion\">"
                 +"<h6 class=\"subt-seleccion\">{CENTRO}</h6>"
@@ -343,16 +363,24 @@ function crearContenedorServicio(id,nombre,centro,cupos,totalCupos,costo,desde,h
                 +"<p onclick=\"quitarContenedorServicio('serv-{ID}',{COSTO},{INDEX})\" class=\"btn btn-primary text-uppercase mb-0\" style=\"float:right\">Quitar</p>"
                 +"</div>";
     return plantilla.replace("{ID}",id)
-                            .replace("{ID}",id)
-                            .replace("{NOMBRE}",nombre)
-                            .replace("{CENTRO}",centro)
-                            .replace("{DESDE}",desde)
-                            .replace("{HASTA}",hasta)
-                            .replace("{COSTO}",costo)
-                            .replace("{COSTO}",costo)
-                            .replace("{CUPOS}",cupos)
-                            .replace("{TOTAL}",totalCupos)
-                            .replace("{INDEX}",index);
+                    .replace("{ID}",id)
+                    .replace("{ID}",id)
+                    .replace("{NOMBRE}",nombre)
+                    .replace("{NOMBRE}",nombre)
+                    .replace("{CENTRO}",centro)
+                    .replace("{CENTRO}",centro)
+                    .replace("{DESDE}",desde)
+                    .replace("{DESDE}",desde)
+                    .replace("{HASTA}",hasta)
+                    .replace("{HASTA}",hasta)
+                    .replace("{COSTO}",costo)
+                    .replace("{COSTO}",costo)
+                    .replace("{COSTO}",costo)
+                    .replace("{CUPOS}",cupos)
+                    .replace("{CUPOS}",cupos)
+                    .replace("{TOTAL}",totalCupos)
+                    .replace("{TOTAL}",totalCupos)
+                    .replace("{INDEX}",index);
     
     
 }
@@ -374,41 +402,7 @@ function quitarContenedorServicio(id,costo,index){
     }else{
         contenedorS.style.display="none";
     }
-    CalcularTotal();
+    actualizarJson();
 }
 </script>
-<style>
-.txt-opciones{
-    font-size:20px;
-    margin-bottom:0%;
-}
-.cont-seleccion{
-    display:inline-block;
-    padding:1%;
-    background-color:#ddd;
-    border-radius:5px;
-    margin:0% 1% 1% 0%;
-    width:24%;
-}
-.t-seleccion{
-    margin:0px;
-}
-.l-seleccion{
-    border-color:#000;
-    margin: 0px 0px 3px 0px;
-}
-.txt-seleccion, .subt-seleccion{
-    margin:0% 0% 1% 0%;
-}
-.txt-seleccion{
-    color:#000;
-}
-.subt-seleccion{
-    color:#666;
-}
-.txt-costo{
-    display:inline-block;
-    margin-left:10%;
-}
-</style>
 </body>
