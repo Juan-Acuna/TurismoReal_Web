@@ -341,7 +341,7 @@ function toJson(){
         "acompanantes":acompanantes,
         "inventario":inventario,
         "total":costoTotal
-    }
+    };
     return JSON.stringify(carga);
 }
 function CalcularTotal(){

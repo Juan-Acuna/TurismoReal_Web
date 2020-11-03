@@ -33,6 +33,9 @@
         include "../../includes/navbar.php";
         include "../../funciones/peticion.php";
         if(isset($_POST['json'])){
+            echo '<script>
+                    var json='.$_POST['json'].'; 
+                </script>';
             $j = json_decode($_POST['json'],true);
             echo '<header class="wrap">
             <section class="depa-list mt-2">
@@ -93,7 +96,7 @@
                                 <H3 class="text-uppercase">TOTAL: $'.$j['total'].'</H3>
                                 <div style="text-align:end;">
                                 <a class="btn btn-primary btn-xxl text-uppercase mr-2" style="display:inline-block;" href="">Volver a la reserva</a>
-                                <button onclick="document.getElementById(\'id01\').style.display=\'block\'" class="w3-button w3-black btn btn-primary btn-xxl text-uppercase">Proceder con el pago</button>
+                                <button onclick="document.getElementById(\'id01\').style.display=\'block\';document.getElementById(\'sender\').value=JSON.stringify(json);" class="w3-button w3-black btn btn-primary btn-xxl text-uppercase">Proceder con el pago</button>
                                 </div>
                                 </div>
                         </div>
@@ -104,7 +107,7 @@
                                     <span onclick="document.getElementById(\'id01\').style.display=\'none\'" class="w3-button w3-display-topright">&times;</span>
                                     <p class="mb-3">Al continuar con esta transacción, se asume que acepta los terminos y condiciones de uso de nuestro servicio.</p>
                                     <p class="mb-5">A continuación, se le redirigirá a la página de pago de Khipu &trade;</p>
-                                    <input type="hidden" value="'.$_POST['json'].'" name="json">
+                                    <input type="hidden" name="json" id="sender">
                                     <div class="mt-5" style="text-align:right;">
                                         <button style="background-color:transparent;border:none;display:inline-block;padding:0px;margin:0px;outline:none;" type="submit"><img src="https://s3.amazonaws.com/static.khipu.com/buttons/2015/200x75-transparent.png"></button>
                                     </div>
