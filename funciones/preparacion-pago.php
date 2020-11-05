@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     }
     function Llamar(){
         peticion.send();
-        serTimeOut(Llamar,1000);
+        serTimeout(Llamar,1000);
     }
     function Revisar(est){
         if(est){

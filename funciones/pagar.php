@@ -12,25 +12,26 @@ switch($_SERVER['REQUEST_METHOD']){
                 $total = 0;
                 $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$reserva['id_reserva'],'GET','',$_COOKIE['token']);
                 if($res['statusCode']==200){
-                    if($res['id_estado']==1){
+                    if($res['contenido']['id_estado']==1){
                         $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$res['contenido']['id_depto']);
                         if($dep['statusCode']==200){
-                            $total=$res['valor_total'];
+                            $total=$res['contenido']['valor_total'];
                             $pagos=1;
                             $pagos2=1;
                             $n=round($total/2);
-                            if((round($res['pagos']/2)%2)!=0){
-                                $apagar = round($total-(($res['pagos']-1)*50000));
+                            if((round($res['contenido']['pagos']/2)%2)!=0){
+                                $apagar = round($total-(($res['contenido']['pagos']-1)*50000));
                             }else{
-                                $apagar=round($total/$res['pagos']);
+                                $apagar=round($total/$res['contenido']['pagos']);
                             }
                             $transaccion = array(
                                 "Monto"=>$apagar,
-                                "Comentario"=>"Arriendo Depto. ".$dep['nombre']."(Pago 1).",
+                                "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre']."(Pago 1).",
                                 "Username"=>$_COOKIE['username'],
                                 "Id_reserva"=>$reserva['id_reserva'],
                                 "Id_tipo"=>1
                             );
+                            var_dump($transaccion);
                             $pago = peticion_http('http://turismoreal.xyz/api/transaccion','POST',$transaccion,$_COOKIE['token']);
                             if($pago['statusCode']==200){
                                 header('Location: '.$pago['contenido']['payment_url']);
@@ -44,11 +45,7 @@ switch($_SERVER['REQUEST_METHOD']){
                     }else if($res['contenido']['id_estado']==2){
 
                     }
-                    
                 }
-            break;
-            case '':
-                
             break;
         }
     break;
