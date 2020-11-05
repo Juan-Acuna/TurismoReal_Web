@@ -53,7 +53,7 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
                 var depto = '.json_encode($dep['contenido']).';
                 window.onload = function(){
                     document.getElementById("jsonres").value = JSON.stringify(reserva);
-                    document.getElementById("jsondepto").value = JSON.stringify(depto);
+                    document.getElementById("jsondep").value = JSON.stringify(depto);
                     document.forms["ff"].submit();
                 }
                 </script>
