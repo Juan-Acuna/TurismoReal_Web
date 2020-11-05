@@ -1,5 +1,5 @@
 
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="navbar navbar-expand-lg navbar-dark fixed-top"  id="mainNav">
             <div class="container">
             <h4 class="mb-0 site-logo m-0 p-0"><a href="<?php echo VISTAS;?>/" style="text-decoration:none">Turismo Real</a></h4>                
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,16 +21,19 @@
                             
                         } else
                         {   
-                            echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger" style="position: relative;" onmouseover="aparecer()" onmouseout="ocultar()" >Cuenta</a>
-                                <ul class="nav-link pestana" onmouseover="aparecer()" onmouseout="ocultar()">
-                                    <li class="nav-item "><h6 onclick="window.Location(\''.CUENTA.'/miperfil.php\')" class="nav-link js-scroll-trigger">Mi Perfil<h6/></li>
-                                    <li class="nav-item "><h6 onclick="window.Location(\''.CUENTA.'/misreservas.php\')" class="nav-link js-scroll-trigger">Mis Reservas <h6/></li>
-                                    <li class="nav-item "><h6 onclick="window.Location(\''.FUNCIONES.'/cerrarsesion.php\')" class="nav-link js-scroll-trigger" >Cerrar Sesion<h6/></li>
-                                </ul>
-                            </li>';
+                            echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" >Cuenta</a>
+                                        <ul class="nav-link pestana"style="position:absolute;" onmouseover="aparecer()" onmouseout="ocultar()">
+                                        <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil</a></li>
+                                        <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/misreservas.php">Mis Reservas</a></li>
+                                        <li class="nav-item "><a class="nav-link " href="'.FUNCIONES.'/cerrarsesion.php">Cerrar Sesion</a></li>
+                                        </ul>
+                                    </li>';
                         }
                         ?>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+
+
+                    

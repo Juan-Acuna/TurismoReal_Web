@@ -15,15 +15,20 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
         }
         $total = $total + ($dep['contenido']['arriendo'] * $j['estadia']['dias']);
         $pagos=1;
-        $apagar=0;
-        if(round($total/2)>50000){
-            $pagos=round($total/50000);
-            if(($pagos%2)==0){
-                $pagos=$pagos*2;
-            }else{
-                $pagos=round(($pagos*2)-1);
+        $pagos2=1;
+        $n=round($total/2);
+        $n2=$total-$n;
+        if($n>50000){
+            do{
+                $r=$n-(50000*$pagos);
+                $pagos = $pagos + 1;
+            }while($r>50000);
+            if($n2>50000){
+                do{
+                    $r=$n2-(50000*$pagos2);
+                    $pagos2 = $pagos2 + 1;
+                }while($r>50000);
             }
-            if()
         }
         $body = array(
             'Valor_total'=>$total,
@@ -31,7 +36,7 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
             'Fin_estadia'=>$j['estadia']['fin'],
             'Username'=>$_COOKIE['username'],
             'Id_depto'=>$j['id_depto'],
-            'pagos'=>
+            'pagos'=>$pagos+$pagos2
         );
         $reserva = peticion_http('http://turismoreal.xyz/api/reserva','POST',$body,$_COOKIE['token']);
         if($reserva['statusCode']==200){
@@ -56,6 +61,7 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
                 <form action="pagar.php" method="POST" name="ff" style="display:none;">
                 <input type="hidden" name="reserva" id="jsonres">
                 <input type="hidden" name="depto" id="jsondep">
+                <input type="hidden" name="act" value="pay">
                 <input type="hidden" name="total" id="total" value="'.$total.'">
                 </form>
             </body>

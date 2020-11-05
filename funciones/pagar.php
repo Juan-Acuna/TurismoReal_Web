@@ -9,7 +9,24 @@ switch($_SERVER['REQUEST_METHOD']){
                 $dep = json_decode($_POST['depto'],true);
                 $reserva = json_decode($_POST['reserva'],true);
                 $total = intval($_POST['total']);
-                if()
+                $res = peticion_http('http://turismoreal.xyz/api/transaccion'.$reserva['id_reserva'],'GET','',$_COOKIE['token']);
+                $pagos=1;
+                $pagos2=1;
+                $n=round($total/2);
+                $n2=$total-$n;
+                if($n>50000){
+                    do{
+                        $r=$n-(50000*$pagos);
+                        $pagos = $pagos + 1;
+                    }while($r>50000);
+                    if($n2>50000){
+                        do{
+                            $r=$n2-(50000*$pagos2);
+                            $pagos2 = $pagos2 + 1;
+                        }while($r>50000);
+                    }
+                }
+
                 $transaccion = array(
                     "Monto"=>round($total/4),
                     "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre'].".",
