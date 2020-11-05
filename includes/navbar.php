@@ -23,9 +23,9 @@
                         {   
                             echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger" style="position: relative;" onmouseover="aparecer()" onmouseout="ocultar()" >Cuenta</a>
                                 <ul class="nav-link pestana" onmouseover="aparecer()" onmouseout="ocultar()">
-                                    <li><a href="'.CUENTA.'/miperfil.php" class="nav-link js-scroll-trigger">Mi Perfil<a/></li>
-                                    <li><a class="nav-link js-scroll-trigger">Mis Reservas <a/></li>
-                                    <li><a href="'.FUNCIONES.'/cerrarsesion.php" class="nav-link js-scroll-trigger" >Cerrar Sesion<a/></li>
+                                    <li class="nav-item "><h6 onclick="window.Location(\''.CUENTA.'/miperfil.php\')" class="nav-link js-scroll-trigger">Mi Perfil<h6/></li>
+                                    <li class="nav-item "><h6 onclick="window.Location(\''.CUENTA.'/misreservas.php\')" class="nav-link js-scroll-trigger">Mis Reservas <h6/></li>
+                                    <li class="nav-item "><h6 onclick="window.Location(\''.FUNCIONES.'/cerrarsesion.php\')" class="nav-link js-scroll-trigger" >Cerrar Sesion<h6/></li>
                                 </ul>
                             </li>';
                         }

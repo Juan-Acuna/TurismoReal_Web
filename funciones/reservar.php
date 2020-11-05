@@ -1,6 +1,5 @@
 <?php
 include_once 'global.php';
-
 include "peticion.php";
 
 if(isset($_POST['json']) && isset($_COOKIE['token'])){
@@ -15,31 +14,52 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
             }
         }
         $total = $total + ($dep['contenido']['arriendo'] * $j['estadia']['dias']);
+        $pagos=1;
+        $apagar=0;
+        if(round($total/2)>50000){
+            $pagos=round($total/50000);
+            if(($pagos%2)==0){
+                $pagos=$pagos*2;
+            }else{
+                $pagos=round(($pagos*2)-1);
+            }
+            if()
+        }
         $body = array(
             'Valor_total'=>$total,
             'Inicio_estadia'=>$j['estadia']['inicio'],
             'Fin_estadia'=>$j['estadia']['fin'],
             'Username'=>$_COOKIE['username'],
             'Id_depto'=>$j['id_depto'],
-            'Id_tipo'=>1
+            'pagos'=>
         );
         $reserva = peticion_http('http://turismoreal.xyz/api/reserva','POST',$body,$_COOKIE['token']);
         if($reserva['statusCode']==200){
-            $transaccion = array(
-                "Monto"=>round($total/4),
-                "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre'].".",
-                "Username"=>$_COOKIE['username'],
-                "Id_reserva"=>$reserva['contenido']['id_reserva']
-            );
-            $pago = peticion_http('http://turismoreal.xyz/api/transaccion','POST',$transaccion,$_COOKIE['token']);
-            if($pago['statusCode']==200){
-                header('Location: '.$pago['contenido']['payment_url']);
-                die();
-            }else{
-                echo 'Error en transaccion';
-                echo $pago['statusText'].' - ';
-                var_dump($pago['contenido']);
-            }
+            echo '<!DOCTYPE html>
+            <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Procesando pago...</title>
+            </head>
+            <body>
+                <script>
+                var reserva = '.json_encode($reserva['contenido']).';
+                var depto = '.json_encode($dep['contenido']).';
+                window.onload = function(){
+                    document.getElementById("jsonres").value = JSON.stringify(reserva);
+                    document.getElementById("jsondepto").value = JSON.stringify(depto);
+                    document.forms["ff"].submit();
+                }
+                </script>
+                <h1>Procesando pago, por favor espere...</h1>
+                <form action="pagar.php" method="POST" name="ff" style="display:none;">
+                <input type="hidden" name="reserva" id="jsonres">
+                <input type="hidden" name="depto" id="jsondep">
+                <input type="hidden" name="total" id="total" value="'.$total.'">
+                </form>
+            </body>
+            </html>';
         }else{
             echo 'Error en reserva';
             echo $reserva['statusText'].' - ';
@@ -49,15 +69,6 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
         echo 'Error en depto';
         echo $dep['statusText'].' - ';
         var_dump($dep['contenido']);
-    }
-}else if(isset($_GET['cancel'])){
-    $r = peticion_http('http://turismoreal.xyz/api/reserva/'.$_GET['cancel'],'DELETE','',$_COOKIE['token']);
-    if($r['statusCode']==200){
-        header('Location: '.DEPTOS.'/');
-        die();
-    }else{
-        header('Location: '.CUENTA.'/miperfil.php');
-        die();
     }
 }
 ?>

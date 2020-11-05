@@ -11,7 +11,6 @@
         <title>Turismo Real</title>
         <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
         <!-- Font Awesome icons (free version)-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
        
@@ -47,7 +46,7 @@
         $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid']);
         if($respuesta['statusCode']==200){
             $depto=$respuesta['contenido'];
-           
+            $imgs = array();
             $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto['id_depto']);
             echo '<header class="wrap">
             <h1>Descripción del Departamento</h1>
@@ -61,19 +60,26 @@
                     if(count($fotos['contenido'])>$i){
                         $actual = $fotos['contenido'][$i]['ruta'];
                     }
-                    echo'<img id="'.$i.'" onclick="cambiarimagen(this)"  src="'.$actual.'" alt="aaa" style="height:79px" >';
-                    
+                    array_push($imgs,$actual);
                 }
-                $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto['id_localidad']))['contenido'];
-                $h= "un dormitorio";
-                if($depto['habitaciones']>1){
-                    $h= $depto['habitaciones']." dormitorios";
+            }else{
+                for($i=0; $i<=3; $i++){
+                    array_push($imgs,IMG.'/nodispon.png');
                 }
-                $b= "un baño";
-                if($depto['banos']>1){
-                    $b= $depto['banos']." baños";
-                }
-            } 
+            }
+            echo'<img id="'.$i.'" onclick="cambiarimagen(this)"  src="'.$imgs[0].'" alt="aaa" style="height:79px" >';
+            echo'<img id="'.$i.'" onclick="cambiarimagen(this)"  src="'.$imgs[1].'" alt="aaa" style="height:79px" >';
+            echo'<img id="'.$i.'" onclick="cambiarimagen(this)"  src="'.$imgs[2].'" alt="aaa" style="height:79px" >';
+            echo'<img id="'.$i.'" onclick="cambiarimagen(this)"  src="'.$imgs[3].'" alt="aaa" style="height:79px" >';
+            $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto['id_localidad']))['contenido'];
+            $h= "un dormitorio";
+            if($depto['habitaciones']>1){
+                $h= $depto['habitaciones']." dormitorios";
+            }
+            $b= "un baño";
+            if($depto['banos']>1){
+                $b= $depto['banos']." baños";
+            }
             echo '</div> 
                     <div class="fotoaa">
                             <img id="imgMain" src="'.IMG.'/nodispon.png" alt="aaa" style="height:316px; width: 450px;">
@@ -90,14 +96,6 @@
         </header>';
         }
     }
-    //
-    //<img id="imgMain" src="'.IMG.'/nodispon.png" alt="aaa" style="height:316px; width: 450px;">
-
-
 ?>
-
-
- 
 </body>
-
 <html>

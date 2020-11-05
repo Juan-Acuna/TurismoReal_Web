@@ -3,6 +3,7 @@
     <head>
     <?php
     include_once 'global.php';
+    include '../funciones/peticion.php';
 ?>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -46,13 +47,33 @@
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
+            <?php
+            $c = peticion_http('http://turismoreal.xyz/api/centro');
+            if($c['statusCode']==200){
+                foreach($c['contenido'] as $centro){
+              echo '<div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?php echo IMG;?>/portfolio/temuco.jpg" alt="" />
+                                <img class="img-fluid" src="'.IMG.'/portfolio/temuco.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">'.$centro['nombre'].'</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>';
+                }
+            }else{
+                echo '<div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="'.IMG.'/portfolio/temuco.jpg" alt="" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Temuco</div>
@@ -66,7 +87,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?php echo IMG;?>/portfolio/pucon.png" alt="" />
+                                <img class="img-fluid" src="'.IMG.'/portfolio/pucon.png" alt="" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Pucon</div>
@@ -80,7 +101,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?php echo IMG;?>/portfolio/valdivia.png" alt="" />
+                                <img class="img-fluid" src="'.IMG.'/portfolio/valdivia.png" alt="" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Valdivia</div>
@@ -94,7 +115,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?php echo IMG;?>/portfolio/montt.png" alt="" />
+                                <img class="img-fluid" src="'.IMG.'/portfolio/montt.png" alt="" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Puerto Montt</div>
@@ -108,7 +129,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?php echo IMG;?>/portfolio/conce.jpg" alt="" />
+                                <img class="img-fluid" src="'.IMG.'/portfolio/conce.jpg" alt="" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Concepcion</div>
@@ -122,14 +143,16 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?php echo IMG;?>/portfolio/aaa.jpg" alt="" />
+                                <img class="img-fluid" src="'.IMG.'/portfolio/aaa.jpg" alt="" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Valdivia</div>
                                 <div class="portfolio-caption-subheading text-muted">Photography</div>
                             </div>
                         </div>
-                    </div>
+                    </div>';
+            }
+            ?>
                 </div>
             </div>
         </section>
@@ -169,8 +192,6 @@
                 </div>
             </div>
         </section>
-
-        <i class="fas fa-concierge-bell"></i>
 
         <!-- Map -->
   <div id="ubicanos" class="map">
@@ -451,11 +472,11 @@
   </a>
 
   <!-- Bootstrap core JavaScript -->
-  <script src"<?php echo BOOSTRAP;?>/jquery/jquery.min.js"></script>
-  <script src"<?php echo BOOSTRAP;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo BOOSTRAP;?>/jquery/jquery.min.js"></script>
+  <script src="<?php echo BOOSTRAP;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src"<?php echo BOOSTRAP;?>/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?php echo BOOSTRAP;?>/jquery-easing/jquery.easing.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="<?php echo JS;?>/stylish-portfolio.min.js"></script>
   <!-- Bootstrap core JS-->

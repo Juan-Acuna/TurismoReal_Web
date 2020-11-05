@@ -6,7 +6,6 @@ if(!empty($_POST['usuario'])||!empty($_POST['password']))
 {
     $body=array('username'=>$_POST['usuario'],'clave'=>$_POST['password']);
     $resultado=peticion_http('http://turismoreal.xyz/api/usuario/autenticar','POST',$body);
-    var_dump($resultado['contenido']['token']);
     
 
     switch($resultado['statusCode'])
@@ -29,9 +28,6 @@ if(!empty($_POST['usuario'])||!empty($_POST['password']))
         die();
         break;
     }
-
-
-
 }
 
 ?>

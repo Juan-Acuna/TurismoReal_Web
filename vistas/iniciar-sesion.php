@@ -1,8 +1,18 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
 <?php
     include_once 'global.php';
+    $b=false;
+    $d='';
+    if(isset($_COOKIE['error']))
+        {
+            $b=true;
+            $d=$_COOKIE['error'];
+            setcookie('error', '', time()-3600,  '/');
+        }
+
+    echo '
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org/%22%3E
+    <head>';
 ?>
     <title>Turismo Real</title>
     <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
@@ -48,12 +58,10 @@
              <input type="password" name="password" placeholder="Clave">
              </div>
              <?php
-                    if(isset($_COOKIE['error']))
-                    {
-                       echo '<span id="msjerror" >'.$_COOKIE['error'].'</span>';
-                       setcookie('error', '', time()-3600,  '/');
-                    }
-
+                if($b)
+                {
+                    echo '<span id="msjerror" >'.$d.'</span>';
+                }
                 ?>
              <input type="submit" value="Login" class="button">
 

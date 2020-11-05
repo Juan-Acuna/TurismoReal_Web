@@ -224,7 +224,7 @@
     $acom=true;
     $max = 'un acompañante';
     if(($depto['habitaciones']-1)>1){
-        $max =($depto['habitaciones']-1).'acompañantes';
+        $max =($depto['habitaciones']-1).' acompañantes';
     }else if(($depto['habitaciones']-1)<=0){
         $acom=false;
     }
