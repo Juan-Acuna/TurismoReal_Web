@@ -25,6 +25,9 @@ switch($_SERVER['REQUEST_METHOD']){
                             }else{
                                 $apagar=round($total/$res['contenido']['pagos']);
                             }
+                            if($apagar<0){
+                                $apagar=$apagar*-1;
+                            }
                             $transaccion = array(
                                 "Monto"=>$apagar,
                                 "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre']."(Pago 1).",

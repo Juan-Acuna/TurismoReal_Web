@@ -8,13 +8,16 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
     $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$j['id_depto']);
     if($dep['statusCode']==200){
         foreach($j['servicios'] as $s){
-            $res = peticion_http('http://turismoreal.xyz/api/servicio'.$s['id_servicio']);
+            $res = peticion_http('http://turismoreal.xyz/api/servicio/'.$s['id_servicio']);
             if($res['statusCode']==200){
-                $total = $total + ($res['contenido']['valor']*$s['cupos']);
-                echo $total;
+                $vaa=1;
+                if($s['cupos']>0){
+                    $vaa=intval($s['cupos']);
+                }
+                $total = $total + (intval($res['contenido']['valor'])*$vaa);
             }
         }
-        $total = $total + ($dep['contenido']['arriendo'] * $j['estadia']['dias']);
+        $total = $total + (intval($dep['contenido']['arriendo']) * intval($j['estadia']['dias']));
         $pagos=1;
         $pagos2=1;
         $n=round($total/2);
