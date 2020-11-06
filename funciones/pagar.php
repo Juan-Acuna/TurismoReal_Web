@@ -41,8 +41,8 @@ switch($_SERVER['REQUEST_METHOD']){
                                     array_push($r,$pet);
                                 }
                                 var_dump($r);
-                                //header('Location: '.$pago['contenido']['payment_url']);
-                                //die();
+                                header('Location: '.$pago['contenido']['payment_url']);
+                                die();
                             }else{
                                 echo 'Error en transaccion';
                                 echo $pago['statusText'].' - ';
