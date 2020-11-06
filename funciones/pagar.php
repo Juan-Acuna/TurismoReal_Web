@@ -9,6 +9,7 @@ switch($_SERVER['REQUEST_METHOD']){
                 $apagar=0;
                 $dep = json_decode($_POST['depto'],true);
                 $reserva = json_decode($_POST['reserva'],true);
+                $servs= json_decode($_POST['servicios'],true);
                 $total = 0;
                 $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$reserva['id_reserva'],'GET','',$_COOKIE['token']);
                 if($res['statusCode']==200){
@@ -31,11 +32,17 @@ switch($_SERVER['REQUEST_METHOD']){
                                 "Id_reserva"=>$reserva['id_reserva'],
                                 "Id_tipo"=>1
                             );
-                            var_dump($transaccion);
+                            $r=array();
                             $pago = peticion_http('http://turismoreal.xyz/api/transaccion','POST',$transaccion,$_COOKIE['token']);
                             if($pago['statusCode']==200){
-                                header('Location: '.$pago['contenido']['payment_url']);
-                                die();
+                                var_dump($servs); echo'<br><br>';
+                                foreach($servs as $s){
+                                    $pet = peticion_http('http://turismoreal.xyz/api/servicio/contratar/'.$reserva['id_reserva'].'.'.$s['id_servicio'],'POST','',$_COOKIE['token']);
+                                    array_push($r,$pet);
+                                }
+                                var_dump($r);
+                                //header('Location: '.$pago['contenido']['payment_url']);
+                                //die();
                             }else{
                                 echo 'Error en transaccion';
                                 echo $pago['statusText'].' - ';

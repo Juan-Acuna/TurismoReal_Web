@@ -11,6 +11,7 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
             $res = peticion_http('http://turismoreal.xyz/api/servicio'.$s['id_servicio']);
             if($res['statusCode']==200){
                 $total = $total + ($res['contenido']['valor']*$s['cupos']);
+                echo $total;
             }
         }
         $total = $total + ($dep['contenido']['arriendo'] * $j['estadia']['dias']);
@@ -51,9 +52,11 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
                 <script>
                 var reserva = '.json_encode($reserva['contenido']).';
                 var depto = '.json_encode($dep['contenido']).';
+                var servicios = '.json_encode($j['servicios']).';
                 window.onload = function(){
                     document.getElementById("jsonres").value = JSON.stringify(reserva);
                     document.getElementById("jsondep").value = JSON.stringify(depto);
+                    document.getElementById("jsonser").value = JSON.stringify(servicios);
                     document.forms["ff"].submit();
                 }
                 </script>
@@ -61,6 +64,7 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
                 <form action="pagar.php" method="POST" name="ff" style="display:none;">
                 <input type="hidden" name="reserva" id="jsonres">
                 <input type="hidden" name="depto" id="jsondep">
+                <input type="hidden" name="servicios" id="jsonser">
                 <input type="hidden" name="act" value="pay">
                 <input type="hidden" name="total" id="total" value="'.$total.'">
                 </form>
@@ -76,5 +80,9 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
         echo $dep['statusText'].' - ';
         var_dump($dep['contenido']);
     }
+}else{
+    echo 'ERROR';
+    var_dump($_COOKIE['token']);
+    var_dump($_POST['json']);
 }
 ?>

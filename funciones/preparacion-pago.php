@@ -15,17 +15,18 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     var peticion = new XMLHttpRequest();
     var rs = '.$_GET['rs'].';
     var listo = false;
-    peticion.open("GET", "http://turismoreal.xyz/api/transaccion/status/'.$_GET['tr'].'", true);
     window.onload=function(){ 
-        Llamar();
+        //peticion.open("GET", "http://turismoreal.xyz/api/transaccion/status/'.$_GET['tr'].'", true);
+        //Llamar();
+        setTimeout(function(){window.location.href="'.CUENTA.'/misreservas.php";},3000);
     }
     function Llamar(){
         peticion.send();
-        serTimeout(Llamar,1000);
+        setTimeout(Llamar,1000);
     }
     function Revisar(est){
         if(est){
-            document.forms["ff"].Submit();
+            document.forms["ff"].submit();
         }
     }
     peticion.onreadystatechange = function() {
