@@ -26,22 +26,25 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, a{
     margin:auto;
 
 }
-header.wrap {
-    padding-top: 10.5rem;
-    padding-bottom: 6rem;
 
-}
 /*Categoria depa*/
-.category-list {
-    margin-top: 0px;
-    display: flex;
-    flex-direction: column;
-    width: 150px;
-}
+
 .category-list .img{
     
    
-    padding: 0px 5px 5px 5px; 
+    
+}
+.row
+{
+    background-color: #fff;
+    border: 1px solid #ccc;  border-radius: 5px;
+    /*border: #ccc 2px solid;
+*/
+   
+}
+.row>*
+{
+    
 }
 
 .palabras{
@@ -51,13 +54,10 @@ header.wrap {
 }
 /*Departamentos*/
 .depa-list{
-    width: 100%;
+   
     background-color: #fff;
-    margin-top: 50px;
-    padding: 1% 1%;
-    border: #ccc 2px solid;
 
-    border-radius: 5px;
+
 }
 .depa-item{
     padding: 0% 0%;
@@ -91,41 +91,14 @@ header.wrap {
     
     
 }
-.detail:hover{
-    background-color: #155d74;
-    color: #fff;
-    text-decoration: none;
-}
 
-
-
-.store-wrapper{
-    display: flex;
-    
-}
 .titulos, .palabras, .detail{
     display: inline-block;
     vertical-align: top;
    
 }
-.fotoaa{
-   
-   
-    padding-left: none;
-    padding-right: 20px;
-  
-    
-}
-.texto{
-    display: inline;
-    background-color:red;
 
-    
-}
-.palabrasa{
-    display: inline-block;
-    background-color: yellow;
-    width: 80%; 
-}
+
+
 
 

@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+.depa-list {
+    padding-top: 10.5rem;
+    padding-bottom: 6rem;
+
+}
+.depa-list{
+    
+    background-color: #fff;
+    margin-top: 100px;
+    padding: 1% 1%;
+    border: #ccc 2px solid;
+    border-radius: 5px;
+}
+.depa-info{
+    padding: 0% 0%;
+    background-color: #fff;
+  
+   
+}
+
+

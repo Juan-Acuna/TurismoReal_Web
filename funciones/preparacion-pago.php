@@ -4,7 +4,7 @@ include 'peticion.php';
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
     echo '<!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,16 +12,16 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     </head>
     <body>
     <script>
-    var peticion = new XMLHttpRequest();
+    var pet = new XMLHttpRequest();
     var rs = '.$_GET['rs'].';
     var listo = false;
     window.onload=function(){ 
-        //peticion.open("GET", "http://turismoreal.xyz/api/transaccion/status/'.$_GET['tr'].'", true);
-        //Llamar();
-        setTimeout(function(){window.location.href="'.CUENTA.'/misreservas.php";},3000);
+        pet.open("GET", "http://turismoreal.xyz/api/transaccion/status/'.$_GET['tr'].'", true);
+        Llamar();
+        //setTimeout(function(){window.location.href="'.CUENTA.'/misreservas.php";},3000);
     }
     function Llamar(){
-        peticion.send();
+        pet.send();
         setTimeout(Llamar,1000);
     }
     function Revisar(est){
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
             document.forms["ff"].submit();
         }
     }
-    peticion.onreadystatechange = function() {
+    pet.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         listo=JSON.parse(this.responseText);
         Revisar(listo);

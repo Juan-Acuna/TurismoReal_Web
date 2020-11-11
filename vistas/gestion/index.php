@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
+    <?php
+    include_once 'global.php';
+?>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -66,6 +68,18 @@
                     <li>
                         <a href="#">Ver Transporte</a>
                     </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Check</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu2">
+                    <li>
+                        <a href="#">Ver Check-In</a>
+                    </li>
+                    <li>
+                        <a href="#">Ver Check-Out</a>
+                    </li>
+
                 </ul>
             </li>
                 <li>

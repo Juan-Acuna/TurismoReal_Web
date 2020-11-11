@@ -10012,7 +10012,6 @@ p {
 
 .pestana{
   display: none;
-  position: absolute;
   background-color: #393d41;
   list-style: none;
   padding: 1% 2%;
@@ -10036,11 +10035,11 @@ p {
   margin-bottom: 4rem;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   section {
     padding: 9rem 0;
   }
-}
+}*/
 ::-moz-selection {
   background: #fed136;
   text-shadow: none;
