@@ -96,22 +96,28 @@
                                 <H3 class="text-uppercase">TOTAL: $'.$j['total'].'</H3>
                                 <div style="text-align:end;">
                                 <a class="btn btn-primary btn-xxl text-uppercase mr-2" style="display:inline-block;" href="">Volver a la reserva</a>
-                                <button onclick="document.getElementById(\'id01\').style.display=\'block\';document.getElementById(\'sender\').value=JSON.stringify(json);" class="w3-button w3-black btn btn-primary btn-xxl text-uppercase">Proceder con el pago</button>
+                                <button onclick="document.getElementById(\'id01\').style.display=\'block\';document.getElementById(\'sender\').value=JSON.stringify(json);document.getElementById(\'sender2\').value=JSON.stringify(json);" class="w3-button w3-black btn btn-primary btn-xxl text-uppercase">Proceder con el pago</button>
                                 </div>
                                 </div>
                         </div>
                     </section> ';
                   echo '<div id="id01" class="w3-modal">
                             <div class="w3-modal-content p-5" style="border-radius:7px;width:80%;">
-                                <form class="w3-container mt-6 p-3" action="'.FUNCIONES.'/reservar.php" method="POST">
+                                <div class="w3-container mt-6 p-3" >
                                     <span onclick="document.getElementById(\'id01\').style.display=\'none\'" class="w3-button w3-display-topright">&times;</span>
                                     <p class="mb-3">Al continuar con esta transacción, se asume que acepta los terminos y condiciones de uso de nuestro servicio.</p>
                                     <p class="mb-5">A continuación, se le redirigirá a la página de pago de Khipu &trade;</p>
-                                    <input type="hidden" name="json" id="sender">
-                                    <div class="mt-5" style="text-align:right;">
+                                    <form class="mt-5" style="text-align:right;" action="'.FUNCIONES.'/reservar.php" method="POST">
+                                        <input type="hidden" name="m" value="1">
+                                        <input type="hidden" name="json" id="sender">
                                         <button style="background-color:transparent;border:none;display:inline-block;padding:0px;margin:0px;outline:none;" type="submit"><img src="https://s3.amazonaws.com/static.khipu.com/buttons/2015/200x75-transparent.png"></button>
-                                    </div>
-                                </form>
+                                    </form>
+                                    <form class="mt-5" style="text-align:right;" action="'.FUNCIONES.'/reservar.php" method="POST">
+                                        <input type="hidden" name="m" value="2">
+                                        <input type="hidden" name="json" id="sender2">
+                                        <button style="background-color:transparent;border:none;display:inline-block;padding:0px;margin:0px;outline:none;" type="submit">Pagar con Webpay</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>';
                     }

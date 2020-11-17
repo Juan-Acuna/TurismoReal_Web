@@ -20,7 +20,8 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
         $total = $total + (intval($dep['contenido']['arriendo']) * intval($j['estadia']['dias']));
         $pagos=1;
         $pagos2=1;
-        $n=round($total/2);
+        if($_POST['m']==1){//KHIPU
+            $n=round($total/2);
         $n2=$total-$n;
         if($n>50000){
             do{
@@ -34,6 +35,9 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
                 }while($r>50000);
             }
         }
+        }/*else{
+            //WEBPAY
+        }*/
         $body = array(
             'Valor_total'=>$total,
             'Inicio_estadia'=>$j['estadia']['inicio'],
@@ -64,12 +68,20 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
                 }
                 </script>
                 <h1>Procesando pago, por favor espere...</h1>
-                <form action="pagar.php" method="POST" name="ff" style="display:none;">
+                <form action="pagar.php" method="';
+                if($_POST['m']==1){
+                    echo 'POST';
+                }else{
+                    echo 'GET';
+                }
+                echo '" name="ff" style="display:none;">
                 <input type="hidden" name="reserva" id="jsonres">
                 <input type="hidden" name="depto" id="jsondep">
                 <input type="hidden" name="servicios" id="jsonser">
+                <input type="hidden" name="m" value="'.$_POST['m'].'">
                 <input type="hidden" name="act" value="pay">
                 <input type="hidden" name="total" id="total" value="'.$total.'">
+                <input type="hidden" name="origen" value="web">
                 </form>
             </body>
             </html>';

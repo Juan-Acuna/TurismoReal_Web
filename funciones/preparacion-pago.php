@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     var rs = '.$_GET['rs'].';
     var listo = false;
     window.onload=function(){ 
+        document.getElementById("rs").value=rs;
         pet.open("GET", "http://turismoreal.xyz/api/transaccion/status/'.$_GET['tr'].'", true);
         Llamar();
         //setTimeout(function(){window.location.href="'.CUENTA.'/misreservas.php";},3000);
