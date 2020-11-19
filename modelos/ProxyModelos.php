@@ -1,0 +1,34 @@
+<?php
+include_once 'Acompanante.php';
+include_once 'Articulo.php';
+include_once 'Asignacion.php';
+include_once 'CentroTuristico.php';
+include_once 'Chofer.php';
+include_once 'ClaveReset.php';
+include_once 'Departamento.php';
+include_once 'DeptoArticulo.php';
+include_once 'EstadoAsignacion.php';
+include_once 'EstadoDepto.php';
+include_once 'EstadoReserva.php';
+include_once 'Foto.php';
+include_once 'Genero.php';
+include_once 'Localidad.php';
+include_once 'LocalidadUsuario.php';
+include_once 'Mantencion.php';
+include_once 'MedioPago.php';
+include_once 'Multa.php';
+include_once 'Persona.php';
+include_once 'Reserva.php';
+include_once 'ReservaAcompanante.php';
+include_once 'ReservaServicio.php';
+include_once 'Rol.php';
+include_once 'Servicio.php';
+include_once 'TipoMantencion.php';
+include_once 'TipoMulta.php';
+include_once 'TipoTransaccion.php';
+include_once 'Transaccion.php';
+include_once 'Usuario.php';
+include_once 'Vehiculo.php';
+include_once 'Viaje.php';
+//use modelo;
+?>

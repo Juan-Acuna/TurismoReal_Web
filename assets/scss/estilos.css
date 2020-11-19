@@ -1,0 +1,40 @@
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px; }
+
+.header {
+  padding-top: 10.5rem;
+  padding-bottom: 20rem;
+  background-image: url(/assets/img/hero_6.jpg);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover; }
+
+/*COLORES*/
+.bg-primary {
+  background-color: #212529 !important; }
+
+.text-primary {
+  color: #ffffff !important; }
+
+.bg-secondary {
+  background-color: #f8f9fa !important; }
+
+.btn-primary {
+  background-color: #212529 !important;
+  border-color: black !important; }
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0a0c0d !important;
+  color: #1d809f; }
+
+*.row > * {
+  border: 2px solid red; }
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px; } }
+
+/*# sourceMappingURL=estilos.css.map */
