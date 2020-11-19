@@ -107,32 +107,19 @@
             </form>
               </div>
             </div>
-            
                   </div><br><br><br><br><br>
               </header>';
-              
         }
-              
       } 
     ?>
 
-    
-
-
-
-
-
-
-
-
-
-<script src"<?php echo BOOSTRAP;?>/jquery/jquery.min.js"></script>
-  <script src"<?php echo BOOSTRAP;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo BOOSTRAP;?>/jquery/jquery.min.js"></script>
+  <script src="<?php echo BOOSTRAP;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src"<?php echo BOOSTRAP;?>/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?php echo BOOSTRAP;?>/jquery-easing/jquery.easing.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src"<?php echo JS;?>/stylish-portfolio.min.js"></script>
+  <script src="<?php echo JS;?>/stylish-portfolio.min.js"></script>
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
