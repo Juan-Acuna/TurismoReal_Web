@@ -1,8 +1,8 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class EstadoReserva{
 
-    public $Id_estado; //PRIMARY KEY
-    public $Nombre;
+    public $Id_estado = 0; //PRIMARY KEY
+    public $Nombre = '';
 }
 ?>

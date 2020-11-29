@@ -1,15 +1,15 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Servicio{
 
-    public $Id_servicio; //PRIMARY KEY
-    public $Nombre;
-    public $Valor;
-    public $Inicio;
-    public $Fin;
-    public $Cupos;
-    public $Semana;
-    public $Id_localidad;
-    public $Id_centro;
+    public $Id_servicio = 0; //PRIMARY KEY
+    public $Nombre = '';
+    public $Valor = 0;
+    public $Inicio = '';
+    public $Fin = '';
+    public $Cupos = 0;
+    public $Semana = '\0';
+    public $Id_localidad = 0;
+    public $Id_centro = 0;
 }
 ?>

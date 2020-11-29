@@ -1,24 +1,24 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Reserva{
 
-    public $Id_reserva; //PRIMARY KEY
-    public $Valor_total;
-    public $Valor_pagado;
-    public $Fecha;
-    public $Inicio_estadia;
-    public $Fin_estadia;
-    public $Checkin;
-    public $Confirmado;
-    public $Checkout;
-    public $Desc_checkin;
-    public $Desc_checkout;
-    public $Multa_total;
-    public $Multa_pagado;
-    public $Pagos;
-    public $N_pago;
-    public $Username;
-    public $Id_depto;
-    public $Id_estado;
+    public $Id_reserva = 0; //PRIMARY KEY
+    public $Valor_total = 0;
+    public $Valor_pagado = 0;
+    public $Fecha = '';
+    public $Inicio_estadia = '';
+    public $Fin_estadia = '';
+    public $Checkin = '\0';
+    public $Confirmado = '\0';
+    public $Checkout = '\0';
+    public $Desc_checkin = '';
+    public $Desc_checkout = '';
+    public $Multa_total = 0;
+    public $Multa_pagado = 0;
+    public $Pagos = 0;
+    public $N_pago = 0;
+    public $Username = '';
+    public $Id_depto = 0;
+    public $Id_estado = 0;
 }
 ?>

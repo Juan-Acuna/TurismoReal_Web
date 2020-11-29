@@ -1,8 +1,8 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Genero{
 
-    public $Id_genero; //PRIMARY KEY
-    public $Nombre;
+    public $Id_genero = 0; //PRIMARY KEY
+    public $Nombre = '';
 }
 ?>

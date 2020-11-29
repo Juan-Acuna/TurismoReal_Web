@@ -1,8 +1,8 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Rol{
 
-    public $Id_rol; //PRIMARY KEY
-    public $Nombre;
+    public $Id_rol = 0; //PRIMARY KEY
+    public $Nombre = '';
 }
 ?>

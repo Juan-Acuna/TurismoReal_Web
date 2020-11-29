@@ -1,9 +1,9 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class TipoMantencion{
 
-    public $Id_tipo; //PRIMARY KEY
-    public $Nombre;
-    public $Valor;
+    public $Id_tipo = 0; //PRIMARY KEY
+    public $Nombre = '';
+    public $Valor = 0;
 }
 ?>

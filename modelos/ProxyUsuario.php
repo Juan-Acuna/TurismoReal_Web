@@ -1,8 +1,9 @@
 <?php
 //namespace modelos;
-class LocalidadUsuario{
+class ProxyUsuario{
 
-    public $Id_localidad = 0; //PRIMARY KEY
     public $Username = ''; //PRIMARY KEY
+    public $Id_rol = 0;
+    public $Rut = '';
 }
 ?>

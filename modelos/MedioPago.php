@@ -1,8 +1,8 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class MedioPago{
 
-    public $Id_medio; //PRIMARY KEY
-    public $Nombre;
+    public $Id_medio = 0; //PRIMARY KEY
+    public $Nombre = '';
 }
 ?>

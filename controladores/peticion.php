@@ -8,15 +8,20 @@ function class_decode($obj,$clase){
         foreach($temp as $t){
             $ob= new $clase();
             foreach($t as $key=>$value){
-                $ob->$key = $value;
+                $ob->{ucfirst($key)} = $value;
             }
             array_push($r_lista,$ob);
         }
+        return $r_lista;
     }else{
         //se instancia directamente la clase
         $r_obj= new $clase();
         foreach($temp as $key => $value){
-            $r_obj->$key = $value;
+            if($key=='error'){
+                return array('error'=>$value);
+            }else{
+                $r_obj->{ucfirst($key)} = $value;
+            }
         }
         return $r_obj;
     }
@@ -28,7 +33,7 @@ function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clas
     $status = '';
     $contenido = '';
     try{
-        if($token=='none'){
+        if($token=='none' || $token==''){
             $headers = array('User-agent: paginaweb', 'Connection: close', 'Content-type: application/json','Content-Length: '.strlen(json_encode($body)));
         }else{
             $headers = array('User-agent: paginaweb', 'Connection: close', 'Content-type: application/json','Content-Length: '.strlen(json_encode($body)), 'Authorization: Bearer '.$token);

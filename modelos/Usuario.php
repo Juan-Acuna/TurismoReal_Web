@@ -1,12 +1,12 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Usuario{
 
-    public $Username; //PRIMARY KEY
-    public $Clave;
-    public $Id_rol;
-    public $Activo;
-    public $Frecuente;
-    public $Rut;
+    public $Username = ''; //PRIMARY KEY
+    public $Clave = '';
+    public $Id_rol = 0;
+    public $Activo = '\0';
+    public $Frecuente = '\0';
+    public $Rut = '';
 }
 ?>

@@ -1,6 +1,6 @@
 <?php 
-include 'peticion.php';
 include_once 'global.php';
+include 'peticion.php';
 
 if(!empty($_POST['usuario'])||!empty($_POST['password']))
 {

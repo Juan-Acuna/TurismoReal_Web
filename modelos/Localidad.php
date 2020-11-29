@@ -1,8 +1,8 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Localidad{
 
-    public $Id_localidad; //PRIMARY KEY
-    public $Nombre;
+    public $Id_localidad = 0; //PRIMARY KEY
+    public $Nombre = '';
 }
 ?>

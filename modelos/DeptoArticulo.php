@@ -1,8 +1,8 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class DeptoArticulo{
 
-    public $Id_depto; //PRIMARY KEY
-    public $Id_articulo; //PRIMARY KEY
+    public $Id_depto = 0; //PRIMARY KEY
+    public $Id_articulo = 0; //PRIMARY KEY
 }
 ?>

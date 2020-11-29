@@ -45,14 +45,14 @@ include F_NAVBAR;
             <h1 class="text-center py-4 display-4">CENTROS TURISTICOS</h1>
             <div class="row text-center font-weight-bold">
             <?php
-            $c = peticion_http('http://turismoreal.xyz/api/centro');
+            $c = peticion_http('http://turismoreal.xyz/api/centro','GET','','',CLASE_CENTROTURISTICO);
             if($c['statusCode']==200){
                 foreach($c['contenido'] as $centro){
                     echo '
                 <div class="col-xs-12 col-md-6 col-lg-4 mb-4  ">
                     <div class="card">
                         <img class="card-img-top" src="'.IMG.'/portfolio/temuco.jpg" alt="">
-                        <div class="card-body"> <h4 class="">'.$centro['nombre'].'</h4>  </div>
+                        <div class="card-body"> <h4 class="">'.$centro->Nombre.'</h4>  </div>
                     </div>   
                 </div>';
                 }
@@ -179,13 +179,7 @@ include F_NAVBAR;
             </form>
         </div>
     </section>
-    <?php echo FOOTER?>
-
-    
-
-
-
-
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src=".<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>

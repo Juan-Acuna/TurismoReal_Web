@@ -1,9 +1,9 @@
 <?php
-namespace modelos;
+//namespace modelos;
 class Vehiculo{
 
-    public $Patente; //PRIMARY KEY
-    public $Marca;
-    public $Modelo;
+    public $Patente = ''; //PRIMARY KEY
+    public $Marca = '';
+    public $Modelo = '';
 }
 ?>
