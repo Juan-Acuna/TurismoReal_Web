@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class ClaveReset{
 
     public $Id_reset; //PRIMARY KEY

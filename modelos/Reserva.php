@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Reserva{
 
     public $Id_reserva; //PRIMARY KEY
@@ -8,6 +8,9 @@ class Reserva{
     public $Fecha;
     public $Inicio_estadia;
     public $Fin_estadia;
+    public $Checkin;
+    public $Confirmado;
+    public $Checkout;
     public $Desc_checkin;
     public $Desc_checkout;
     public $Multa_total;

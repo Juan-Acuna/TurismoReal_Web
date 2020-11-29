@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class TipoTransaccion{
 
     public $Id_tipo; //PRIMARY KEY

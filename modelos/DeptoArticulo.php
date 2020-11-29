@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class DeptoArticulo{
 
     public $Id_depto; //PRIMARY KEY

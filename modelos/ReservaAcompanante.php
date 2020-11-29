@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class ReservaAcompanante{
 
     public $Id_reserva; //PRIMARY KEY

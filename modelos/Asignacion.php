@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Asignacion{
 
     public $Id_asignacion; //PRIMARY KEY

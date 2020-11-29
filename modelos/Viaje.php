@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Viaje{
 
     public $Id_viaje; //PRIMARY KEY

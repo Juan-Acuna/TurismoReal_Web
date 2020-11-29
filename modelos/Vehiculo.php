@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Vehiculo{
 
     public $Patente; //PRIMARY KEY

@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Usuario{
 
     public $Username; //PRIMARY KEY

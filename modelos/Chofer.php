@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Chofer{
 
     public $Id_chofer; //PRIMARY KEY

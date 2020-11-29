@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class TipoMulta{
 
     public $Id_tipo; //PRIMARY KEY

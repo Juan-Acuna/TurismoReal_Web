@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Multa{
 
     public $Id_multa; //PRIMARY KEY

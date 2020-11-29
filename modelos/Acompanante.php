@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Acompanante{
 
     public $Id_acom; //PRIMARY KEY

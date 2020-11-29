@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class LocalidadUsuario{
 
     public $Id_localidad; //PRIMARY KEY

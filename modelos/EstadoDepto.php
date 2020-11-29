@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class EstadoDepto{
 
     public $Id_estado; //PRIMARY KEY

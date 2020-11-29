@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Foto{
 
     public $Id_foto; //PRIMARY KEY

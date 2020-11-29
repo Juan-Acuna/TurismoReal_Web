@@ -1,5 +1,5 @@
 <?php
-namespace modelo;
+namespace modelos;
 class Rol{
 
     public $Id_rol; //PRIMARY KEY
