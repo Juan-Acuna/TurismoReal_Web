@@ -1,6 +1,9 @@
 <?php
     include_once 'global.php';
-    $rol=$_COOKIE['rol'];
+    $rol=5;
+    if(isset($_COOKIE['rol'])){
+        $rol=$_COOKIE['rol'];
+    }
 ?>
 <html>
 <head>
@@ -18,7 +21,7 @@
 
 <body style="overflow:hidden;">
 <?php
-include "../../assets/includes/navbar.php";
+include F_NAVBAR;
 
 
 echo '<div class="container-fluid"style="margin-top:80px;">

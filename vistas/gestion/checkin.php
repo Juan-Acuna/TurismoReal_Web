@@ -1,6 +1,6 @@
 <?php
     include_once 'global.php';
-
+    include F_PETICION;
 echo '<html>
   <head>
         <meta charset="utf-8" />

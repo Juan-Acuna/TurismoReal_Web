@@ -1,7 +1,10 @@
 <?php
     include "global.php";
-    include "../../controladores/peticion.php";
-    $rol=$_COOKIE['rol'];
+    include F_PETICION;
+    $rol=5;
+    if(isset($_COOKIE['rol'])){
+        $rol=$_COOKIE['rol'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +28,7 @@
 <body class="fotitio">
 <?php
 
-include "../../assets/includes/navbar.php";
+include F_NAVBAR;
 
 ?>
     <form class="formulariorecuperar" style="background-color:transparent" method="POST" action="<?php echo FUNCIONES;?>/recuperar.php">

@@ -1,5 +1,5 @@
 <?php
-include_once '../modelos/ProxyModelos.php';
+require_once F_MODELOS;
 function class_decode($obj,$clase){
     $temp = json_decode($obj,true);
     $r_lista=[];
@@ -50,6 +50,9 @@ function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clas
     try{
         $contexto = stream_context_create($opciones);
     $flujo = fopen($url, 'r', false, $contexto);
+    if($flujo===false){
+        throw new Exception();
+    }
     $status = stream_get_meta_data($flujo)['wrapper_data'][0];
 
     switch($status){

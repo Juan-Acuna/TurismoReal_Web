@@ -1,7 +1,10 @@
 <?php
     include_once 'global.php';
-    include '../controladores/peticion.php';
-    $rol=$_COOKIE['rol'];
+    include F_PETICION;
+    $rol=5;
+    if(isset($_COOKIE['rol'])){
+        $rol=$_COOKIE['rol'];
+    }
 ?>
 <!doctype html>
 <html lang="es">
@@ -18,7 +21,7 @@
     <!--BARRA DE NAVEGACION-->
 <?php
 
-include "../assets/includes/navbar.php";
+include F_NAVBAR;
 
 ?>
     <section class="header p-xs-0">

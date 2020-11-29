@@ -1,5 +1,6 @@
 <?php
     include_once 'global.php';
+    include F_PETICION;
 ?>
 <html>
   <head>

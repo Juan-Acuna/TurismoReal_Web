@@ -32,7 +32,7 @@
 <body class="fotitio ">
 <?php
 
-include "../assets/includes/navbar.php";
+include F_NAVBAR;
 
 ?>
 

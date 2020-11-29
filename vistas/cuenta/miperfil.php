@@ -1,7 +1,10 @@
 <?php
     include "global.php";
-    include "../../controladores/peticion.php";
-    $rol=$_COOKIE['rol'];
+    include F_PETICION;
+    $rol=5;
+    if(isset($_COOKIE['rol'])){
+        $rol=$_COOKIE['rol'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,9 +26,10 @@
     <body>
     <?php
 
-include "../../assets/includes/navbar.php";
+include F_NAVBAR;
       if(isset($_COOKIE['token'])){
         $resultado = peticion_http('http://turismoreal.xyz/api/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token']);
+        var_dump($resultado);
         if($resultado['statusCode']==200){
         $p=$resultado['contenido']['persona'];
         $u=$resultado['contenido']['usuario'];

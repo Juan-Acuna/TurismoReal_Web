@@ -1,6 +1,10 @@
 <?php
     include_once 'global.php';
-    $rol=$_COOKIE['rol'];
+    include F_PETICION;
+    $rol=5;
+    if(isset($_COOKIE['rol'])){
+        $rol=$_COOKIE['rol'];
+    }
 ?>
 <html >
   <head>
@@ -22,7 +26,7 @@
   <body class="bg-white">
   <?php
 
-include "../../assets/includes/navbar.php";
+include F_NAVBAR;
 
 ?>
     <div class="container bg-white"style="margin-top:100px">
