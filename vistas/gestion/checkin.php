@@ -1,7 +1,7 @@
 <?php
     include_once 'global.php';
-?>
-<html>
+
+echo '<html>
   <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,121 +22,37 @@
                     <th class="th-sm">Nombre Cliente</th>
                     <th class="th-sm">Nombre Depto</th>
                     <th class="th-sm">Fecha Inicio Estadia</th>
-                    <th class="th-sm">Estado Pago</th>
+                    <th class="th-sm">Estado</th>
                 </tr>   
             </thead>
-            <tbody>
-                <tr>
-                    <td >1</td>
-                    <td>Juan Valdovinos</td>
-                    <td>Colombia</td>
-                    <td>23/11/2020 </td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Oscar Consaldo</td>
-                    <td>Colombia 2</td>
-                    <td>03/10/2050 </td>
-                    <td>No Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Fabian Torres</td>
-                    <td>Colombia 3</td>
-                    <td>24/07/2019</td>
-                    <td> No Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jose Maria</td>
-                    <td>Colombia 4</td>
-                    <td>23/12/2020</td>
-                    <td>Pagado</td>
-                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
-                </tr>  
-            </tbody>
-        </table>
-    <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
-    <script src="<?php echo JS;?>/popper.min.js" ></script>
-    <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-  </body>
-</html>
-
-
-
+            <tbody>';
+            $res =peticion_http('http://turismoreal.xyz/api/reserva',$token=$_COOKIE['token']);
+            if($res['statusCode']==200){
+                foreach($res['contenido'] as $r){
+                    if($r['id_estado']==2){
+                        $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r['id_depto']))['contenido'];
+                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r['username'],$token=$_COOKIE['token']))['contenido'];
+                        echo '<tr>
+                        <td>'.$r['id_reserva'].'</td>
+                        <td>'.$u['persona']['nombres'].' '.$u['persona'][''].'</td>
+                        <td>'.$d['nombre'].'</td>
+                        <td>'.date("d/m/Y",strtotime($r['inicio_estadia'])).'</td>';
+                        if(date("d/m/Y",strtotime($r['inicio_estadia']))==date("d/m/Y")){
+                            echo '<td>Listo para Check</td>
+                            <td><a href="'.GESTION.'/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>';
+                        }else{
+                            echo '<td>Esperando fecha</td>
+                            <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';
+                        }
+                    echo '</tr>
+                    </tbody>
+                    </table>
+                <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
+                <script src="<?php echo JS;?>/popper.min.js" ></script>
+                <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
+              </body>
+            </html>';
+                    }
+                }
+            }
+            ?>
