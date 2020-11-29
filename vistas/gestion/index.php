@@ -16,9 +16,8 @@
 
 
 
-<body>
+<body style="overflow:hidden;">
 <?php
-
 include "../../assets/includes/navbar.php";
 
 

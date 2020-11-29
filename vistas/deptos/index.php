@@ -1,6 +1,7 @@
 <?php
     include "global.php";
     include "../../controladores/peticion.php";
+    $rol=$_COOKIE['rol'];
 ?>
 <!doctype html>
 <html lang="es">

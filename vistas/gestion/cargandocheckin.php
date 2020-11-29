@@ -1,5 +1,6 @@
 <?php
     include_once 'global.php';
+    $rol=$_COOKIE['rol'];
 ?>
 <html >
   <head>

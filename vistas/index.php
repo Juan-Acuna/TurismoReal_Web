@@ -2,6 +2,7 @@
     include_once 'global.php';
     include '../controladores/peticion.php';
     include '../modelos/ProxyModelos.php';
+    $rol=$_COOKIE['rol'];
 ?>
 <!doctype html>
 <html lang="es">

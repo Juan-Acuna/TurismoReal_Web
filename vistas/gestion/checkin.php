@@ -57,6 +57,78 @@
                     <td>23/12/2020</td>
                     <td>Pagado</td>
                     <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Jose Maria</td>
+                    <td>Colombia 4</td>
+                    <td>23/12/2020</td>
+                    <td>Pagado</td>
+                    <td><a href="<?php echo GESTION;?>/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>
                 </tr>  
             </tbody>
         </table>

@@ -1,45 +1,58 @@
-<nav class="  navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
             <a href="<?php echo VISTAS;?>/" class="navbar-brand"><span class="h3">Turismo Real</span> </a>
             <button type="button" class="navbar-toggler btn btn-primary" data-toggle="collapse" data-target="#menu-principal"
             aria-expanded="false" aria-label="Desplegar menú de navegacion"><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar navbar-collapse" id="menu-principal">
                 <ul class="navbar-nav ml-lg-auto">
-                    <li>
-                        <a href="<?php echo VISTAS;?>/" class="nav-link" onclick="setTimeout(resaltarNavLink,200)" id="NAV-LINK-INICIO">Inicio</a>
+                <?php
+                if(!isset($rol)){
+                    $roll=5;
+                }else{
+                    $roll=$rol;
+                }
+                    echo '<li>
+                        <a href="'.VISTAS.'/" class="nav-link" onclick="setTimeout(resaltarNavLink,200)" id="NAV-LINK-INICIO">Inicio</a>
+                    </li>';
+                    if($roll==5){
+                        echo '<li class="nav-item">
+                        <a href="'.DEPTOS.'/index.php" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-DEPTOS">Departamentos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo DEPTOS;?>/index.php" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-DEPTOS">Departamentos</a>
+                        <a href="'.VISTAS.'/index.php#centros" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-CENTROS">Centros Turisticos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo VISTAS;?>/index.php#centros" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-CENTROS">Centros Turisticos</a>
+                        <a href="'.VISTAS.'/index.php#servicios" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-SERVICIOS">Nuestros Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo VISTAS;?>/index.php#servicios" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-SERVICIOS">Nuestros Servicios</a>
+                        <a href="'.VISTAS.'/index.php#ubicacion" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-UBICACION">Ubicacion</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo VISTAS;?>/index.php#ubicacion" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-UBICACION">Ubicacion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo VISTAS;?>/index.php#contacto" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-CONTACTO">Contacto</a>
-                    </li>
-                    <script>function aparecer(){document.getElementsByClassName("pestana")[0].style.display="inline-block";} function ocultar(){document.getElementsByClassName("pestana")[0].style.display="none";} </script>
-                        <?php
-                        if(!isset($_COOKIE['token']))
-                        {
-                            echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger" href="'.VISTAS.'/iniciar-sesion.php" onclick="setTimeout(resaltarNavLink,200)" id="NAV-LINK-ACCESO">Acceso</a></li>';
-                            
-                        } else
-                        {   
-                            echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" id="NAV-LINK-CUENTA">Cuenta</a>
-                                        <ul class="nav-link pestana"  onmouseover="aparecer()" onmouseout="ocultar()">
-                                        <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil</a></li>
-                                        <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/misreservas.php">Mis Reservas</a></li>
-                                        <li class="nav-item "><a class="nav-link " href="'.FUNCIONES.'/cerrarsesion.php">Cerrar Sesion</a></li>
-                                        </ul>
-                                    </li>';
-                        }
-                        ?>
+                        <a href="'.VISTAS.'/index.php#contacto" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-CONTACTO">Contacto</a>
+                    </li>';
+                    }else{
+                        echo '<li class="nav-item">
+                        <a href="'.GESTION.'/" onclick="setTimeout(resaltarNavLink,200)" class="nav-link" id="NAV-LINK-GESTION">Gestion</a>
+                    </li>';
+                    }
+                    echo '<script>function aparecer(){document.getElementsByClassName("pestana")[0].style.display="inline-block";} function ocultar(){document.getElementsByClassName("pestana")[0].style.display="none";} </script>';
+                    if(!isset($_COOKIE['token']))
+                    {
+                        echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger" href="'.VISTAS.'/iniciar-sesion.php" onclick="setTimeout(resaltarNavLink,200)" id="NAV-LINK-ACCESO">Acceso</a></li>';
+                        
+                    } else
+                    {   
+                        echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" id="NAV-LINK-CUENTA">Cuenta</a>
+                                    <ul class="nav-link pestana pt-md-4" style="right:0px;" onmouseover="aparecer()" onmouseout="ocultar()">
+                                    <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil</a></li>';
+                                    if($roll==5){
+                        echo       '<li class="nav-item"><a class="nav-link" href="'.CUENTA.'/misreservas.php">Mis Reservas</a></li>';
+                                    }
+                        echo       '<li class="nav-item"><a class="nav-link" href="'.FUNCIONES.'/cerrarsesion.php">Cerrar Sesion</a></li>
+                                    </ul>
+                                </li>';
+                    }
+                ?>
                 </ul>
             </div>
         <script>
@@ -52,12 +65,6 @@
             for(var i=0; i<links.length;i++){
                 links[i].classList.remove("active");
             }
-            /*if(spl[spl.length-1]!=""){
-                PAGINA_ACTUAL = spl[spl.length-1]
-            }else{
-                PAGINA_ACTUAL = spl[spl.length-2]
-            }*/
-            //var nvlinks = document.getElementsByClassName("nav-link");
             if(spl2.length==2){
                 POSICION_ACTUAL = spl2[1]; 
             }
@@ -65,6 +72,8 @@
                 document.getElementById("NAV-LINK-DEPTOS").classList.add("active");
             }else if(PAGINA_ACTUAL=="cuenta"){
                 document.getElementById("NAV-LINK-CUENTA").classList.add("active");
+            }else if(PAGINA_ACTUAL=="gestion"){
+                document.getElementById("NAV-LINK-GESTION").classList.add("active");
             }else if(PAGINA_ACTUAL=="vistas" && spl[spl.length-1]!="iniciar-sesion.php"){
                 switch(POSICION_ACTUAL){
                     case "":
