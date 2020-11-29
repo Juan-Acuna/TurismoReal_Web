@@ -12,6 +12,7 @@ if(!empty($_POST['usuario'])||!empty($_POST['password']))
     {
         case 200: setcookie('token',($resultado['contenido'])['token'], time()+3600, '/');
         setcookie('username',($resultado['contenido'])['username'], time()+3600, '/');
+        setcookie('rol',($resultado['contenido'])['id_rol'], time()+3600, '/');
         header('Location: '.VISTAS.'/'); 
         die();
         break;
