@@ -23,7 +23,7 @@ include "../../assets/includes/navbar.php";
 
 
 echo '<div class="container-fluid"style="margin-top:80px;">
-        <div class="row">
+        <div class="row h-100">
           <div  class="col-lg-2 bg-light border-right">  
             <h3>Contenidos</h3>
             
