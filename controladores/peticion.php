@@ -4,10 +4,60 @@ function class_decode($obj,$clase){
     $temp = json_decode($obj,true);
     $r_lista=[];
     $r_obj=null;
+    $n = str_replace('Lista_','',$clase);
+    if(strpos($clase,'Lista_')===false){
+        //OBJETO INDIVIDUAL
+        foreach($temp as $key => $value){
+            $ob= new $n();
+            if(is_array($value)){
+                $uk = ucfirst($key);
+                $ob->{ucfirst($key)}=new $uk();
+                foreach($value as $k=> $v){
+                    if(is_array($v)){
+                        $uk = ucfirst($k);
+                        $ob->{ucfirst($key)}->{ucfirst($k)}=new $uk();
+                        foreach($v as $k2=> $v2){
+                            $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;
+                        }
+                    }else{
+                        $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
+                    }
+                }
+            }else{
+                $ob->{ucfirst($key)}=$value;
+            }
+        }
+    }else{
+        //LISTA DE OBJETOS
+        foreach($temp as $key => $value){//cambialo, cuando son listas no funcionan
+            $ob= new $n();
+            if(is_array($value)){
+                $uk = ucfirst($key);
+                var_dump($value);
+                var_dump($key);
+                $ob->{ucfirst($key)}=new $uk();
+                foreach($value as $k=> $v){
+                    if(is_array($v)){
+                        $uk = ucfirst($k);
+                        $ob->{ucfirst($key)}->{ucfirst($k)}=new $uk();
+                        foreach($v as $k2=> $v2){
+                            $uk = ucfirst($k2);
+                            $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$uk;
+                        }
+                    }else{
+                        $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
+                    }
+                }
+            }else{
+                $ob->{ucfirst($key)}=$value;
+            }
+        }
+    }
+    /*
     if(is_array($temp[0])){
-        foreach($temp as $t){
-            $ob= new $clase();
-            foreach($t as $key=>$value){
+        foreach($temp as $tk => $tv){
+            $ob= new $tk();
+            foreach($tv as $key=>$value){
                 $ob->{ucfirst($key)} = $value;
             }
             array_push($r_lista,$ob);
@@ -25,6 +75,7 @@ function class_decode($obj,$clase){
         }
         return $r_obj;
     }
+    */
     
 }
 function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clase = CLASE_LISTA){

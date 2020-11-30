@@ -45,7 +45,7 @@ include F_NAVBAR;
             <h1 class="text-center py-4 display-4">CENTROS TURISTICOS</h1>
             <div class="row text-center font-weight-bold">
             <?php
-            $c = peticion_http('http://turismoreal.xyz/api/centro','GET','','',CLASE_CENTROTURISTICO);
+            $c = peticion_http('http://turismoreal.xyz/api/centro','GET','','',LISTA_CENTROTURISTICO);
             if($c['statusCode']==200){
                 foreach($c['contenido'] as $centro){
                     echo '

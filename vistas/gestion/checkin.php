@@ -26,12 +26,12 @@ echo '<html>
                 </tr>   
             </thead>
             <tbody>';
-            $res =peticion_http('http://turismoreal.xyz/api/reserva',$token=$_COOKIE['token']);
+            $res =peticion_http('http://turismoreal.xyz/api/reserva','GET','',$_COOKIE['token'],CLASE_RESERVA);
             if($res['statusCode']==200){
                 foreach($res['contenido'] as $r){
-                    if($r['id_estado']==2){
-                        $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r['id_depto']))['contenido'];
-                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r['username'],$token=$_COOKIE['token']))['contenido'];
+                    if($r->Id_estado==2){
+                        $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
+                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username, $token=$_COOKIE['token']))['contenido'];
                         echo '<tr>
                         <td>'.$r['id_reserva'].'</td>
                         <td>'.$u['persona']['nombres'].' '.$u['persona'][''].'</td>
