@@ -7,7 +7,7 @@
     }
 ?>
 <!doctype html>
-<html lang="es">
+<html lang="es" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
      <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
 </head>
-<body>
+<body class="h-100">
 
 <script>function cambiarimagen(img){
         var main = document.getElementById("imgMain");
@@ -72,8 +72,8 @@ include F_NAVBAR;
                     echo'<img class="col-3 " id="1" onclick="cambiarimagen(this)" src="'.$imgs[1].'" alt="fff">';
                     echo'<img class="col-3 " id="2" onclick="cambiarimagen(this)" src="'.$imgs[2].'" alt="fff">';
                     echo'<img class="col-3 " id="3" onclick="cambiarimagen(this)" src="'.$imgs[3].'" alt="fff">';
-                
-                        $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto->Id_localidad,'GET','','',CLASE_LOCALIDAD))['contenido'];
+                        $rloc = peticion_http('http://turismoreal.xyz/api/localidad/'.$depto->Id_localidad,'GET','','',CLASE_LOCALIDAD);
+                        $loc = $rloc['contenido'];
                         $h= "un dormitorio";
                         if($depto->Habitaciones>1){
                             $h= $depto->Habitaciones." dormitorios";
@@ -82,7 +82,6 @@ include F_NAVBAR;
                         if($depto->Banos>1){
                             $b= $depto->Banos." baños";
                         }
-                
                         echo'  </div> 
                     </div>
                 </div>

@@ -42,9 +42,20 @@
                         
                     } else
                     {   
-                        echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" id="NAV-LINK-CUENTA">Cuenta</a>
+                        echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" id="NAV-LINK-CUENTA">Cuenta </a>
                                     <ul class="nav-link pestana pt-md-4" style="right:0px;" onmouseover="aparecer()" onmouseout="ocultar()">
-                                    <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil</a></li>';
+                                    <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil';
+                        if(false){
+                            //si tiene notificaciones
+                            echo ' <span class="badge badge-light">50</span>';
+                        }
+                        echo        '</a></li>';
+                        echo            '<li class="nav-item "><a class="nav-link " href="'.NOTIFICACIONES.'/index.php">Notificaciones'; 
+                        if(false){
+                            //si tiene notificaciones
+                            echo ' <span class="badge badge-light">50</span>';
+                        }
+                        echo            '</a></li>';
                                     if($roll==5){
                         echo       '<li class="nav-item"><a class="nav-link" href="'.CUENTA.'/misreservas.php">Mis Reservas</a></li>';
                                     }

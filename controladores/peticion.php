@@ -4,18 +4,19 @@ function class_decode($obj,$clase){
     try{
         $temp = json_decode($obj,true);
         $r_lista=[];
-        $r_obj=null;
         $n = str_replace('Lista_','',$clase);
+        $r_obj= new $n();
         if(strpos($clase,'Lista_')===false){
             //OBJETO INDIVIDUAL
             foreach($temp as $key => $value){
-                $r_obj= new $n();
+                //$r_obj= new $n();
                 if(is_array($value)){
                     $uk =ucfirst($key);
+                    var_dump($uk);
                     $r_obj->{ucfirst($key)}=new $uk();
                     foreach($value as $k=> $v){
                         if(is_array($v)){
-                            $uk=ucfirst($k);
+                            $uk=ucfirst($k);var_dump($uk);
                             $r_obj->{ucfirst($key)}->{ucfirst($k)}=new $uk();
                             foreach($v as $k2=> $v2){
                                 $r_obj->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;

@@ -34,9 +34,10 @@ include F_NAVBAR;
         $u=$resultado['contenido']->Usuario;
         echo  '<header class="perfil">
               <div class="container " style="margin-top:80px">
-              <h2>Mis Datos</h2><br>
+              <h2>Mi Perfil</h2><br>
               <form class="form-horizontal border rounded">
-                      
+              <h2 class="m-0 pb-0 pt-2 pl-2 pr-2">Datos Personales</h2>
+              <hr class="m-2 border-dark">
               <div class="form-group">
               <h4 class="col-sm-5 control-label">Nombre Completo</h4>
               <div class="col-sm-10">
@@ -50,21 +51,23 @@ include F_NAVBAR;
               </div>
             </div>
             <div class="form-group">
+              <h4 class="col-sm-5 control-label">Fecha Nacimiento</h4>
+              <div class="col-sm-10">
+                <h6 class="form-control-static">'.date("d/m/Y",strtotime($p->Nacimiento)).'</h6>
+              </div>
+            </div>
+            <h2 class="m-0 pb-0 pt-2 pl-2 pr-2">Datos de Contacto</h2>
+              <hr class="m-2 border-dark">
+            <div class="form-group">
               <h4 class="col-sm-5 control-label">Email</h4>
               <div class="col-sm-10">
                 <h6 class="form-control-static">'.$p->Email.'</h6>
               </div>
             </div>
             <div class="form-group">
-              <h4 class="col-sm-5 control-label">Fecha Nacimiento</h4>
-              <div class="col-sm-10">
-                <h6 class="form-control-static">'.date("d/m/Y",strtotime($p->Nacimiento)).'</h6>
-              </div>
-            </div>
-            <div class="form-group">
               <h4 class="col-sm-5 control-label">Telefono</h4>
               <div class="col-sm-10">
-                <h6 class="form-control-static">'.$p->Telefono.'</h6>
+                <h6 class="form-control-static">+56 '.$p->Telefono.'</h6>
               </div>
             </div>
             <div class="form-group">
@@ -86,10 +89,10 @@ include F_NAVBAR;
               </div>
             </div>
               <div style="text-align:justify!important  ;display:inline;margin-right:5px;">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="setRegiones()">
+                <button type="button" class="m-2 btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="setRegiones()">
                 Editar Perfil
               </button>
-                <a class="btn btn-primary btn-xxl text-uppercase" style="display:inline-block" href="'.VISTAS.'/">Volver</a>
+                <a class="m-2 btn btn-primary btn-xxl text-uppercase" style="display:inline-block" href="'.VISTAS.'/">Volver</a>
             
               </div>
             </form>

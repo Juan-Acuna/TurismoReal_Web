@@ -19,10 +19,14 @@ switch($_SERVER['REQUEST_METHOD']){
                             if($dep['statusCode']==200){
                                 $total=$res['contenido']['valor_total'];
                                 $n=round($total/2);
-                                if((round($res['contenido']['pagos']/2)%2)!=0){
-                                    $apagar = round($total-(($res['contenido']['pagos']-1)*50000));
+                                if($n>50000){
+                                    if((round($res['contenido']['pagos']/2)%2)!=0){
+                                        $apagar = round($total-(($res['contenido']['pagos']-1)*50000));
+                                    }else{
+                                        $apagar=round($total/$res['contenido']['pagos']);
+                                    }
                                 }else{
-                                    $apagar=round($total/$res['contenido']['pagos']);
+                                    $apagar=$n;
                                 }
                                 if($apagar<0){
                                     $apagar=$apagar*-1;

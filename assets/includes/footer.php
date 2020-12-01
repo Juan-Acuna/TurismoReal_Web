@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 ">
-            <p class="m-0 p-3">Copyright @2020. Dame todos tus derechos</p>
+            <p class="m-0 p-3">Turismo Real 2020. Todos los derechos reservados.</p>
         </div>
     </div>
 </div>

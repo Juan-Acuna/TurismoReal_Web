@@ -17,8 +17,9 @@ define("VENDOR",SRC_URL."/vendor");
 define("BOOSTRAP",VENDOR);
 /* RUTAS */
 define("DEPTOS",VISTAS."/deptos");
-define("CUENTA",VISTAS."/cuenta");
 define("GESTION",VISTAS."/gestion");
+define("CUENTA",VISTAS."/cuenta");
+define("NOTIFICACIONES",CUENTA."/notificaciones");
 define("MISRESERVAS",CUENTA."/misreservas");
 //define("ERROR",VISTAS."/error");
 /* ARCHIVOS */
@@ -33,7 +34,7 @@ const FOOTER = '<footer class="bg-dark text-center text-md-right text-white ">
 <div class="container">
     <div class="row">
         <div class="col-12 ">
-            <p class="m-0 p-3">Copyright @2020. Dame todos tus derechos</p>
+            <p class="m-0 p-3">Turismo Real 2020. Todos los derechos reservados.</p>
         </div>
     </div>
 </div>
