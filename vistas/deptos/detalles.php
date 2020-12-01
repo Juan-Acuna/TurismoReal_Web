@@ -35,11 +35,11 @@ include F_NAVBAR;
 
     if($_GET['depaid']!=null){
 
-        $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid']);
+        $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid'],'GET','','',CLASE_DEPARTAMENTO);
         if($respuesta['statusCode']==200){
             $depto=$respuesta['contenido'];
             $imgs = array();
-            $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto['id_depto']);
+            $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto->Id_depto,'GET','','',LISTA_FOTO);
             echo '
 
     <div class="container pt-5 mt-5">
@@ -57,7 +57,7 @@ include F_NAVBAR;
                         for($i=0; $i<=3; $i++){
                             $actual = IMG.'/nodispon.png';
                             if(count($fotos['contenido'])>$i){
-                                $actual = $fotos['contenido'][$i]['ruta'];
+                                $actual = $fotos['contenido'][$i]->Ruta;
                             }
                             array_push($imgs,$actual);
                         }
@@ -73,14 +73,14 @@ include F_NAVBAR;
                     echo'<img class="col-3 " id="2" onclick="cambiarimagen(this)" src="'.$imgs[2].'" alt="fff">';
                     echo'<img class="col-3 " id="3" onclick="cambiarimagen(this)" src="'.$imgs[3].'" alt="fff">';
                 
-                        $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto['id_localidad']))['contenido'];
+                        $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto->Id_localidad,'GET','','',CLASE_LOCALIDAD))['contenido'];
                         $h= "un dormitorio";
-                        if($depto['habitaciones']>1){
-                            $h= $depto['habitaciones']." dormitorios";
+                        if($depto->Habitaciones>1){
+                            $h= $depto->Habitaciones." dormitorios";
                         }
                         $b= "un baño";
-                        if($depto['banos']>1){
-                            $b= $depto['banos']." baños";
+                        if($depto->Banos>1){
+                            $b= $depto->Banos." baños";
                         }
                 
                         echo'  </div> 
@@ -90,10 +90,10 @@ include F_NAVBAR;
             <div class="col-lg-6 p-2">
                 <div class="row p-3">
                     <div class="col-lg-12">
-                    <H3 >'.$depto['nombre'].'</H3>
-                    <a>Departamento de '.$depto['mts_cuadrados'].' metros cuadrados, ubicado en la localidad de '.$loc['nombre'].', este cuenta con '.$h.', '.$b.', cocina y una amplia sala de estar.</a>                    </div>
+                    <H3 >'.$depto->Nombre.'</H3>
+                    <a>Departamento de '.$depto->Mts_cuadrados.' metros cuadrados, ubicado en la localidad de '.$loc->Nombre.', este cuenta con '.$h.', '.$b.', cocina y una amplia sala de estar.</a></div>
                     <div class="col-lg-12 d-flex justify-content-end">
-                    <a class="btn btn-primary btn-xxl order-lg-last text-uppercase " href="'.DEPTOS.'/reservar.php?depaid='.$depto['id_depto'].'"> Reservar</a>
+                    <a class="btn btn-primary btn-xxl order-lg-last text-uppercase " href="'.DEPTOS.'/reservar.php?depaid='.$depto->Id_depto.'"> Reservar</a>
                     </div>
                 </div>
                 

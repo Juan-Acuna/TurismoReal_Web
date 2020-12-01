@@ -1,79 +1,64 @@
 <?php
 require_once F_MODELOS;
 function class_decode($obj,$clase){
-    $temp = json_decode($obj,true);
-    $r_lista=[];
-    $r_obj=null;
-    $n = str_replace('Lista_','',$clase);
-    if(strpos($clase,'Lista_')===false){
-        //OBJETO INDIVIDUAL
-        foreach($temp as $key => $value){
-            $r_obj= new $n();
-            if(is_array($value)){
-                $r_obj->{ucfirst($key)}=new ucfirst($key);
-                foreach($value as $k=> $v){
-                    if(is_array($v)){
-                        $r_obj->{ucfirst($key)}->{ucfirst($k)}=new ucfirst($k);
-                        foreach($v as $k2=> $v2){
-                            $r_obj->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;
-                        }
-                    }else{
-                        $r_obj->{ucfirst($key)}->{ucfirst($k)}=$v;
-                    }
-                }
-            }else{
-                $r_obj->{ucfirst($key)}=$value;
-            }
-        }
-        return $r_obj;
-    }else{
-        //LISTA DE OBJETOS
-        foreach($temp as $t){
-            $ob= new $n();
-            foreach($t as $key => $value){
+    try{
+        $temp = json_decode($obj,true);
+        $r_lista=[];
+        $r_obj=null;
+        $n = str_replace('Lista_','',$clase);
+        if(strpos($clase,'Lista_')===false){
+            //OBJETO INDIVIDUAL
+            foreach($temp as $key => $value){
+                $r_obj= new $n();
                 if(is_array($value)){
-                    $ob->{ucfirst($key)}=new ucfirst($key);
+                    $uk =ucfirst($key);
+                    $r_obj->{ucfirst($key)}=new $uk();
                     foreach($value as $k=> $v){
                         if(is_array($v)){
-                            $ob->{ucfirst($key)}->{ucfirst($k)}=new ucfirst($k);
+                            $uk=ucfirst($k);
+                            $r_obj->{ucfirst($key)}->{ucfirst($k)}=new $uk();
                             foreach($v as $k2=> $v2){
-                                $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}= $v2;
+                                $r_obj->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;
                             }
                         }else{
-                            $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
+                            $r_obj->{ucfirst($key)}->{ucfirst($k)}=$v;
                         }
                     }
                 }else{
-                    $ob->{ucfirst($key)}=$value;
+                    $r_obj->{ucfirst($key)}=$value;
                 }
             }
-            array_push($r_lista,$ob);
-        }
-        return $r_lista;
-    }
-    /*
-    if(is_array($temp[0])){
-        foreach($temp as $tk => $tv){
-            $ob= new $tk();
-            foreach($tv as $key=>$value){
-                $ob->{ucfirst($key)} = $value;
+            return $r_obj;
+        }else{
+            //LISTA DE OBJETOS
+            foreach($temp as $t){
+                $ob= new $n();
+                foreach($t as $key => $value){
+                    if(is_array($value)){
+                        $uk =ucfirst($key);
+                        $ob->{ucfirst($key)}=new $uk();
+                        foreach($value as $k=> $v){
+                            if(is_array($v)){
+                                $uk=ucfirst($k);
+                                $ob->{ucfirst($key)}->{ucfirst($k)}=new $uk();
+                                foreach($v as $k2=> $v2){
+                                    $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}= $v2;
+                                }
+                            }else{
+                                $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
+                            }
+                        }
+                    }else{
+                        $ob->{ucfirst($key)}=$value;
+                    }
+                }
+                array_push($r_lista,$ob);
             }
-            array_push($r_lista,$ob);
+            return $r_lista;
         }
-        return $r_lista;
-    }else{
-        //se instancia directamente la clase
-        $r_obj= new $clase();
-        foreach($temp as $key => $value){
-            if($key=='error'){
-                return array('error'=>$value);
-            }else{
-                $r_obj->{ucfirst($key)} = $value;
-            }
-        }
-        return $r_obj;
+    }catch(Exception $e){
+        var_dump($e);
     }
-    */
     
 }
 function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clase = CLASE_LISTA){
@@ -81,6 +66,9 @@ function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clas
     $code = 0;
     $status = '';
     $contenido = '';
+    if($metodo==''){
+        $metodo='GET';
+    }
     try{
         if($token=='none' || $token==''){
             $headers = array('User-agent: paginaweb', 'Connection: close', 'Content-type: application/json','Content-Length: '.strlen(json_encode($body)));
@@ -136,11 +124,18 @@ function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clas
         break;
 
     }
-    if($clase==CLASE_LISTA){
-        $contenido = json_decode(stream_get_contents($flujo),True);
+    if($code==200){
+        if($clase==CLASE_LISTA){
+            $contenido = json_decode(stream_get_contents($flujo),True);
+        }else{
+            $contenido = class_decode(stream_get_contents($flujo),$clase);
+        }
+    }else if($code!=400){
+        $contenido = json_decode(stream_get_contents($flujo),true);
     }else{
-        $contenido = class_decode(stream_get_contents($flujo),$clase);
+        $contenido=null;
     }
+    
     }catch(Exception $e){
         $status = 'Error: La URL no es valida o hubo un problema en la conexion.';
         $code = 1;

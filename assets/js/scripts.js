@@ -3,7 +3,8 @@ function Filtrar(obj){
     var items = document.getElementsByClassName("depa-item");
     if(cat=="all"){
         for(var i =0;i<items.length;i++){
-            items[i].style=visibility="visible";
+            items[i].classList.remove("d-none");
+            items[i].classList.add("d-flex");
         }
     }else{
         for(var i =0;i<items.length;i++){

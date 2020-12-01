@@ -31,13 +31,13 @@ echo '<html>
                 foreach($res['contenido'] as $r){
                     if($r->Id_estado==2){
                         $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
-                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username, $token=$_COOKIE['token']))['contenido'];
+                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
                         echo '<tr>
-                        <td>'.$r['id_reserva'].'</td>
-                        <td>'.$u['persona']['nombres'].' '.$u['persona'][''].'</td>
+                        <td>'.$r->Id_reserva.'</td>
+                        <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
                         <td>'.$d['nombre'].'</td>
-                        <td>'.date("d/m/Y",strtotime($r['inicio_estadia'])).'</td>';
-                        if(date("d/m/Y",strtotime($r['inicio_estadia']))==date("d/m/Y")){
+                        <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
+                        if(date("d/m/Y",strtotime($r->Inicio_estadia))==date("d/m/Y")){
                             echo '<td>Listo para Check</td>
                             <td><a href="'.GESTION.'/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>';
                         }else{

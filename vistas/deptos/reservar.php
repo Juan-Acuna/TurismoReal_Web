@@ -24,35 +24,35 @@
 
     if($_GET['depaid']!=null)
     {
-        $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid']);
+        $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid'],'GET','','',CLASE_DEPARTAMENTO);
         if($respuesta['statusCode']==200){
             $depto=$respuesta['contenido'];
-            $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto['id_localidad']))['contenido'];
-            $resserv = peticion_http('http://turismoreal.xyz/api/servicio/localidad/'.$depto['id_localidad']);
-            $serv=[];
+            $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$depto->Id_localidad,'GET','','',CLASE_LOCALIDAD))['contenido'];
+            $resserv = peticion_http('http://turismoreal.xyz/api/servicio/localidad/'.$depto->Id_localidad,'GET','',$_COOKIE['token'],LISTA_SERVICIO);
+            $serv=null;
             $centros =[];
             $s=true;
             if($resserv['statusCode']==200){
                 $serv=$resserv['contenido'];
-                $centros = (peticion_http('http://turismoreal.xyz/api/centroturistico')['contenido']);
+                $centros = (peticion_http('http://turismoreal.xyz/api/centroturistico','GET','','',LISTA_CENTROTURISTICO)['contenido']);
             }else{
                 $s=false;
             }
             $actual = IMG.'/nodispon.png';
-            $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto['id_depto']);
+            $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto->Id_depto,'GET','','',LISTA_FOTO);
             if($fotos['statusCode']==200)
             {
-                $actual = $fotos['contenido'][0]['ruta'];
+                $actual = $fotos['contenido'][0]->Ruta;
             }
             $h= "un dormitorio";
-            if($depto['habitaciones']>1)
+            if($depto->Habitaciones>1)
             {
-                $h= $depto['habitaciones']." dormitorios";
+                $h= $depto->Habitaciones." dormitorios";
             }
             $b= "un baño";
-            if($depto['banos']>1)
+            if($depto->Banos>1)
             {
-                $b= $depto['banos']." baños";
+                $b= $depto->Banos." baños";
             }
             echo '<!--INFORMACION DEPARTAMENTO -->
             <section class="info-depa" style="margin-top:80px;">
@@ -63,19 +63,19 @@
                             <img class="img-fluid" src="'.$actual.'" alt="Imagen depto">
                         </div>
                         <div class="col-xs-12 col-lg-5">
-                        <h1>'.$depto['nombre'].'</h1>
-                        <P>Departamento de '.$depto['mts_cuadrados'].' metros cuadrados, ubicado en la
-                        localidad de '.$loc['nombre'].', este cuenta con '.$h.', '.$b.', cocina
+                        <h1>'.$depto->Nombre.'</h1>
+                        <P>Departamento de '.$depto->Mts_cuadrados.' metros cuadrados, ubicado en la
+                        localidad de '.$loc->Nombre.', este cuenta con '.$h.', '.$b.', cocina
                          y una amplia sala de estar.</P>
                         </div>
                         <div class="col-xs-12 col-lg-3">
-                            <h3>Arriendo(diario): $'.$depto['arriendo'].'</h3>
+                            <h3>Arriendo(diario): $'.$depto->Arriendo.'</h3>
                         </div>
                     </div>
                 </div>
             </section>';
-            echo '<script>arriendo='.$depto['arriendo'].';
-                    idDepto='.$depto['id_depto'].';
+            echo '<script>arriendo='.$depto->Arriendo.';
+                    idDepto='.$depto->Id_depto.';
                 </script>';
             echo '<!--ESTADIA -->
             <section class="fecha-estadia">
@@ -112,15 +112,15 @@
                      Si decides tomarte un tiempo a solas no hay problema, solo deja esta sección vacía.</p>';
             $acom=true;
             $max = 'un acompañante';
-            if(($depto['habitaciones']-1)>1){
-                $max =($depto['habitaciones']-1).' acompañantes';
-            }else if(($depto['habitaciones']-1)<=0){
+            if(($depto->Habitaciones-1)>1){
+                $max =($depto->Habitaciones-1).' acompañantes';
+            }else if(($depto->Habitaciones-1)<=0){
                 $acom=false;
             }
             if($acom){
                 echo '<p class="font-weight-bold">Maximo de acompañantes determinado por la cantidad de habitaciones (Maximo de 2 acompañantes)</p>
                         </div>';
-                $resacom = peticion_http('http://turismoreal.xyz/api/acompanante/usuario/'.$_COOKIE['username']);
+                $resacom = peticion_http('http://turismoreal.xyz/api/acompanante/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],LISTA_PERSONAACOMPANANTE);
                 switch($resacom['statusCode']){
                     case 200:
                         echo '<div class="input-contenedor">
@@ -129,7 +129,7 @@
                             <select id="selecta" style="width:90%;">
                                 <option value="">Seleccione Acompañante</option>';
                         foreach($resacom['contenido'] as $a){
-                            echo '<option value="'.$a['acompanante']['id_acom'].'">'.$a['persona']['nombres'].' '.$a['persona']['apellidos'].'</option>';
+                            echo '<option value="'.$a->Acompanante->Id_acom.'">'.$a->Persona->Nombres.' '.$a->Persona->Apellidos.'</option>';
                         }
                             echo '</select>
                         </div><buttom class="btn btn-primary btn-xl text-uppercase aserv">Añadir Selección</buttom>';
@@ -167,10 +167,10 @@
                                             <select class="form-control" id="selects">
                                                 <option value="">Seleccione servicio</option>';
                                          foreach($serv as $ser){
-                                             echo '<option value="'.$ser['id_servicio'].'" 
-                                             data-nombre="'.$ser['nombre'].'" data-costo="'.$ser['valor'].'" data-centro="'.$ser['id_centro'].'"
-                                             data-inicio="'.date('H:i',strtotime($ser['inicio'])).'" data-fin="'.date('H:i',strtotime($ser['fin'])).'" 
-                                            data-localidad="'.$ser['id_localidad'].'">'.$ser['nombre'].' - $'.$ser['valor'].'</option>';
+                                             echo '<option value="'.$ser->Id_servicio.'" 
+                                             data-nombre="'.$ser->Nombre.'" data-costo="'.$ser->Valor.'" data-centro="'.$ser->Id_centro.'"
+                                             data-inicio="'.date('H:i',strtotime($ser->Inicio)).'" data-fin="'.date('H:i',strtotime($ser->fin)).'" 
+                                            data-localidad="'.$ser->Id_localidad.'">'.$ser->Nombre.' - $'.$ser->Valor.'</option>';
                                          }
                                      echo '</select>
                                      </div>

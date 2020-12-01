@@ -28,11 +28,10 @@
 
 include F_NAVBAR;
       if(isset($_COOKIE['token'])){
-        $resultado = peticion_http('http://turismoreal.xyz/api/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token']);
-        var_dump($resultado);
+        $resultado = peticion_http('http://turismoreal.xyz/api/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO);
         if($resultado['statusCode']==200){
-        $p=$resultado['contenido']['persona'];
-        $u=$resultado['contenido']['usuario'];
+        $p=$resultado['contenido']->Persona;
+        $u=$resultado['contenido']->Usuario;
         echo  '<header class="perfil">
               <div class="container " style="margin-top:80px">
               <h2>Mis Datos</h2><br>
@@ -41,51 +40,51 @@ include F_NAVBAR;
               <div class="form-group">
               <h4 class="col-sm-5 control-label">Nombre Completo</h4>
               <div class="col-sm-10">
-              <h6 class="form-control-static ">'.$p['nombres'].' '.$p['apellidos'].'</h6>
+              <h6 class="form-control-static ">'.$p->Nombres.' '.$p->Apellidos.'</h6>
               </div>
               </div>
               <div class="form-group">
               <h4 class="col-sm-5 control-label">Rut</h4>
               <div class="col-sm-10">
-              <h6 class="form-control-static">'.$p['rut'].'</h6>
+              <h6 class="form-control-static">'.$p->Rut.'</h6>
               </div>
             </div>
             <div class="form-group">
               <h4 class="col-sm-5 control-label">Email</h4>
               <div class="col-sm-10">
-                <h6 class="form-control-static">'.$p['email'].'</h6>
+                <h6 class="form-control-static">'.$p->Email.'</h6>
               </div>
             </div>
             <div class="form-group">
               <h4 class="col-sm-5 control-label">Fecha Nacimiento</h4>
               <div class="col-sm-10">
-                <h6 class="form-control-static">'.date("d/m/Y",strtotime($p['nacimiento'])).'</h6>
-              </div>
-            </div>
-            <div class="form-group">
-              <h4 class="col-sm-5 control-label">Direccion</h4>
-              <div class="col-sm-10">
-                <h6 class="form-control-static">'.$p['direccion'].'</h6>
-              </div>
-            </div>
-            <div class="form-group">
-              <h4 class="col-sm-5 control-label">Region</h4>
-              <div class="col-sm-10">
-                <h6 class="form-control-static">'.$p['region'].'</h6>
+                <h6 class="form-control-static">'.date("d/m/Y",strtotime($p->Nacimiento)).'</h6>
               </div>
             </div>
             <div class="form-group">
               <h4 class="col-sm-5 control-label">Telefono</h4>
               <div class="col-sm-10">
-                <h6 class="form-control-static">'.$p['telefono'].'</h6>
+                <h6 class="form-control-static">'.$p->Telefono.'</h6>
               </div>
+            </div>
+            <div class="form-group">
+              <h4 class="col-sm-5 control-label">Direccion</h4>
+              <div class="col-sm-10">
+                <h6 class="form-control-static">'.$p->Direccion.'</h6>
+              </div>
+            </div>
+            <div class="form-group">
+              <h4 class="col-sm-5 control-label">Region</h4>
+              <div class="col-sm-10">
+                <h6 class="form-control-static">'.$p->Region.'</h6>
+              </div>
+            </div>
             <div class="form-group">
               <h4 class="col-sm-5 control-label">Comuna</h4>
               <div class="col-sm-10">
-                <h6 class="form-control-static">'.$p['comuna'].'</h6>
+                <h6 class="form-control-static">'.$p->Comuna.'</h6>
               </div>
             </div>
-            
               <div style="text-align:justify!important  ;display:inline;margin-right:5px;">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="setRegiones()">
                 Editar Perfil
@@ -113,15 +112,15 @@ include F_NAVBAR;
                       <div class=" text-center  formularioregistro container" style="Background-color:transparent!important">
                         <div class="row text-center justify-content-center ">
                           <div class="contenedor text-center col-xs-12" >
-                            <input type="hidden" name="rut" value="'.$p['rut'].'"/>
+                            <input type="hidden" name="rut" value="'.$p->Rut.'"/>
                             <input class="form-control mb-1" type="password" name="clave" placeholder="Contraseña"/>
                             <label class="mb-3 text-muted">Deje en blanco si no desea modificar.</label>
-                            <input class="form-control mb-3" type="text" name="nombres" placeholder="Nombres" value="'.$p['nombres'].'"/>
-                            <input class="form-control mb-3" type="text" name="apellidos" placeholder="Apellidos" value="'.$p['apellidos'].'"/>
-                            <input class="form-control mb-3" type="date" name="nacimiento" placeholder="Fecha Nacimiento" value="'.date("Y-m-d",strtotime($p['nacimiento'])).'" />
-                            <input class="form-control mb-3" type="text" name="email" placeholder="Email" value="'.$p['email'].'" />
-                            <input class="form-control mb-3" type="text" name="telefono" placeholder="Telefono" value="'.$p['telefono'].'" />
-                            <input class="form-control mb-3" type="text" name="direccion" placeholder="Direccion" value="'.$p['direccion'].'"/>
+                            <input class="form-control mb-3" type="text" name="nombres" placeholder="Nombres" value="'.$p->Nombres.'"/>
+                            <input class="form-control mb-3" type="text" name="apellidos" placeholder="Apellidos" value="'.$p->Apellidos.'"/>
+                            <input class="form-control mb-3" type="date" name="nacimiento" placeholder="Fecha Nacimiento" value="'.date("Y-m-d",strtotime($p->Nacimiento)).'" />
+                            <input class="form-control mb-3" type="text" name="email" placeholder="Email" value="'.$p->Email.'" />
+                            <input class="form-control mb-3" type="text" name="telefono" placeholder="Telefono" value="'.$p->Telefono.'" />
+                            <input class="form-control mb-3" type="text" name="direccion" placeholder="Direccion" value="'.$p->Direccion.'"/>
                             <select class="form-control mb-3" class="form-control" name="region" placeholder="Región" id="regiones"> </select>
                             <select class="form-control mb-3" name="comuna" placeholder="Comuna" id="comunas"> </select>
                           </div>    
@@ -140,7 +139,7 @@ include F_NAVBAR;
                 var reg = document.getElementById("regiones");
                 var b = false;
                 for(var i=0;i<reg.options.length;i++){
-                  if(reg.options[i].value=="'.$p['region'].'"){
+                  if(reg.options[i].value=="'.$p->Region.'"){
                     reg.selectedIndex=i;
                     b = true;
                     CargarComunas();
@@ -153,7 +152,7 @@ include F_NAVBAR;
               function setComunas(){
                 var com = document.getElementById("comunas");
                 for(var i=0;i<com.options.length;i++){
-                  if(com.options[i].value=="'.$p['comuna'].'"){
+                  if(com.options[i].value=="'.$p->Comuna.'"){
                     com.selectedIndex=i;
                     console.log("Encontro comuna");
                   }

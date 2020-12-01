@@ -29,33 +29,33 @@ if(isset($_POST['json'])){
     $j = json_decode($_POST['json'],true);
     echo '<div class="container border rounded" style="margin-top: 90px;">
     <h1>CONFIRMAR RESERVA</h1>';
-    $res = peticion_http('http://turismoreal.xyz/api/departamento/'.$j['id_depto']);
+    $res = peticion_http('http://turismoreal.xyz/api/departamento/'.$j['id_depto'],'GET','','',CLASE_DEPARTAMENTO);
     if($res['statusCode']==200){
         $d = $res['contenido'];
         $actual = IMG.'/nodispon.png';
-        $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$d['id_depto']);
+        $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$d->Id_depto,'GET','','',LISTA_FOTO);
         if($fotos['statusCode']==200){
-            $actual = $fotos['contenido'][0]['ruta'];
+            $actual = $fotos['contenido'][0]->Ruta;
         }
-        $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$d['id_localidad']))['contenido'];
+        $loc = (peticion_http('http://turismoreal.xyz/api/localidad/'.$d->Id_localidad,'GET','','',CLASE_LOCALIDAD))['contenido'];
         $h="una habitación";
         $b="un baño";
-        if($d['habitaciones']>1){
-        $h=$d['habitaciones']." habitaciones";
+        if($d->Habitaciones>1){
+        $h=$d->Habitaciones." habitaciones";
         }
-        if($d['banos']>1){
-            $b=$d['banos']." baños";
+        if($d->Banos>1){
+            $b=$d->Banos." baños";
         }
         $pad = 60;
         echo '<div class="row  m-2">
         <div class="col-xs-12 col-lg-6 mb-4 mb-lg-0  border rounded ">
-            <h3 class="border-bottom p-2">Departamento "'.$d['nombre'].'"</h3>
+            <h3 class="border-bottom p-2">Departamento "'.$d->Nombre.'"</h3>
             <div class="row ">
             <div class="col-6 ">
-            <p>LOCALIDAD: '.$loc['nombre'].'</p>
+            <p>LOCALIDAD: '.$loc->Nombre.'</p>
             <p>HABITACIONES:'.$h.'</p>
             <p>BAÑOS: '.$b.'</p>
-            <p>MTS. CUADRADOS: '.$d['mts_cuadrados'].'</p>
+            <p>MTS. CUADRADOS: '.$d->Mts_cuadrados.'</p>
             </div>
             <div class="col-6">
                 <img class="img-fluid" src="'.$actual.'" alt="">

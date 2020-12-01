@@ -41,10 +41,7 @@ include F_NAVBAR;
                     <input class="form-control" type="password" name="password" placeholder="Ingresa tu Contraseña">
                     <input type="hidden" name="origen" value="web">
                     </div>
-
-
                 </div>
-
              <input class="btn btn-primary mt-3" type="submit" value="Restablecer Contraseña" class="button">
          </div>
     </form>

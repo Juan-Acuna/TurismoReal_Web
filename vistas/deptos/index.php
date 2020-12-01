@@ -38,12 +38,12 @@ include F_NAVBAR;
                         <div class="col-lg-12 filter-nav btn-group-vertical">
                             <button class="categoryDepa btn btn-primary active align-content-lg-around" onclick="Filtrar(this)" category="all">Todo</button>
                             <?php
-                            $resultado = peticion_http('http://turismoreal.xyz/api/Localidad');
+                            $resultado = peticion_http('http://turismoreal.xyz/api/Localidad','GET','','',LISTA_LOCALIDAD);
                             if($resultado['statusCode']==200)
                             {
                                 foreach($resultado['contenido'] as $item)
                                 {
-                                    echo '<button class="categoryDepa btn btn-primary" onclick="Filtrar(this)" category="'.$item['id_localidad'].'">'.$item['nombre'].'</button>';
+                                    echo '<button class="categoryDepa btn btn-primary" onclick="Filtrar(this)" category="'.$item->Id_localidad.'">'.$item->Nombre.'</button>';
                                 }
                             }
                             ?>
@@ -52,24 +52,24 @@ include F_NAVBAR;
                 </div>
                 <div class="col-lg-10" >   
                     <?php
-                        $resultado = peticion_http('http://turismoreal.xyz/api/Departamento');
+                        $resultado = peticion_http('http://turismoreal.xyz/api/Departamento','GET','','',LISTA_DEPARTAMENTO);
                         if($resultado['statusCode']==200)
                         {
                             foreach($resultado['contenido'] as $item)
                             {
                                 $actual = IMG.'/nodispon.png';
-                                $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$item['id_depto']);
+                                $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$item->Id_depto,'GET','','',LISTA_FOTO);
                                 if($fotos['statusCode']==200)
                                 {
-                                    $actual = $fotos['contenido'][0]['ruta'];
+                                    $actual = $fotos['contenido'][0]->Ruta;
                                 } 
-                                echo '<form action="detalles.php" method="GET" class="depa-item d-flex" category="'.$item['id_localidad'].'">
+                                echo '<form action="detalles.php" method="GET" class="depa-item d-flex" category="'.$item->Id_localidad.'">
                                         <div class="row text-center text-lg-left   mb-2 border  rounded" >
                                             <img class="col-xs-12 col-lg-4 fotoaa img-fluid"   src="'.$actual.'" alt="aaa" " >
-                                            <input name="depaid" type="hidden" value="'.$item['id_depto'].'"></input>
+                                            <input name="depaid" type="hidden" value="'.$item->Id_depto.'"></input>
                                             <div class="col-xs-12 col-lg-6 tituloaa">
-                                            <H3 >'.$item['nombre'].'</H3>
-                                            <a >Departamento de '.$item['habitaciones'].' dormitorios, '.$item['banos'].' baños</a>
+                                            <H3 >'.$item->Nombre.'</H3>
+                                            <a >Departamento de '.$item->Habitaciones.' dormitorios, '.$item->Banos.' baños</a>
                                             </div>
                                                 <div class="col-xs-12 col-lg-2  align-self-xs-center" >
                                                 <button  type="submit" class="  btn btn-primary btn-xl text-uppercase "href="'.DEPTOS.'/detalles.php"> Ver Detalles</button>    
@@ -83,7 +83,7 @@ include F_NAVBAR;
                 </div>
             </div>
     </section>
-    <?php echo FOOTER;?>
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS; ?>/popper.min.js" ></script>
     <script src="<?php echo JS; ?>/bootstrap.min.js" ></script>
 </body>

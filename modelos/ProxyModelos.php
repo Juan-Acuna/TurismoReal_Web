@@ -31,6 +31,9 @@ include_once MODELOS.'/Transaccion.php';
 include_once MODELOS.'/Usuario.php';
 include_once MODELOS.'/Vehiculo.php';
 include_once MODELOS.'/Viaje.php';
+include_once MODELOS.'/PersonaUsuario.php';
+include_once MODELOS.'/PersonaAcompanante.php';
+include_once MODELOS.'/PersonaChofer.php';
 
 //VARIABLES CONSTANTES PARA SELECCIONAR CLASES
 define('CLASE_LISTA','LISTA');
@@ -98,4 +101,10 @@ define('LISTA_TRANSACCION', 'Lista_Transaccion');
 define('LISTA_USUARIO', 'Lista_Usuario');
 define('LISTA_VEHICULO', 'Lista_Vehiculo');
 define('LISTA_VIAJE', 'Lista_Viaje');
+define('CLASE_PERSONAUSUARIO', 'PersonaUsuario');
+define('LISTA_PERSONAUSUARIO', 'Lista_PersonaUsuario');
+define('CLASE_PERSONAACOMPANANTE', 'PersonaAcompanante');
+define('LISTA_PERSONAACOMPANANTE', 'Lista_PersonaAcompanante');
+define('CLASE_PERSONACHOFER', 'PersonaChofer');
+define('LISTA_PERSONACHOFER', 'Lista_PersonaChofer');
 ?>

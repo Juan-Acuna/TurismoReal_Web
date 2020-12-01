@@ -26,13 +26,8 @@
 <?php
 
 include F_NAVBAR;
-?>
-
-
-
-
-
-    <div class="container" style= "margin-top:100px">
+/*
+    echo '<div class="container" style= "margin-top:100px">
         <H2>Mis Reservas</H2>
         <div class="row ">
             <div class="col-lg-12 border m-2">
@@ -51,11 +46,8 @@ include F_NAVBAR;
                 </div>
             </div>
         </div>
-    </div>
+    </div>';
 
-
-
-        <?php
                             $resultado = peticion_http('http://turismoreal.xyz/api/Reserva');
                             if($resultado['statusCode']==200)
                             {
@@ -82,7 +74,7 @@ include F_NAVBAR;
                                         <button type="submit" class="col-lg-4 btn btn-primary btn-xxl text-uppercase "href="'.DEPTOS.'/detalles.php"> Ver Detalles</button>
                                     </form>';
                                 }
-                            }
+                            }*/
                             ?>
     </div>
 
