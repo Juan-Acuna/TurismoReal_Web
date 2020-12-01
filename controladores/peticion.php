@@ -8,50 +8,48 @@ function class_decode($obj,$clase){
     if(strpos($clase,'Lista_')===false){
         //OBJETO INDIVIDUAL
         foreach($temp as $key => $value){
-            $ob= new $n();
+            $r_obj= new $n();
             if(is_array($value)){
-                $uk = ucfirst($key);
-                $ob->{ucfirst($key)}=new $uk();
+                $r_obj->{ucfirst($key)}=new ucfirst($key);
                 foreach($value as $k=> $v){
                     if(is_array($v)){
-                        $uk = ucfirst($k);
-                        $ob->{ucfirst($key)}->{ucfirst($k)}=new $uk();
+                        $r_obj->{ucfirst($key)}->{ucfirst($k)}=new ucfirst($k);
                         foreach($v as $k2=> $v2){
-                            $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;
+                            $r_obj->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;
                         }
                     }else{
-                        $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
+                        $r_obj->{ucfirst($key)}->{ucfirst($k)}=$v;
                     }
                 }
             }else{
-                $ob->{ucfirst($key)}=$value;
+                $r_obj->{ucfirst($key)}=$value;
             }
         }
+        return $r_obj;
     }else{
         //LISTA DE OBJETOS
-        foreach($temp as $key => $value){//cambialo, cuando son listas no funcionan
+        foreach($temp as $t){
             $ob= new $n();
-            if(is_array($value)){
-                $uk = ucfirst($key);
-                var_dump($value);
-                var_dump($key);
-                $ob->{ucfirst($key)}=new $uk();
-                foreach($value as $k=> $v){
-                    if(is_array($v)){
-                        $uk = ucfirst($k);
-                        $ob->{ucfirst($key)}->{ucfirst($k)}=new $uk();
-                        foreach($v as $k2=> $v2){
-                            $uk = ucfirst($k2);
-                            $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$uk;
+            foreach($t as $key => $value){
+                if(is_array($value)){
+                    $ob->{ucfirst($key)}=new ucfirst($key);
+                    foreach($value as $k=> $v){
+                        if(is_array($v)){
+                            $ob->{ucfirst($key)}->{ucfirst($k)}=new ucfirst($k);
+                            foreach($v as $k2=> $v2){
+                                $ob->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}= $v2;
+                            }
+                        }else{
+                            $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
                         }
-                    }else{
-                        $ob->{ucfirst($key)}->{ucfirst($k)}=$v;
                     }
+                }else{
+                    $ob->{ucfirst($key)}=$value;
                 }
-            }else{
-                $ob->{ucfirst($key)}=$value;
             }
+            array_push($r_lista,$ob);
         }
+        return $r_lista;
     }
     /*
     if(is_array($temp[0])){
