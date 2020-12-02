@@ -5,19 +5,19 @@ include "peticion.php";
 if(isset($_POST['json']) && isset($_COOKIE['token'])){
     $j = json_decode($_POST['json'],true);
     $total=0;
-    $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$j['id_depto']);
+    $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$j['id_depto'],'','','',CLASE_DEPARTAMENTO);
     if($dep['statusCode']==200){
         foreach($j['servicios'] as $s){
-            $res = peticion_http('http://turismoreal.xyz/api/servicio/'.$s['id_servicio']);
+            $res = peticion_http('http://turismoreal.xyz/api/servicio/'.$s['id_servicio'],'','','',CLASE_SERVICIO);
             if($res['statusCode']==200){
                 $vaa=1;
                 if($s['cupos']>0){
                     $vaa=intval($s['cupos']);
                 }
-                $total = $total + (intval($res['contenido']['valor'])*$vaa);
+                $total = $total + (intval($res['contenido']->Valor)*$vaa);
             }
         }
-        $total = $total + (intval($dep['contenido']['arriendo']) * intval($j['estadia']['dias']));
+        $total = $total + (intval($dep['contenido']->Arriendo) * intval($j['estadia']['dias']));
         $pagos=1;
         $pagos2=1;
         if($_POST['m']==1){//KHIPU
@@ -38,15 +38,14 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
         }/*else{
             //WEBPAY
         }*/
-        $body = array(
-            'Valor_total'=>$total,
-            'Inicio_estadia'=>$j['estadia']['inicio'],
-            'Fin_estadia'=>$j['estadia']['fin'],
-            'Username'=>$_COOKIE['username'],
-            'Id_depto'=>$j['id_depto'],
-            'pagos'=>$pagos+$pagos2
-        );
-        $reserva = peticion_http('http://turismoreal.xyz/api/reserva','POST',$body,$_COOKIE['token']);
+        $body = new Reserva();
+            $body->Valor_total = $total;
+            $body->Inicio_estadia = $j['estadia']['inicio'];
+            $body->Fin_estadia = $j['estadia']['fin'];
+            $body->Username = $_COOKIE['username'];
+            $body->Id_depto = $j['id_depto'];
+            $body->pagos = $pagos+$pagos2;
+        $reserva = peticion_http('http://turismoreal.xyz/api/reserva','POST',$body,$_COOKIE['token'],CLASE_RESERVA);
         if($reserva['statusCode']==200){
             echo '<!DOCTYPE html>
             <html lang="es">

@@ -12,18 +12,18 @@ switch($_SERVER['REQUEST_METHOD']){
                     $reserva = json_decode($_POST['reserva'],true);
                     $servs= json_decode($_POST['servicios'],true);
                     $total = 0;
-                    $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$reserva['id_reserva'],'GET','',$_COOKIE['token']);
+                    $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$reserva['id_reserva'],'GET','',$_COOKIE['token'],CLASE_RESERVA);
                     if($res['statusCode']==200){
-                        if($res['contenido']['id_estado']==1){
-                            $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$res['contenido']['id_depto']);
+                        if($res['contenido']->Id_estado==1){
+                            $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$res['contenido']->Id_depto,'GET','','',CLASE_DEPARTAMENTO);
                             if($dep['statusCode']==200){
-                                $total=$res['contenido']['valor_total'];
+                                $total=$res['contenido']->Valor_total;
                                 $n=round($total/2);
                                 if($n>50000){
-                                    if((round($res['contenido']['pagos']/2)%2)!=0){
-                                        $apagar = round($total-(($res['contenido']['pagos']-1)*50000));
+                                    if((round($res['contenido']->Pagos/2)%2)!=0){
+                                        $apagar = round($total-(($res['contenido']->Pagos-1)*50000));
                                     }else{
-                                        $apagar=round($total/$res['contenido']['pagos']);
+                                        $apagar=round($total/$res['contenido']->Pagos);
                                     }
                                 }else{
                                     $apagar=$n;
@@ -31,33 +31,28 @@ switch($_SERVER['REQUEST_METHOD']){
                                 if($apagar<0){
                                     $apagar=$apagar*-1;
                                 }
-                                $transaccion = array(
-                                    "Monto"=>$apagar,
-                                    "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre']."(Pago 1/".(round($res['contenido']['pagos']/2)).")",
-                                    "Username"=>$_COOKIE['username'],
-                                    "Id_reserva"=>$reserva['id_reserva'],
-                                    "Id_medio"=>1,
-                                    "Id_tipo"=>1
-                                );
-                                var_dump($transaccion);
-                                $r=array();
+                                $transaccion = new Transaccion();
+                                    $transaccion->Monto=$apagar;
+                                    $transaccion->Comentario="Arriendo Depto. ".$dep['contenido']->Nombre."(Pago 1/".(round($res['contenido']->Pagos/2)).")";
+                                    $transaccion->Username=$_COOKIE['username'];
+                                    $transaccion->Id_reserva=$reserva['id_reserva'];
+                                    $transaccion->Id_medio=1;
+                                    $transaccion->Id_tipo=1;
+                                $r=[];
                                 $pago = peticion_http('http://turismoreal.xyz/api/transaccion','POST',$transaccion,$_COOKIE['token']);
                                 if($pago['statusCode']==200){
-                                    var_dump($servs); echo'<br><br>';
                                     foreach($servs as $s){
                                         $pet = peticion_http('http://turismoreal.xyz/api/servicio/contratar/'.$reserva['id_reserva'].'.'.$s['id_servicio'],'POST','',$_COOKIE['token']);
                                         array_push($r,$pet);
                                     }
-                                    var_dump($r);
                                     header('Location: '.$pago['contenido']['payment_url']);
                                     die();
                                 }else{
                                     echo 'Error en transaccion';
                                     echo $pago['statusText'].' - ';
-                                    var_dump($pago['contenido']);
                                 }  
                             }  
-                        }else if($res['contenido']['id_estado']==2){
+                        }else if($res['contenido']->Id_estado==2){
 
                         }
                     }
@@ -118,15 +113,14 @@ switch($_SERVER['REQUEST_METHOD']){
                                 if($apagar<0){
                                     $apagar=$apagar*-1;
                                 }
-                                $transaccion = array(
-                                    "Monto"=>$apagar,
-                                    "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre']."(Pago 1/1).",
-                                    "Username"=>$_COOKIE['username'],
-                                    "Id_reserva"=>$reserva['id_reserva'],
-                                    "Id_medio"=>2,
-                                    "Id_tipo"=>1
-                                );
-                                $r=array();
+                                $transaccion = new Transaccion();
+                                    $transaccion->Monto=$apagar;
+                                    $transaccion->Comentario="Arriendo Depto. ".$dep['contenido']['nombre']."(Pago 1/1).";
+                                    $transaccion->Username=$_COOKIE['username'];
+                                    $transaccion->Id_reserva=$reserva['id_reserva'];
+                                    $transaccion->Id_medio=2;
+                                    $transaccion->Id_tipo=1;
+                                $r=[];
                                 $pago = peticion_http('http://turismoreal.xyz/api/transaccion','POST',$transaccion,$_COOKIE['token']);
                                 if($pago['statusCode']==200){
                                     foreach($servs as $s){
@@ -199,13 +193,13 @@ switch($_SERVER['REQUEST_METHOD']){
             break;
             case 'repay'://KHIPU
                 $apagar=0;
-                $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$_GET['rs'],'GET','',$_COOKIE['token']);
+                $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$_GET['rs'],'GET','',$_COOKIE['token'],CLASE_RESERVA);
                 if($res['statusCode']==200){
-                    $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$res['contenido']['id_depto']);
-                    $total = $res['contenido']['valor_total'];
-                    $pagado=$res['contenido']['valor_pagado'];
-                    $pagos=$res['contenido']['pagos'];
-                    $n_pagos=$res['contenido']['n_pagos'];
+                    $dep = peticion_http('http://turismoreal.xyz/api/departamento/'.$res['contenido']->Id_depto,'GET','','',CLASE_DEPARTAMENTO);
+                    $total = $res['contenido']->Valor_total;
+                    $pagado=$res['contenido']->Valor_pagado;
+                    $pagos=$res['contenido']->Pagos;
+                    $n_pagos=$res['contenido']->N_pago;
                     if($total>$pagado){
                         if(!($n_pagos>=round($pagos/2))){
                             if((round($pagos/2)%2)!=0){
@@ -214,14 +208,13 @@ switch($_SERVER['REQUEST_METHOD']){
                                 $p = round($total/$pagos);
                             }
                             $apagar=($total-$p)/($pagos-1);
-                            $transaccion = array(
-                                "Monto"=>$apagar,
-                                "Comentario"=>"Arriendo Depto. ".$dep['contenido']['nombre']."(Pago ".($n_pagos+1)."/".round($pagos/2).").",
-                                "Username"=>$_COOKIE['username'],
-                                "Id_reserva"=>$res['contenido']['id_reserva'],
-                                "id_medio"=>1,
-                                "Id_tipo"=>1
-                            );
+                            $transaccion = new Transaccion();
+                                $transaccion->Monto=$apagar;
+                                $transaccion->Comentario="Arriendo Depto. ".$dep['contenido']->Nombre."(Pago ".($n_pagos+1)."/".round($pagos/2).").";
+                                $transaccion->Username=$_COOKIE['username'];
+                                $transaccion->Id_reserva=$res['contenido']->Id_reserva;
+                                $transaccion->Id_medio=1;
+                                $transaccion->Id_tipo=1;
                             $pago = peticion_http('http://turismoreal.xyz/api/transaccion','POST',$transaccion,$_COOKIE['token']);
                             if($pago['statusCode']==200){
                                 header('Location: '.$pago['contenido']['payment_url']);
