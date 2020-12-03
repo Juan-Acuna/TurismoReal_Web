@@ -32,6 +32,7 @@ include F_NAVBAR;
         if($resultado['statusCode']==200){
         $p=$resultado['contenido']->Persona;
         $u=$resultado['contenido']->Usuario;
+        $g = peticion_http('http://turismoreal.xyz/api/genero','GET','','',LISTA_GENERO)['contenido'];
         echo  '<header class="perfil">
               <div class="container " style="margin-top:80px">
               <h2>Mi Perfil</h2><br>
@@ -55,8 +56,18 @@ include F_NAVBAR;
               <div class="col-sm-10">
                 <h6 class="form-control-static">'.date("d/m/Y",strtotime($p->Nacimiento)).'</h6>
               </div>
-            </div>
-            <h2 class="m-0 pb-0 pt-2 pl-2 pr-2">Datos de Contacto</h2>
+            </div>';
+            foreach($g as $gen){
+              if($gen->Id_genero==$p->Id_genero){
+                echo '<div class="form-group">
+                      <h4 class="col-sm-5 control-label">Genero</h4>
+                      <div class="col-sm-10">
+                        <h6 class="form-control-static">'.$gen->Nombre.'</h6>
+                      </div>
+                    </div>';
+              }
+            }
+        echo '<h2 class="m-0 pb-0 pt-2 pl-2 pr-2">Datos de Contacto</h2>
               <hr class="m-2 border-dark">
             <div class="form-group">
               <h4 class="col-sm-5 control-label">Email</h4>
@@ -89,20 +100,18 @@ include F_NAVBAR;
               </div>
             </div>
               <div style="text-align:justify!important  ;display:inline;margin-right:5px;">
-                <button type="button" class="m-2 btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="setRegiones()">
+                <button type="button" class="m-2 btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="setRegiones();setGenero();">
                 Editar Perfil
               </button>
                 <a class="m-2 btn btn-primary btn-xxl text-uppercase" style="display:inline-block" href="'.VISTAS.'/">Volver</a>
-            
               </div>
             </form>
               </div>
             </div>
-            
                   </div><br><br><br><br><br>
               </header>';
               echo '<!-- Modal -->
-              <form class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" action="'.FUNCIONES.'/registro.php" method="POST">
+              <form class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" action="'.FUNCIONES.'/editarperfil.php" method="POST">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -115,17 +124,18 @@ include F_NAVBAR;
                       <div class=" text-center  formularioregistro container" style="Background-color:transparent!important">
                         <div class="row text-center justify-content-center ">
                           <div class="contenedor text-center col-xs-12" >
-                            <input type="hidden" name="rut" value="'.$p->Rut.'"/>
                             <input class="form-control mb-1" type="password" name="clave" placeholder="Contraseña"/>
                             <label class="mb-3 text-muted">Deje en blanco si no desea modificar.</label>
                             <input class="form-control mb-3" type="text" name="nombres" placeholder="Nombres" value="'.$p->Nombres.'"/>
                             <input class="form-control mb-3" type="text" name="apellidos" placeholder="Apellidos" value="'.$p->Apellidos.'"/>
                             <input class="form-control mb-3" type="date" name="nacimiento" placeholder="Fecha Nacimiento" value="'.date("Y-m-d",strtotime($p->Nacimiento)).'" />
+                            <select class="form-control mb-3"  name="genero" placeholder="Genero" id="genero"> </select>
                             <input class="form-control mb-3" type="text" name="email" placeholder="Email" value="'.$p->Email.'" />
                             <input class="form-control mb-3" type="text" name="telefono" placeholder="Telefono" value="'.$p->Telefono.'" />
                             <input class="form-control mb-3" type="text" name="direccion" placeholder="Direccion" value="'.$p->Direccion.'"/>
                             <select class="form-control mb-3" class="form-control" name="region" placeholder="Región" id="regiones"> </select>
                             <select class="form-control mb-3" name="comuna" placeholder="Comuna" id="comunas"> </select>
+                            <input type="hidden" value="'.$u->Username.'" name="username">
                           </div>    
                         </div>
                       </div>
@@ -158,6 +168,15 @@ include F_NAVBAR;
                   if(com.options[i].value=="'.$p->Comuna.'"){
                     com.selectedIndex=i;
                     console.log("Encontro comuna");
+                  }
+                }
+              }
+              function setGenero(){
+                var gen = document.getElementById("genero");
+                for(var i=0;i<gen.options.length;i++){
+                  if(gen.options[i].value=="'.$p->Id_genero.'"){
+                    gen.selectedIndex=i;
+                    console.log("Encontro genero");
                   }
                 }
               }
