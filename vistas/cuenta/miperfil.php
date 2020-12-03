@@ -10,16 +10,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Turismo Real</title>
-    <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
-    <script src="<?php echo JS;?>/api_turismoreal.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="<?php echo CSS;?>/bootstrap.min.css"  rel="stylesheet">
-    <link href="<?php echo CSS;?>/estilos.css" rel="stylesheet">
+    <?php include F_HEAD;?>
   </head>
   <body>
 <?php

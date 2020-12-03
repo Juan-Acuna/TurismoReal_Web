@@ -2,74 +2,49 @@
     include_once 'global.php';
     $b=false;
     $d='';
-    if(isset($_COOKIE['error']))
+    if(isset($_GET['error-data']))
         {
             $b=true;
-            $d=$_COOKIE['error'];
-            setcookie('error', '', time()-3600,  '/');
-        }
-
-    echo '
-    <!DOCTYPE html>
-    <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-
-    ';?>
-    <title>Turismo Real</title>
-    <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
-    <!--JQUERY-->
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-
-    <!-- Nuestro css-->
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-    
-
+            $d=base64_decode(urldecode($_GET['error-data']));
+        }?>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <?php include F_HEAD;?>
 </head>
-
-
 <body class="fotitio ">
 <?php
 
 include F_NAVBAR;
 
 ?>
-
-        <form class=" formularioiniciosesion   " style="background-color:transparent; margin-top:100px;" method="POST" action="<?php echo FUNCIONES;?>/iniciarsesion.php">
-            <div class="container">
-                <h1 class="text-center display-3 mb-3 text-primary">INICIO SESIÓN</h1>
-                <div class="row d-flex justify-content-center " >
-                    <div class="col-xs-12 col-md-6 " >
-                    <input class="form-control border rounded mb-3" type="text" name="usuario" placeholder="Usuario" required>
-                    <input class="form-control border rounded mb-3 " type="password" name="password" placeholder="Clave" required>
-                    </div>
-
-                    <?php
-            if($b)
-            {
-            echo '<div class="alert alert-danger" role="alert">
-            <strong>Error! </strong>'.$d.'
-            </div>';
-            }
-
-        ?>
-        <div class="col-12 text-center">
-        <input type="submit" value="INICIAR SESION" class="btn btn-primary btn-lg">
-                <p style="color:white">¿Olvidaste tu clave? <a class="link" href="<?php echo CUENTA;?>/recuperar.php" style="color:white">Recuperar </a></p>
-
-                <p style="color:white">¿No tienes una cuenta? <a class="link" href="<?php echo CUENTA;?>/registrarse.php" style="color:white">Regístrate </a></p>
-                </div>
+<form class=" formularioiniciosesion   " style="background-color:transparent; margin-top:100px;" method="POST" action="<?php echo FUNCIONES;?>/iniciarsesion.php">
+    <div class="container">
+        <h1 class="text-center display-3 mb-3 text-primary">INICIO SESIÓN</h1>
+        <div class="row d-flex justify-content-center " >
+            <div class="col-xs-12 col-md-6 " >
+                <input onclick="LimpiarError('alertDiv')" class="form-control border rounded mb-3" type="text" name="usuario" placeholder="Usuario" required>
+                <input onclick="LimpiarError('alertDiv')" class="form-control border rounded mb-3 " type="password" name="password" placeholder="Clave" required>
+                <?php
+                    if($b)
+                    {
+                    echo '<div id="alertDiv" class="col-xs-12 alert alert-danger" role="alert">
+                            <strong>Error! </strong>'.$d.'
+                        </div>';
+                    }
+                ?>
             </div>
-        </form>
-    
-        
-   
-    </form>
-
+            <div class="col-12 text-center">
+                <input type="submit" value="INICIAR SESION" class="btn btn-primary btn-lg">
+                <p style="color:white">¿Olvidaste tu clave? <a class="link" href="<?php echo CUENTA;?>/recuperar.php" style="color:white">Recuperar </a></p>
+                <p style="color:white">¿No tienes una cuenta? <a class="link" href="<?php echo CUENTA;?>/registrarse.php" style="color:white">Regístrate </a></p>
+            </div>
+        </div>
+    </div>
+</form>
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
 </body>
 </html>

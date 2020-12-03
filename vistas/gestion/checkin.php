@@ -2,16 +2,9 @@
     include_once 'global.php';
     include F_PETICION;
 echo '<html>
-  <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Turismo Real</title>
-        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS;?>/img/cropped-favicon-tr.ico"  />
-        <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-  </head>
+  <head>';
+  include F_HEAD;
+  echo '</head>
   <body class="col-lg-10 text-center text-lg-left">
     <h2>Check</h2><br>
       <h3>Check-In</h3>

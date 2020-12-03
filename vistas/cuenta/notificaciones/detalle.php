@@ -8,15 +8,9 @@
     }
     echo '<!DOCTYPE html>
     <html lang="es">
-    <head>
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-         <!-- Archivos CSS BOOTSTRAP 4 -->
-         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-    </head>
+    <head>';
+    include F_HEAD;
+    echo '</head>
     <body>';
 
 include F_NAVBAR;

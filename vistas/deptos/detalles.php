@@ -1,22 +1,17 @@
 <?php
     include "global.php";
     include F_PETICION;
+    ValidarPost('depaid');
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
     }
-?>
-<!doctype html>
+
+echo '<!doctype html>
 <html lang="es" class="h-100">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
-     <!-- Archivos CSS BOOTSTRAP 4 -->
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-</head>
+<head>';
+include F_HEAD;
+echo '</head>
 <body>
 <script>function cambiarimagen(img){
         var main = document.getElementById("imgMain");
@@ -24,10 +19,10 @@
         main.alt=img.alt;
         }
         window.onload = function(){
-            cambiarimagen(document.getElementById('0'));
+            cambiarimagen(document.getElementById("0"));
         };
-    </script>
-<?php
+    </script>';
+
 include F_NAVBAR;
     if($_GET['depaid']!=null){
         $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid'],'GET','','',CLASE_DEPARTAMENTO);

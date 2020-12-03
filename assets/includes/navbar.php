@@ -1,11 +1,12 @@
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
-            <a href="<?php echo VISTAS;?>/" class="navbar-brand"><span class="h3">Turismo Real</span> </a>
+<?php
+echo '<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
+            <a href="'.VISTAS.'/" class="navbar-brand"><span class="h3">Turismo Real</span> </a>
             <button type="button" class="navbar-toggler btn btn-primary" data-toggle="collapse" data-target="#menu-principal"
             aria-expanded="false" aria-label="Desplegar menú de navegacion"><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar navbar-collapse" id="menu-principal">
-                <ul class="navbar-nav ml-lg-auto">
-                <?php
+                <ul class="navbar-nav ml-lg-auto">';
+                
                 if(!isset($rol)){
                     $roll=5;
                 }else{
@@ -63,57 +64,57 @@
                                     </ul>
                                 </li>';
                     }
+                    echo '</ul>
+                    </div>
+                <script>
+                function resaltarNavLink(){
+                    var spl = window.location.href.split("/");
+                    if(spl[spl.length-1].split("?")[0]=="error.php"){
+                        var links = document.getElementsByClassName("nav-link");
+                        for(var i=0; i<links.length;i++){
+                            links[i].classList.remove("active");
+                        }
+                        return;
+                    }
+                    var spl2 = spl[spl.length-1].split("#");
+                    var PAGINA_ACTUAL = spl[spl.length-2];
+                    var POSICION_ACTUAL = "";
+                    var links = document.getElementsByClassName("nav-link");
+                    for(var i=0; i<links.length;i++){
+                        links[i].classList.remove("active");
+                    }
+                    if(spl2.length==2){
+                        POSICION_ACTUAL = spl2[1]; 
+                    }
+                    if(PAGINA_ACTUAL=="deptos"){
+                        document.getElementById("NAV-LINK-DEPTOS").classList.add("active");
+                    }else if(PAGINA_ACTUAL=="cuenta"){
+                        document.getElementById("NAV-LINK-CUENTA").classList.add("active");
+                    }else if(PAGINA_ACTUAL=="gestion"){
+                        document.getElementById("NAV-LINK-GESTION").classList.add("active");
+                    }else if(PAGINA_ACTUAL=="vistas" && spl[spl.length-1]=="iniciar-sesion.php"){
+                        document.getElementById("NAV-LINK-ACCESO").classList.add("active");
+                    }else if(PAGINA_ACTUAL=="vistas" && spl[spl.length-1]!="iniciar-sesion.php"){
+                        switch(POSICION_ACTUAL){
+                            case "":
+                                document.getElementById("NAV-LINK-INICIO").classList.add("active");
+                                break;
+                            case "centros":
+                                document.getElementById("NAV-LINK-CENTROS").classList.add("active");
+                                break;
+                            case "servicios":
+                                document.getElementById("NAV-LINK-SERVICIOS").classList.add("active");
+                                break;
+                            case "ubicacion":
+                                document.getElementById("NAV-LINK-UBICACION").classList.add("active");
+                                break;
+                            case "contacto":
+                                document.getElementById("NAV-LINK-CONTACTO").classList.add("active");
+                                break;
+                        }
+                    }
+                }
+                resaltarNavLink();
+                </script>
+            </nav>';
                 ?>
-                </ul>
-            </div>
-        <script>
-        function resaltarNavLink(){
-            var spl = window.location.href.split("/");
-            if(spl[spl.length-1].split("?")[0]=="error.php"){
-                var links = document.getElementsByClassName("nav-link");
-                for(var i=0; i<links.length;i++){
-                    links[i].classList.remove("active");
-                }
-                return;
-            }
-            var spl2 = spl[spl.length-1].split("#");
-            var PAGINA_ACTUAL = spl[spl.length-2];
-            var POSICION_ACTUAL = "";
-            var links = document.getElementsByClassName("nav-link");
-            for(var i=0; i<links.length;i++){
-                links[i].classList.remove("active");
-            }
-            if(spl2.length==2){
-                POSICION_ACTUAL = spl2[1]; 
-            }
-            if(PAGINA_ACTUAL=="deptos"){
-                document.getElementById("NAV-LINK-DEPTOS").classList.add("active");
-            }else if(PAGINA_ACTUAL=="cuenta"){
-                document.getElementById("NAV-LINK-CUENTA").classList.add("active");
-            }else if(PAGINA_ACTUAL=="gestion"){
-                document.getElementById("NAV-LINK-GESTION").classList.add("active");
-            }else if(PAGINA_ACTUAL=="vistas" && spl[spl.length-1]!="iniciar-sesion.php"){
-                switch(POSICION_ACTUAL){
-                    case "":
-                        document.getElementById("NAV-LINK-INICIO").classList.add("active");
-                        break;
-                    case "centros":
-                        document.getElementById("NAV-LINK-CENTROS").classList.add("active");
-                        break;
-                    case "servicios":
-                        document.getElementById("NAV-LINK-SERVICIOS").classList.add("active");
-                        break;
-                    case "ubicacion":
-                        document.getElementById("NAV-LINK-UBICACION").classList.add("active");
-                        break;
-                    case "contacto":
-                        document.getElementById("NAV-LINK-CONTACTO").classList.add("active");
-                        break;
-                }
-            }else if(PAGINA_ACTUAL=="vistas" && spl[spl.length-1]=="iniciar-sesion.php"){
-                document.getElementById("NAV-LINK-ACCESO").classList.add("active");
-            }
-        }
-        resaltarNavLink();
-        </script>
-    </nav>

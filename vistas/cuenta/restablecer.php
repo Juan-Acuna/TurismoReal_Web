@@ -9,12 +9,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Turismo Real</title>
-    <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
+<?php include F_HEAD;?>
 </head>
 <body class="fotitio">
 <?php

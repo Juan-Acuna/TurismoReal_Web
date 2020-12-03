@@ -10,21 +10,24 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
+<head>
+    <?php include F_HEAD;?>
 </head>
 <body>
 <?php
 include F_NAVBAR;
-/*
-echo '<div class="container" style= "margin-top:100px">
+$resultado = peticion_http('http://turismoreal.xyz/api/reserva','GET','',$_COOKIE['token'],LISTA_RESERVA);
+if($resultado['statusCode']==200){
+
+}else if($resultado['statusCode']==400){
+
+}else if($resultado['statusCode']==500){
+    MostrarError(ERROR_SERVIDOR);
+}
+echo '<div class="container vh">
     <H2>Mis Reservas</H2>
-    <div class="row ">
-        <div class="col-lg-12 border m-2">
+    <div class="row ">';
+        echo '<div class="col-lg-12 border m-2">
             <h3>Departamento 1</h3>
             <div class="row border m-1 py-2 ">
                 <div class="col-lg-4 col-xs-12">
@@ -40,7 +43,7 @@ echo '<div class="container" style= "margin-top:100px">
             </div>
         </div>
     </div>
-</div>';
+</div>';/*
 $resultado = peticion_http('http://turismoreal.xyz/api/Reserva');
 if($resultado['statusCode']==200)
 {

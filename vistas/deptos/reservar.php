@@ -10,11 +10,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turismo real</title>
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
+    <?php include F_HEAD;?>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
     <script src="<?php echo JS;?>/scripts-reservar.js"></script>
 </head>

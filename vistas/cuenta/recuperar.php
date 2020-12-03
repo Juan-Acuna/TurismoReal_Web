@@ -9,27 +9,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Turismo Real</title>
-    <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
-    <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="<?php echo JS;?>/api_turismoreal.js"></script>
-    
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-   
-    
-
+   <?php include F_HEAD;?>
 </head>
-
-
 <body class="fotitio">
 <?php
-
 include F_NAVBAR;
-
 ?>
     <form class="formulariorecuperar" style="background-color:transparent" method="POST" action="<?php echo FUNCIONES;?>/recuperar.php">
         

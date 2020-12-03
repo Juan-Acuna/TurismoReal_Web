@@ -18,3 +18,11 @@ function Filtrar(obj){
         }
     }
 }
+function LimpiarError(id){
+    papa = document.getElementById(id).parentElement;
+    papa.removeChild(document.getElementById(id));
+}
+function Autodestruir(obj){
+    papa = obj.parentElement;
+    papa.removeChild(obj);
+}

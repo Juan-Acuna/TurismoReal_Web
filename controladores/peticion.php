@@ -131,10 +131,8 @@ function peticion_http($url, $metodo = 'GET', $body = '', $token = 'none', $clas
         }else{
             $contenido = class_decode(stream_get_contents($flujo),$clase);
         }
-    }else if($code!=400){
-        $contenido = json_decode(stream_get_contents($flujo),true);
     }else{
-        $contenido=null;
+        $contenido = json_decode(stream_get_contents($flujo),true);
     }
     
     }catch(Exception $e){

@@ -9,19 +9,14 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
+    <?php
+    include F_HEAD;
+    ?>
 </head>
 <body>
     <!--BARRA DE NAVEGACION-->
 <?php
-
 include F_NAVBAR;
-
 ?>
     <section class="header p-xs-0">
         <div class="container vh">
@@ -36,16 +31,14 @@ include F_NAVBAR;
             </div>
         </div>
     </section>
-
-
-    <!--CENTROS TURISTICOS-->
-    <section class="centros-turisticos" id="centros">
-        <div class="container my-5">
-            <h1 class="text-center py-4 display-4">CENTROS TURISTICOS</h1>
-            <div class="row text-center font-weight-bold">
             <?php
             $c = peticion_http('http://turismoreal.xyz/api/centro','GET','','',LISTA_CENTROTURISTICO);
             if($c['statusCode']==200){
+                echo '<!--CENTROS TURISTICOS-->
+                <section class="centros-turisticos" id="centros">
+                    <div class="container my-5">
+                        <h1 class="text-center py-4 display-4">CENTROS TURISTICOS</h1>
+                        <div class="row text-center font-weight-bold">';
                 foreach($c['contenido'] as $centro){
                     echo '
                 <div class="col-xs-12 col-md-6 col-lg-4 mb-4  ">
@@ -55,54 +48,11 @@ include F_NAVBAR;
                     </div>   
                 </div>';
                 }
-            }else{
-                echo '
-                <div class="col-xs-12 col-md-6 col-lg-4 mb-4  ">
-                    <div class="card">
-                        <img class="card-img-top" src="'.IMG.'/portfolio/temuco.jpg" alt="">
-                        <div class="card-body"> <h4 class="">Temuco</h4>  </div>
-                    </div>   
-                </div>
-                
-                <div class="col-xs-12 col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <img class="card-img-top" src="'.IMG.'/portfolio/pucon.png" alt="Card image cap">
-                        <div class="card-body"> <h4>Pucon</h4>  </div>
-                    </div>   
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <img class="card-img-top" src="'.IMG.'/portfolio/valdivia.png" alt="Card image cap">
-                        <div class="card-body"> <h4>Viña del Mar</h4>  </div>
-                    </div>   
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="card">
-                        <img class="card-img-top" src="'.IMG.'/portfolio/montt.png" alt="Card image cap">
-                        <div class="card-body"> <h4>Puerto Montt</h4>  </div>
-                    </div>    
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="card">
-                        <img class="card-img-top" src="'.IMG.'/portfolio/conce.jpg" alt="Card image cap">
-                        <div class="card-body"> <h4>Concepcion</h4>  </div>
+                echo '</div>
                     </div>
-                    
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="card">
-                        <img class="card-img-top" src="'.IMG.'/portfolio/aaa.jpg" alt="Card image cap">
-                        <div class="card-body"> <h4>Valdivia</h4>  </div>
-                    </div>
-                    
-                </div>';
+                </section>';
             }
             ?>
-                
-            </div>
-        </div>
-    </section>
-
     <!--NUESTROS SERVICIOS-->
     <div class="nuestros-servicios" id="servicios">
         <div class="container my-5">
