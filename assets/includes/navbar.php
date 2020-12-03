@@ -69,6 +69,13 @@
         <script>
         function resaltarNavLink(){
             var spl = window.location.href.split("/");
+            if(spl[spl.length-1].split("?")[0]=="error.php"){
+                var links = document.getElementsByClassName("nav-link");
+                for(var i=0; i<links.length;i++){
+                    links[i].classList.remove("active");
+                }
+                return;
+            }
             var spl2 = spl[spl.length-1].split("#");
             var PAGINA_ACTUAL = spl[spl.length-2];
             var POSICION_ACTUAL = "";

@@ -7,7 +7,7 @@ html, body {
   
 }
 .vh{
-  min-height: calc(100vh - 56px -80px)!important;
+  min-height: 100vh!important;
   margin-top:80px!important;
 }
 .header {

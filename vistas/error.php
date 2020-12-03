@@ -12,13 +12,14 @@
 <?php include F_NAVBAR;?>
     <div class="container vh">
         <div class="row">
-            <div class="h1 col-sm-6">502. Ha ocurrido un error</div> 
+            <div class="h1 col-sm-12 col-lg-6">502. Ha ocurrido un error</div> 
         </div>
-        
         <div class="row">
-        <div class="border col-sm-6">El servidor ha encontrado un error temporal y no puede responder a tu petición</div>
-            
-            <img class="border col-sm-6" src="<?php echo IMG;?>/fotoerror.jpg" height="400px" alt="" />
+            <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12">El servidor ha encontrado un error temporal y no puede responder a tu petición</div>
+                <div class="col-sm-12">Solución: ninguna</div>
+            </div>
+            <img class="col-sm-12 col-md-6" src="<?php echo IMG;?>/fotoerror.jpg" height="400px" alt="" />
         </div>
     </div>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
