@@ -57,7 +57,7 @@
                         }
                         echo            '</a></li>';
                                     if($roll==5){
-                        echo       '<li class="nav-item"><a class="nav-link" href="'.CUENTA.'/misreservas.php">Mis Reservas</a></li>';
+                        echo       '<li class="nav-item"><a class="nav-link" href="'.RESERVAS.'/index.php">Mis Reservas</a></li>';
                                     }
                         echo       '<li class="nav-item"><a class="nav-link" href="'.FUNCIONES.'/cerrarsesion.php">Cerrar Sesion</a></li>
                                     </ul>

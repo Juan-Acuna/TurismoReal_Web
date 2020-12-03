@@ -20,7 +20,7 @@ define("DEPTOS",VISTAS."/deptos");
 define("GESTION",VISTAS."/gestion");
 define("CUENTA",VISTAS."/cuenta");
 define("NOTIFICACIONES",CUENTA."/notificaciones");
-define("MISRESERVAS",CUENTA."/misreservas");
+define("RESERVAS",CUENTA."/reservas");
 define("ERROR",VISTAS."/error.php");
 /* ARCHIVOS */
 define('F_PETICION',$_SERVER['DOCUMENT_ROOT'].'/Agencia/controladores/peticion.php');
