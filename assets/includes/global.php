@@ -28,6 +28,7 @@ define('F_MODELOS',$_SERVER['DOCUMENT_ROOT'].'/Agencia/modelos/ProxyModelos.php'
 define('F_NAVBAR',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/navbar.php');
 define('F_FAKE_NAVBAR',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/fake_navbar.php');
 define('F_FOOTER',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/footer.php');
+define('F_HEAD',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/head_basico.php');
 /* CODIGOS ERROR */
 define('ERROR_CONEXION',550101);
 define('ERROR_ROL',400102);
@@ -38,8 +39,29 @@ define('ERROR_SESION',400106);
 define('ERROR_SERVIDOR',550107);
 /* FUNCIONES */
 function MostrarError($error = ERROR_CONEXION){
-    header('Location:'.ERROR.'?codigo-error='.$error);
+    header('Location:'.ERROR.'?codigo-error='.$error.'&source='.urlencode(base64_encode(str_shuffle('0123456789.-+´{}[]¨*_/abcdefghijklmnopqrstuvwxyzAFEHKQTUOPLJGDSXBN'))));
     die();
+}
+function ValidarCookie(...$variables){
+    foreach($variables as $v){
+        if(!isset($_COOKIE[$v])){
+            MostrarError(ERROR_PETICION);
+        }
+    }
+}
+function ValidarPost(...$variables){
+    foreach($variables as $v){
+        if(!isset($_POST[$v])){
+            MostrarError(ERROR_PETICION);
+        }
+    }
+}
+function ValidarGet(...$variables){
+    foreach($variables as $v){
+        if(!isset($_GET[$v])){
+            MostrarError(ERROR_PETICION);
+        }
+    }
 }
 function ValidarLogin(){
     if(!isset($_COOKIE['token']) || !isset($_COOKIE['username']) || !isset($_COOKIE['rol'])){
@@ -50,8 +72,8 @@ function ValidarLogin(){
 function ValidarRol(...$roles){
     if(isset($_COOKIE['rol'])){
         $b = true;
-        foreach($rolse as $rol){
-            if($_COOKIE['rol']==$rol){
+        foreach($roles as $r){
+            if($_COOKIE['rol']==$r){
                 $b=false;
             break;
             }
