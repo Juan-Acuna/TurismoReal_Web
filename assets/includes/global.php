@@ -41,13 +41,20 @@ function MostrarError($error = ERROR_CONEXION){
 }
 function ValidarLogin(){
     if(!isset($_COOKIE['token']) || !isset($_COOKIE['username']) || !isset($_COOKIE['rol'])){
-        header('Location: '.CUENTA.'/iniciar-sesion-php');
+        header('Location: '.CUENTA.'/iniciar-sesion.php');
         die();
     }
 }
-function ValidarRol($rol){
+function ValidarRol(...$roles){
     if(isset($_COOKIE['rol'])){
-        if($_COOKIE['rol']!=$rol){
+        $b = true;
+        foreach($rolse as $rol){
+            if($_COOKIE['rol']==$rol){
+                $b=false;
+            break;
+            }
+        }
+        if($b){
             MostrarError(ERROR_ROL);
         }
     }else{

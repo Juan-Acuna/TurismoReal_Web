@@ -1,7 +1,8 @@
 <?php
     include "global.php";
     include F_PETICION;
-    VerificarLogin();
+    ValidarLogin();
+    ValidarRol(5);
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];

@@ -1,8 +1,8 @@
 <?php
     include_once 'global.php';
     include F_PETICION;
-    VerificarLogin();
-    
+    ValidarLogin();
+    ValidarRol(4);
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -15,7 +15,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Turismo Real</title>
-        <link rel="icon" type="image/x-icon" href="<?php echo ASSETS;?>/img/cropped-favicon-tr.ico"  />
+        <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
         <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
   </head>

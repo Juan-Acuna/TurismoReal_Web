@@ -1,5 +1,8 @@
 <?php
     include_once 'global.php';
+    include F_PETICION;
+    ValidarLogin();
+    ValidarRol(4);
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -18,9 +21,7 @@
   </head>
   <body>
   <?php
-
 include F_NAVBAR;
-
 ?>
     <div class="container"style="margin-top:100px">
     <h2>CHECKLITS DE ESTADO</h2>
@@ -69,10 +70,9 @@ include F_NAVBAR;
             </div>
         </div>
     </div>
-
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
   </body>
 </html>
