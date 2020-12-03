@@ -105,6 +105,6 @@ include F_NAVBAR;
         <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
         <script src="<?php echo JS;?>/popper.min.js" ></script>
         <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-        <?php echo FOOTER;?>
+        <?php include F_FOOTER;?>
     </body>
 </html>

@@ -1,8 +1,12 @@
-html {
+html, body {
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   margin: 0px;
-  padding: 0px; }
+  padding: 0px;
+  padding-bottom:3em;
+  min-height: 700px;
+  height:fit-content;
+}
 
 .header {
   padding-top: 10.5rem;

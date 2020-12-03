@@ -32,9 +32,6 @@ if(!empty($_POST['nombres'])
         die();
     }else{
         //Error
-        var_dump($r);
-        echo '<br><br><br><br><br><br>';
-        var_dump($body);
     }
 }else{
     //Error

@@ -25,9 +25,9 @@
   </head>
   <body class="bg-white">
   <?php
-
-include F_NAVBAR;
-
+echo '<div disabled>';
+include F_FAKE_NAVBAR;
+echo '</div>';
 ?>
     <div class="container bg-white"style="margin-top:100px">
         <div class="row text-center">
@@ -35,7 +35,7 @@ include F_NAVBAR;
                 <h3>Esperando confirmacion del cliente</h3>
             </div>
             <div class="col-12">
-                <img src="../../assets/img/loading.gif" alt="">
+                <img src="<?php echo IMG;?>/loading.gif" alt="">
             </div>
         </div>
     </div>
@@ -43,6 +43,6 @@ include F_NAVBAR;
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-
+    <?php include F_FOOTER;?>
   </body>
 </html>

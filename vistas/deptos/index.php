@@ -20,9 +20,7 @@
     <script src="<?php echo JS; ?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS; ?>/scripts.js"></script>
 </head>
-<body>
-    <!--BARRA DE NAVEGACION-->
-
+<body style="position:relative">
 <?php
 include F_NAVBAR;
 ?>

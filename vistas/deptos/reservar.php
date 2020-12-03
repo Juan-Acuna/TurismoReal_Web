@@ -247,5 +247,6 @@
         margin-left:10%;
     }
 </style>
+<?php include F_FOOTER;?>
 </body>
 </html>
