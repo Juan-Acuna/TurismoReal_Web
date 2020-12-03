@@ -1,6 +1,7 @@
 <?php
     include "global.php";
     include F_PETICION;
+    ValidarLogin();
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -8,24 +9,20 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Turismo Real</title>
-        <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
-        <script src="<?php echo JS;?>/api_turismoreal.js"></script>
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        
-        <link href="<?php echo CSS;?>/bootstrap.min.css"  rel="stylesheet">
-        <!-- Nuestro css-->
-    <link href="<?php echo CSS;?>/estilos.css" rel="stylesheet"  >
-    </head>
-    <body>
-    <?php
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Turismo Real</title>
+    <link rel="icon" type="image/x-icon" href="<?php echo IMG;?>/cropped-favicon-tr.ico"  />
+    <script src="<?php echo JS;?>/api_turismoreal.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="<?php echo CSS;?>/bootstrap.min.css"  rel="stylesheet">
+    <link href="<?php echo CSS;?>/estilos.css" rel="stylesheet">
+  </head>
+  <body>
+<?php
 include F_NAVBAR;
       if(isset($_COOKIE['token'])){
         $resultado = peticion_http('http://turismoreal.xyz/api/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO);
@@ -34,7 +31,7 @@ include F_NAVBAR;
         $u=$resultado['contenido']->Usuario;
         $g = peticion_http('http://turismoreal.xyz/api/genero','GET','','',LISTA_GENERO)['contenido'];
         echo  '<header class="perfil">
-              <div class="container " style="margin-top:80px">
+              <div class="container vh" style="margin-top:80px">
               <h2>Mi Perfil</h2><br>
               <form class="form-horizontal border rounded">
               <h2 class="m-0 pb-0 pt-2 pl-2 pr-2">Datos Personales</h2>
@@ -184,9 +181,9 @@ include F_NAVBAR;
         }
       } 
     ?>
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
     </body>
 </html>

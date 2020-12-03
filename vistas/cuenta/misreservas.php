@@ -1,30 +1,23 @@
 <?php
     include "global.php";
     include F_PETICION;
+    VerificarLogin();
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-
-        <!-- Core theme CSS (includes Bootstrap)-->
         <meta charset="utf-8">
-
         <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-
 </head>
 <body>
-
 <?php
-
 include F_NAVBAR;
 /*
     echo '<div class="container" style= "margin-top:100px">
@@ -77,11 +70,9 @@ include F_NAVBAR;
                             }*/
                             ?>
     </div>
-
-
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
 </body>
 </html>

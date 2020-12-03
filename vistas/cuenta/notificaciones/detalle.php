@@ -1,6 +1,7 @@
 <?php
     include "global.php";
     include F_PETICION;
+    ValidarLogin();
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -24,7 +25,7 @@ if(isset($_POST['ncode'])){
     $not = peticion_http('http://turismoreal.xyz/api/notificacion/'.$_POST['ncode'],'GET','',$_COOKIE['token'],CLASE_NOTIFICACION);
     if($not['statusCode']==200){
         $n = $not['contenido'];
-        echo '<div class="container" style="margin-top: 150px">
+        echo '<div class="container vh" style="margin-top: 150px">
                 <div class="row border p-2">
                     <div class="col-xs-12 col-lg-12 mt-2">
                         <h2>'.$n->Titulo.'</h2>

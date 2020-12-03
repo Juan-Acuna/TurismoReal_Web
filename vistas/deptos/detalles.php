@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
 </head>
 <body>
-
 <script>function cambiarimagen(img){
         var main = document.getElementById("imgMain");
         main.src=img.src;
@@ -28,20 +27,15 @@
             cambiarimagen(document.getElementById('0'));
         };
     </script>
-
 <?php
-
 include F_NAVBAR;
-
     if($_GET['depaid']!=null){
-
         $respuesta=peticion_http('http://turismoreal.xyz/api/departamento/'.$_GET['depaid'],'GET','','',CLASE_DEPARTAMENTO);
         if($respuesta['statusCode']==200){
             $depto=$respuesta['contenido'];
             $imgs = array();
             $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto->Id_depto,'GET','','',LISTA_FOTO);
             echo '
-
 <div class="container vh mb-5">
     <div class="row">
         <div class="col-lg-12 col-xs-12"><h1>Detalle Departamento</h1></div>
@@ -66,8 +60,6 @@ include F_NAVBAR;
                     }else{
                         for($i=0; $i<=3; $i++){
                             array_push($imgs,IMG.'/nodispon.png');
-                           
-
                         }
                     }
                     echo'<img class="col-3 " id="0" onclick="cambiarimagen(this)" src="'.$imgs[0].'" alt="fff">';
@@ -94,7 +86,13 @@ include F_NAVBAR;
                     <H3 >'.$depto->Nombre.'</H3>
                     <a>Departamento de '.$depto->Mts_cuadrados.' metros cuadrados, ubicado en la localidad de '.$loc->Nombre.', este cuenta con '.$h.', '.$b.', cocina y una amplia sala de estar.</a></div>
                     <div class="col-lg-12 d-flex justify-content-end">
-                    <a class="btn btn-primary btn-xxl order-lg-last text-uppercase " href="'.DEPTOS.'/reservar.php?depaid='.$depto->Id_depto.'"> Reservar</a>
+                    <a class="btn btn-primary btn-xxl order-lg-last text-uppercase';
+                    if(isset($_COOKIE['token'])){
+                        echo '" href="'.DEPTOS.'/reservar.php?depaid='.$depto->Id_depto.'"';
+                    }else{
+                        echo ' text-muted" disabled';
+                    }
+                    echo '>Reservar</a>
                     </div>
                 </div>
                 

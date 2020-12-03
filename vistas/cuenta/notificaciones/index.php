@@ -1,6 +1,7 @@
 <?php
     include "global.php";
     include F_PETICION;
+    ValidarLogin();
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -19,7 +20,7 @@
     <body>';
 include F_NAVBAR;
 $notifs = peticion_http('http://turismoreal.xyz/api/notificacion/usuario/'.$_COOKIE['username'],'','',$_COOKIE['token'],LISTA_NOTIFICACION);
-    echo '<div class="container" style= "margin-top:100px">
+    echo '<div class="container vh" style= "margin-top:100px">
     <H2>Notificaciones</H2>
     <div class="row">';
     if($notifs['statusCode']==200){
@@ -45,9 +46,9 @@ $notifs = peticion_http('http://turismoreal.xyz/api/notificacion/usuario/'.$_COO
     echo '</div>
      </div>';
 ?>
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src=".<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
 </body>
 </html>

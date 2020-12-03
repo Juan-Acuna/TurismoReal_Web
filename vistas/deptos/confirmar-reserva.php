@@ -1,6 +1,7 @@
 <?php
     include "global.php";
     include F_PETICION;
+    ValidarLogin();
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -11,17 +12,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ESTILOS BOOTSTRAP PROPIOS-->
     <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
-
 </head>
 <body>
-
 <?php
 include F_NAVBAR;
-
 if(isset($_POST['json'])){
     echo '<script>
             var json='.$_POST['json'].'; 
@@ -125,9 +121,9 @@ if(isset($_POST['json'])){
     }
 }
 ?>
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
 </body>
 </html>

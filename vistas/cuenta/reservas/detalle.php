@@ -1,6 +1,7 @@
 <?php
     include "global.php";
     include F_PETICION;
+    ValidarLogin();
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
@@ -17,13 +18,9 @@
 </head>
 <body>
 <?php
-
 include F_NAVBAR;
 ?>
-
-
-
-    <div class="container border" style="margin-top:100px">
+    <div class="container border hv" style="margin-top:100px">
         <div class="row m-2">
             <div class="col-xs-12 col-lg-12">
                 <H3>Datos Reserva</H3>
@@ -55,22 +52,9 @@ include F_NAVBAR;
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    <?php include F_FOOTER;?>
 </body>
 </html>
