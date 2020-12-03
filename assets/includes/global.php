@@ -21,22 +21,12 @@ define("GESTION",VISTAS."/gestion");
 define("CUENTA",VISTAS."/cuenta");
 define("NOTIFICACIONES",CUENTA."/notificaciones");
 define("MISRESERVAS",CUENTA."/misreservas");
-//define("ERROR",VISTAS."/error");
+define("ERROR",VISTAS."/error.php");
 /* ARCHIVOS */
 define('F_PETICION',$_SERVER['DOCUMENT_ROOT'].'/Agencia/controladores/peticion.php');
 define('F_MODELOS',$_SERVER['DOCUMENT_ROOT'].'/Agencia/modelos/ProxyModelos.php');
 define('F_NAVBAR',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/navbar.php');
+define('F_FAKE_NAVBAR',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/fake_navbar.php');
 define('F_FOOTER',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/footer.php');
 /* FUNCIONES */
-
-/* OTROS */
-const FOOTER = '<footer class="bg-dark text-center text-md-right text-white ">
-<div class="container">
-    <div class="row">
-        <div class="col-12 ">
-            <p class="m-0 p-3">Turismo Real 2020. Todos los derechos reservados.</p>
-        </div>
-    </div>
-</div>
-</footer>';
 ?>
