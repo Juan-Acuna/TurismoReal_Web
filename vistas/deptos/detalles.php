@@ -17,7 +17,7 @@
      <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
 </head>
-<body class="h-100">
+<body>
 
 <script>function cambiarimagen(img){
         var main = document.getElementById("imgMain");
@@ -42,16 +42,18 @@ include F_NAVBAR;
             $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$depto->Id_depto,'GET','','',LISTA_FOTO);
             echo '
 
-    <div class="container pt-5 mt-5">
-    <div class="col-lg-12 col-xs-12"><h1>Detalle Departamento</h1></div>
+<div class="container vh mb-5">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12"><h1>Detalle Departamento</h1></div>
+    </div>
         <div class="row border ">
             <div class="col-lg-6 col-xs-12  p-2">
                 <div class="row p-3 border-right">
                     <div class="col-lg-12 col-xs-12">
-                    <img class="img-fluid" id="imgMain" src="'.IMG.'/nodispon.png" alt="">
+                        <img class="img-fluid" id="imgMain" src="'.IMG.'/nodispon.png" alt="">
                     </div>
-                    <div class="col-lg-12 col-xs-3">
-                        <div class="row">';
+                <div class="col-lg-12 col-xs-3">
+            <div class="row">';
                     if($fotos['statusCode']==200)
                     {
                         for($i=0; $i<=3; $i++){
@@ -102,9 +104,9 @@ include F_NAVBAR;
 }
 }
 ?>
+        <?php include F_FOOTER;?>
         <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
         <script src="<?php echo JS;?>/popper.min.js" ></script>
         <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-        <?php include F_FOOTER;?>
     </body>
 </html>

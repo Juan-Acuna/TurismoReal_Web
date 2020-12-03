@@ -12,7 +12,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-     <!-- Archivos CSS BOOTSTRAP 4 -->
      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
@@ -25,7 +24,7 @@ include F_NAVBAR;
 
 ?>
     <section class="header p-xs-0">
-        <div class="container mt-5 pt-5">
+        <div class="container vh">
             <div class="row text-center">
                 <div class="col-12">
                     <h3 class=" font-italic text-primary">Bienvenido a Turismo Real</h3>

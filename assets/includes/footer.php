@@ -1,4 +1,4 @@
-<footer class="bg-dark text-center text-md-right text-white mt-5 w-100" style="position: absolute;left:0px;bottom:-100px">
+<footer class="bg-dark text-center text-md-right text-white">
 <div class="container">
     <div class="row">
         <div class="col-12 ">

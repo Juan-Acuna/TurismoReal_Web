@@ -11,8 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SADS</title>
-
+    <title>Turismo real</title>
     <link rel="stylesheet" href="<?php echo CSS;?>/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo CSS;?>/estilos.css" type="text/css">
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
@@ -206,7 +205,7 @@
             </section>';
         }
     }
- echo FOOTER;?>
+include F_FOOTER;?>
  <script>
     window.onload = loadReservar();
 </script>
@@ -247,6 +246,5 @@
         margin-left:10%;
     }
 </style>
-<?php include F_FOOTER;?>
 </body>
 </html>
