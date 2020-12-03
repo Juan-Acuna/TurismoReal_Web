@@ -38,7 +38,7 @@
                     echo '<script>function aparecer(){document.getElementsByClassName("pestana")[0].style.display="inline-block";} function ocultar(){document.getElementsByClassName("pestana")[0].style.display="none";} </script>';
                     if(!isset($_COOKIE['token']))
                     {
-                        echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger" href="'.VISTAS.'/iniciar-sesion.php" onclick="setTimeout(resaltarNavLink,200)" id="NAV-LINK-ACCESO">Acceso</a></li>';
+                        echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger" href="'.CUENTA.'/iniciar-sesion.php" onclick="setTimeout(resaltarNavLink,200)" id="NAV-LINK-ACCESO">Acceso</a></li>';
                         
                     } else
                     {   

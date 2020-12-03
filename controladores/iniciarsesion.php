@@ -17,15 +17,15 @@ if(!empty($_POST['usuario'])||!empty($_POST['password']))
         die();
         break;
         case 400: setcookie('error',($resultado['contenido'])['error'], time()+60, '/');
-        header('Location: '.VISTAS.'/iniciar-sesion.php'); 
+        header('Location: '.CUENTA.'/iniciar-sesion.php'); 
         die();
         break;
         case 500: setcookie('error',($resultado['contenido'])['error'], time()+60, '/');
-        header('Location: '.VISTAS.'/iniciar-sesion.php');
+        header('Location: '.CUENTA.'/iniciar-sesion.php');
         die();
         break;
         case 502: setcookie('error',($resultado['contenido'])['error'], time()+60, '/');
-        header('Location: '.VISTAS.'/iniciar-sesion.php');
+        header('Location: '.CUENTA.'/iniciar-sesion.php');
         die();
         break;
     }

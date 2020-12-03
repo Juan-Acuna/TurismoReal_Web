@@ -13,7 +13,7 @@
             $resultado=peticion_http('http://turismoreal.xyz/api/usuario/'.$_COOKIE['username'],'PATCH',$body, $_COOKIE['tok']);
             if($resultado['statusCode']==200)
             {
-                header('Location: '.VISTAS.'/iniciar-sesion.php'); 
+                header('Location: '.CUENTA.'/iniciar-sesion.php'); 
                 die();
             }
         }

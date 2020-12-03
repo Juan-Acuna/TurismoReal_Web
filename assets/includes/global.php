@@ -28,5 +28,30 @@ define('F_MODELOS',$_SERVER['DOCUMENT_ROOT'].'/Agencia/modelos/ProxyModelos.php'
 define('F_NAVBAR',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/navbar.php');
 define('F_FAKE_NAVBAR',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/fake_navbar.php');
 define('F_FOOTER',$_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/footer.php');
+/* CODIGOS ERROR */
+define('ERROR_CONEXION',101);
+define('ERROR_ROL',102);
+define('ERROR_PETICION',103);
+define('ERROR_404',104);
+define('ERROR_DATOS',105);
+define('ERROR_SESION',106);
 /* FUNCIONES */
+function MostrarError($error = ERROR_CONEXION){
+    header('Location:'.ERROR.'?codigo-error='.$error);
+}
+function ValidarLogin(){
+    if(!isset($_COOKIE['token']) || !isset($_COOKIE['username']) || !isset($_COOKIE['rol'])){
+        header('Location: '.CUENTA.'/iniciar-sesion-php');
+        die();
+    }
+}
+function ValidarRol($rol){
+    if(isset($_COOKIE['rol'])){
+        if($_COOKIE['rol']!=$rol){
+            MostrarError(ERROR_ROL);
+        }
+    }else{
+        MostrarError(ERROR_SESION);
+    }
+}
 ?>

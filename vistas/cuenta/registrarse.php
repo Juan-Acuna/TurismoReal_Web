@@ -53,7 +53,7 @@ include F_NAVBAR;
             
             <input class="btn btn-primary btn-lg my-3" type="submit" value="Registrarse" class="button">
             <p class="text-primary">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-            <p class="text-primary">¿Ya tienes una cuenta?<a style="text-decoration:none" class="link" href="<?php echo VISTAS;?>/iniciar-sesion.php"> Iniciar Sesion</a></p>
+            <p class="text-primary">¿Ya tienes una cuenta?<a style="text-decoration:none" class="link" href="<?php echo CUENTA;?>/iniciar-sesion.php"> Iniciar Sesion</a></p>
     </div>    
         </div>
         
