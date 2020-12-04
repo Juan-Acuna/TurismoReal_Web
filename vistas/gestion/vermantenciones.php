@@ -1,6 +1,16 @@
 <?php
     include_once 'global.php';
     include_once F_PETICION;
+    ValidarLogin();
+    ValidarRol(4);
+    $ms = peticion_http('http://turismoreal.xyz/api/mantencion/funcionario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],LISTA_MANTENCION);
+    if($ms['statusCode']==200){
+
+    }else if($ms['statusCode']==400){
+
+    }else{
+        MostrarError(ERROR_SERVIDOR);
+    }
 ?>
 <html>
   <head>

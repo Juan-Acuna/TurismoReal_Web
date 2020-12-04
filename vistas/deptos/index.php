@@ -63,7 +63,7 @@ include F_NAVBAR;
                                         <a >Departamento de '.$item->Habitaciones.' dormitorios, '.$item->Banos.' baños</a>
                                         </div>
                                             <div class="col-xs-12 col-lg-2  align-self-xs-center" >
-                                            <button  type="submit" class="  btn btn-primary btn-xl text-uppercase "href="'.DEPTOS.'/detalles.php"> Ver Detalles</button>    
+                                            <button  type="submit" class="  btn btn-primary btn-xl text-uppercase "href="'.DEPTOS.'/detalles.php?depaid='.$item->Id_depto.'"> Ver Detalles</button>    
                                         </div>  
                                     </div>
                                 </form>';

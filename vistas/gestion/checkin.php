@@ -19,7 +19,7 @@ echo '<html>
                 </tr>   
             </thead>
             <tbody>';
-            $res =peticion_http('http://turismoreal.xyz/api/reserva','GET','',$_COOKIE['token'],CLASE_RESERVA);
+            $res =peticion_http('http://turismoreal.xyz/api/reserva','GET','',$_COOKIE['token'],LISTA_RESERVA);
             if($res['statusCode']==200){
                 foreach($res['contenido'] as $r){
                     if($r->Id_estado==2){
