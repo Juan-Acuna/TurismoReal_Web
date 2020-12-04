@@ -1,4 +1,5 @@
 <?php
+include_once F_PETICION;
 $n_c_n=0;
 if(isset($_COOKIE['token'])){
     $n_l_n = peticion_http('http://turismoreal.xyz/api/notificacion/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],LISTA_NOTIFICACION);

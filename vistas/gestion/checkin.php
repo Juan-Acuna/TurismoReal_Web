@@ -1,6 +1,6 @@
 <?php
     include_once 'global.php';
-    include F_PETICION;
+    include_once F_PETICION;
 echo '<html>
   <head>';
   include F_HEAD;

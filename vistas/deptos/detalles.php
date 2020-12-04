@@ -1,6 +1,6 @@
 <?php
     include "global.php";
-    include F_PETICION;
+    include_once F_PETICION;
     ValidarPost('depaid');
     $rol=5;
     if(isset($_COOKIE['rol'])){

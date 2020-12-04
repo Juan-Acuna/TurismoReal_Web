@@ -1,6 +1,6 @@
 <?php
     include "global.php";
-    include F_PETICION;
+    include_once F_PETICION;
     ValidarLogin();
     ValidarRol(5);
     $rol=5;
