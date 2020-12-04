@@ -24,6 +24,7 @@ echo '<div class="container-fluid"style="margin-top:80px;">
             window.onload=function()
             {
               cont=document.getElementById("contVista");
+              VerificarVista();
             }
             function cargarVista(id)
             {
@@ -43,8 +44,29 @@ echo '<div class="container-fluid"style="margin-top:80px;">
                 break;
                 case 6: s="'.GESTION.'/checkout.php"; 
                 break;
+                case 7: s="'.GESTION.'/vermantenciones.php"; 
+                break;
               }
               cont.innerHTML="<iframe src=\""+s+"\" frameborder=\"0\" class=\"h-100 w-100 p-0 m-0\"></iframe>";
+            }
+            function VerificarVista(){
+              var vst = window.location.href.split("#");
+              switch(vst[vst.length-1]){
+                case "vermulta": cargarVista(1); 
+                break;
+                case "verreservas": cargarVista(2); 
+                break;
+                case "verservicio": cargarVista(3); 
+                break;
+                case "vertransporte": cargarVista(4);
+                break;
+                case "checkin": cargarVista(5); 
+                break;
+                case "checkout": cargarVista(6); 
+                break;
+                case "mantenciones": cargarVista(7); 
+                break;
+              }
             }
           </script>';
               if($rol==2 || $rol==1)
@@ -64,6 +86,7 @@ echo '<div class="container-fluid"style="margin-top:80px;">
               {
                 echo '<a onclick="cargarVista(5)" class="list-group-item list-group-item-action bg-light">Check-In</a>';
                 echo '<a onclick="cargarVista(6)" class="list-group-item list-group-item-action bg-light">Check-Out</a>'; 
+                echo '<a onclick="cargarVista(7)" class="list-group-item list-group-item-action bg-light">ver Mantenciones</a>'; 
               }
               echo '</div><div id="contVista" class="col-lg-10 text-center text-lg-left">
               </div>

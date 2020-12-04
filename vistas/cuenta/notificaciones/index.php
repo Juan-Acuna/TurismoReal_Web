@@ -29,7 +29,7 @@ $notifs = peticion_http('http://turismoreal.xyz/api/notificacion/usuario/'.$_COO
             }
             echo       '</div>
                         <div class="col-lg-6 col-xs-12 text-right">
-                            <a href="'.NOTIFICACIONES.'/detalle.php?'.$n->Id_notificacion.'" class="btn btn-primary">Ver</a>
+                            <a href="'.NOTIFICACIONES.'/detalle.php?ncode='.$n->Id_notificacion.'" class="btn btn-primary">Ver</a>
                         </div>
                     </div>
                 </div>';

@@ -69,6 +69,9 @@ function ValidarLogin(){
         die();
     }
 }
+function Logeado(){
+    return isset($_COOKIE['token']) && isset($_COOKIE['username']) && isset($_COOKIE['rol']);
+}
 function ValidarRol(...$roles){
     if(isset($_COOKIE['rol'])){
         $b = true;

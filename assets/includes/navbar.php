@@ -1,4 +1,15 @@
 <?php
+$n_c_n=0;
+if(isset($_COOKIE['token'])){
+    $n_l_n = peticion_http('http://turismoreal.xyz/api/notificacion/usuario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],LISTA_NOTIFICACION);
+    if($n_l_n['statusCode']==200){
+        foreach($n_l_n['contenido'] as $i_n_l_n){
+            if($i_n_l_n->Visto=='0'){
+                $n_c_n++;
+            }
+        }
+    }
+}
 echo '<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
             <a href="'.VISTAS.'/" class="navbar-brand"><span class="h3">Turismo Real</span> </a>
             <button type="button" class="navbar-toggler btn btn-primary" data-toggle="collapse" data-target="#menu-principal"
@@ -43,18 +54,16 @@ echo '<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
                         
                     } else
                     {   
-                        echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" id="NAV-LINK-CUENTA">Cuenta </a>
-                                    <ul class="nav-link pestana pt-md-4" style="right:0px;" onmouseover="aparecer()" onmouseout="ocultar()">
-                                    <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil';
-                        if(false){
-                            //si tiene notificaciones
-                            echo ' <span class="badge badge-light">50</span>';
+                        echo    '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link js-scroll-trigger"  onmouseover="aparecer()" onmouseout="ocultar()" id="NAV-LINK-CUENTA">Cuenta ';
+                        if($n_c_n>0){
+                            echo ' <span class="badge badge-light">'.$n_c_n.'</span>';
                         }
-                        echo        '</a></li>';
+                        echo'</a>
+                                    <ul class="nav-link pestana pt-md-4" style="right:0px;" onmouseover="aparecer()" onmouseout="ocultar()">
+                                    <li class="nav-item "><a class="nav-link " href="'.CUENTA.'/miperfil.php">Mi Perfil</a></li>';
                         echo            '<li class="nav-item "><a class="nav-link " href="'.NOTIFICACIONES.'/index.php">Notificaciones'; 
-                        if(false){
-                            //si tiene notificaciones
-                            echo ' <span class="badge badge-light">50</span>';
+                        if($n_c_n>0){
+                            echo ' <span class="badge badge-light">'.$n_c_n.'</span>';
                         }
                         echo            '</a></li>';
                                     if($roll==5){

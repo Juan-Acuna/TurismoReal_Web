@@ -1,22 +1,23 @@
 <?php
-    include_once 'global.php';
-    $b=false;
-    $d='';
-    if(isset($_GET['error-data']))
-        {
-            $b=true;
-            $d=base64_decode(urldecode($_GET['error-data']));
-        }?>
+include_once 'global.php';
+$b=false;
+$d='';
+if(isset($_GET['error-data']))
+{
+    if($_GET['error-data'] == "" || $_GET['error-data'] == null){
+        MostrarError(ERROR_CONEXION);
+    }
+    $b=true;
+    $d=base64_decode(urldecode($_GET['error-data']));
+}?>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-   <?php include F_HEAD;?>
+<?php include F_HEAD;?>
 </head>
 <body class="fotitio ">
 <?php
-
 include F_NAVBAR;
-
 ?>
 <form class=" formularioiniciosesion   " style="background-color:transparent; margin-top:100px;" method="POST" action="<?php echo FUNCIONES;?>/iniciarsesion.php">
     <div class="container">
@@ -35,7 +36,7 @@ include F_NAVBAR;
                 ?>
             </div>
             <div class="col-12 text-center">
-                <input type="submit" value="INICIAR SESION" class="btn btn-primary btn-lg">
+                <input type="submit" value="INICIAR SESION" class="btn btn-primary btn-lg" onclick="LimpiarError('alertDiv')">
                 <p style="color:white">¿Olvidaste tu clave? <a class="link" href="<?php echo CUENTA;?>/recuperar.php" style="color:white">Recuperar </a></p>
                 <p style="color:white">¿No tienes una cuenta? <a class="link" href="<?php echo CUENTA;?>/registrarse.php" style="color:white">Regístrate </a></p>
             </div>
