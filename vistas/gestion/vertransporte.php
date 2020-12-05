@@ -1,5 +1,6 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
+    include F_PETICION;
 ?>
 <html>
   <head>
@@ -97,17 +98,16 @@
         </button>
       </div>
       <div class="modal-body">
-      <div class=" text-center  formularioregistro container" style="Background-color:transparent!important">
-                        <div class="row text-center justify-content-center ">
-                          <div class="contenedor text-center col-xs-12 col-lg-12" >
-                          <p>Chofer</p>
-                          
-                            <select class="form-control mb-3" class="form-control" name="region" placeholder="Región" id="regiones"></select>
-                            <p>Vechiculo</p>
-                            <select class="form-control mb-3" name="comuna" placeholder="Comuna" id="comunas"> </select>
-                          </div>    
-                        </div>
-                      </div>
+        <div class="text-center formularioregistro container" style="Background-color:transparent!important">
+          <div class="row text-center justify-content-center ">
+            <div class="contenedor text-center col-xs-12 col-lg-12" >
+              <p>Chofer</p>
+              <select class="form-control mb-3" class="form-control" name="chofer"id="choferes"></select>
+              <p>Vechiculo</p>
+              <select class="form-control mb-3" name="vehiculo" id="vehiculos"> </select>
+            </div>    
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
