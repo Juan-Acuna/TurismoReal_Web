@@ -1,7 +1,7 @@
 <html>
 <head>
     <?php
-    include_once 'global.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
     include "../../controladores/peticion.php";
 ?>
         <meta charset="utf-8" />

@@ -1,5 +1,5 @@
 <?php
-    include_once 'global.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
     include_once F_PETICION;
 echo '<html>
 <head>';

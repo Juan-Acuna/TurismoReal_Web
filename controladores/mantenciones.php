@@ -1,5 +1,5 @@
 <?php
-include_once 'global.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
 include F_PETICION;
 if(isset($_GET['data'])){
     $data = explode(',',base64_decode(urldecode($_GET['data'])));

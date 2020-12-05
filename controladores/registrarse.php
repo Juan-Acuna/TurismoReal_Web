@@ -1,5 +1,5 @@
 <?php 
-    include_once 'global.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
     include 'peticion.php';
     if(!empty($_POST['rut'])||!empty($_POST['nombres'])||!empty($_POST['apellidos'])||!empty($_POST['fnacimiento'])||!empty($_POST['email'])||!empty($_POST['telefono'])||!empty($_POST['direccion'])||!empty($_POST['comuna'])||!empty($_POST['region'])||!empty($_POST['sexo'])||!empty($_POST['usuario'])||!empty($_POST['password']))
     {

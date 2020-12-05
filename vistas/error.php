@@ -1,4 +1,4 @@
-<?php include_once 'global.php';
+<?php include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
 if(isset($_SERVER['REDIRECT_STATUS'])){
     if($_SERVER['REDIRECT_STATUS']==404){
         MostrarError(ERROR_404);
