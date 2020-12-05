@@ -52,41 +52,41 @@ echo '<div class="container-fluid"style="margin-top:80px;">
             function VerificarVista(){
               var vst = window.location.href.split("#");
               switch(vst[vst.length-1]){
-                case "vermulta": cargarVista(1); 
+                case "'.GESTION_MULTAS.'": cargarVista(1); 
                 break;
-                case "verreservas": cargarVista(2); 
+                case "'.GESTION_RESERVAS.'": cargarVista(2); 
                 break;
-                case "verservicio": cargarVista(3); 
+                case "'.GESTION_SERVICIOS.'": cargarVista(3); 
                 break;
-                case "vertransporte": cargarVista(4);
+                case "'.GESTION_TRANSPORTE.'": cargarVista(4);
                 break;
-                case "checkin": cargarVista(5); 
+                case "'.GESTION_CHECKIN.'": cargarVista(5); 
                 break;
-                case "checkout": cargarVista(6); 
+                case "'.GESTION_CHECKOUT.'": cargarVista(6); 
                 break;
-                case "mantenciones": cargarVista(7); 
+                case "'.GESTION_MANTENCIONES.'": cargarVista(7); 
                 break;
               }
             }
           </script>';
               if($rol==2 || $rol==1)
               {
-                echo '<a onclick="cargarVista(1)" class="list-group-item list-group-item-action bg-light">Ver Multas</a>';
+                echo '<a href="#'.GESTION_MULTAS.'" onclick="cargarVista(1)" class="list-group-item list-group-item-action bg-light">Ver Multas</a>';
               }
               if($rol==2 || $rol==3 || $rol==4 || $rol==1)
               {
-                echo '<a onclick="cargarVista(2)" class="list-group-item list-group-item-action bg-light">Ver Reservas</a>';
+                echo '<a href="#'.GESTION_RESERVAS.'" onclick="cargarVista(2)" class="list-group-item list-group-item-action bg-light">Ver Reservas</a>';
               }
               if($rol==3 || $rol==1)
               {
-                echo '<a onclick="cargarVista(3)" class="list-group-item list-group-item-action bg-light">Ver Servicio</a>';
-                echo '<a onclick="cargarVista(4)" class="list-group-item list-group-item-action bg-light">Ver Transporte</a>';                
+                echo '<a href="#'.GESTION_SERVICIOS.'" onclick="cargarVista(3)" class="list-group-item list-group-item-action bg-light">Ver Servicio</a>';
+                echo '<a href="#'.GESTION_TRANSPORTE.'" onclick="cargarVista(4)" class="list-group-item list-group-item-action bg-light">Ver Transporte</a>';                
               }
               if($rol==4 || $rol==1)
               {
-                echo '<a onclick="cargarVista(5)" class="list-group-item list-group-item-action bg-light">Check-In</a>';
-                echo '<a onclick="cargarVista(6)" class="list-group-item list-group-item-action bg-light">Check-Out</a>'; 
-                echo '<a onclick="cargarVista(7)" class="list-group-item list-group-item-action bg-light">ver Mantenciones</a>'; 
+                echo '<a href="#'.GESTION_CHECKIN.'" onclick="cargarVista(5)" class="list-group-item list-group-item-action bg-light">Check-In</a>';
+                echo '<a href="#'.GESTION_CHECKOUT.'" onclick="cargarVista(6)" class="list-group-item list-group-item-action bg-light">Check-Out</a>'; 
+                echo '<a href="#'.GESTION_MANTENCIONES.'" onclick="cargarVista(7)" class="list-group-item list-group-item-action bg-light">ver Mantenciones</a>'; 
               }
               echo '</div><div id="contVista" class="col-lg-10 text-center text-lg-left">
               </div>

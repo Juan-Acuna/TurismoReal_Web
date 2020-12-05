@@ -12,11 +12,10 @@ function class_decode($obj,$clase){
                 //$r_obj= new $n();
                 if(is_array($value)){
                     $uk =ucfirst($key);
-                    var_dump($uk);
                     $r_obj->{ucfirst($key)}=new $uk();
                     foreach($value as $k=> $v){
                         if(is_array($v)){
-                            $uk=ucfirst($k);var_dump($uk);
+                            $uk=ucfirst($k);
                             $r_obj->{ucfirst($key)}->{ucfirst($k)}=new $uk();
                             foreach($v as $k2=> $v2){
                                 $r_obj->{ucfirst($key)}->{ucfirst($k)}->{ucfirst($k2)}=$v2;

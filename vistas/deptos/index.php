@@ -48,25 +48,27 @@ include F_NAVBAR;
                     {
                         foreach($resultado['contenido'] as $item)
                         {
-                            $actual = IMG.'/nodispon.png';
-                            $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$item->Id_depto,'GET','','',LISTA_FOTO);
-                            if($fotos['statusCode']==200)
-                            {
-                                $actual = $fotos['contenido'][0]->Ruta;
-                            } 
-                            echo '<form action="detalles.php" method="GET" class="depa-item d-flex" category="'.$item->Id_localidad.'">
-                                    <div class="row text-center text-lg-left   mb-2 border  rounded" >
-                                        <img class="col-xs-12 col-lg-4 fotoaa img-fluid"   src="'.$actual.'" alt="aaa" " >
-                                        <input name="depaid" type="hidden" value="'.$item->Id_depto.'"></input>
-                                        <div class="col-xs-12 col-lg-6 tituloaa">
-                                        <H3 >'.$item->Nombre.'</H3>
-                                        <a >Departamento de '.$item->Habitaciones.' dormitorios, '.$item->Banos.' baños</a>
+                            if($item->Id_estado != 1 && $item->Id_estado != 5){
+                                $actual = IMG.'/nodispon.png';
+                                $fotos = peticion_http('http://turismoreal.xyz/api/Foto/'.$item->Id_depto,'GET','','',LISTA_FOTO);
+                                if($fotos['statusCode']==200)
+                                {
+                                    $actual = $fotos['contenido'][0]->Ruta;
+                                } 
+                                echo '<form action="detalles.php" method="GET" class="depa-item d-flex" category="'.$item->Id_localidad.'">
+                                        <div class="row text-center text-lg-left mb-2 border  rounded" >
+                                            <img class="col-xs-12 col-lg-4 fotoaa img-fluid" src="'.$actual.'" alt="'.$item->Nombre.'">
+                                            <input name="depaid" type="hidden" value="'.$item->Id_depto.'"></input>
+                                            <div class="col-xs-12 col-lg-6 tituloaa">
+                                            <H3>'.$item->Nombre.'</H3>
+                                            <a>Departamento de '.$item->Habitaciones.' dormitorios, '.$item->Banos.' baños</a>
+                                            </div>
+                                                <div class="col-xs-12 col-lg-2  align-self-xs-center" >
+                                                <button  type="submit" class=" btn btn-primary btn-xl text-uppercase" href="'.DEPTOS.'/detalles.php?depaid='.$item->Id_depto.'"> Ver Detalles</button>    
+                                            </div>  
                                         </div>
-                                            <div class="col-xs-12 col-lg-2  align-self-xs-center" >
-                                            <button  type="submit" class=" btn btn-primary btn-xl text-uppercase" href="'.DEPTOS.'/detalles.php?depaid='.$item->Id_depto.'"> Ver Detalles</button>    
-                                        </div>  
-                                    </div>
-                                </form>';
+                                    </form>';
+                            }
                         }
                     }else{
                         MostrarError(ERROR_DATOS);
