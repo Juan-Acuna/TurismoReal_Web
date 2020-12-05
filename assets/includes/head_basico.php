@@ -7,6 +7,6 @@ echo   '<meta charset="UTF-8">
         <title>Turismo Real</title>
         <link rel="icon" type="image/x-icon" href="'.IMG.'/cropped-favicon-tr.ico"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="<?php echo JS;?>/api_turismoreal.js"></script>
+        <script src="'.JS.'/api_turismoreal.js"></script>
         <script src="'.JS.'/scripts.js"></script>';
 ?>

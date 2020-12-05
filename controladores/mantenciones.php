@@ -7,16 +7,32 @@ if(isset($_GET['data'])){
     $accion = $data[1];
     if($accion=='realizada'){
         $res = peticion_http('http://turismoreal.xyz/api/mantencion/'.$id,'PATCH','',$_COOKIE['token']);
-        if($res['contenido']==200){
-            header('Location:'.GESTION.'/#'.GESTION_MANTENCIONES);
+        if($res['statusCode']==200){
+            echo '<html>
+                    <head>
+                    </head>
+                    <body>
+                        <script>
+                        window.top.location.href="'.GESTION.'/index.php#'.GESTION_MANTENCIONES.'";
+                        </script>
+                    </body>
+                    </html>';
             die();
         }else{
             MostrarError(ERROR_CONEXION);
         }
     }else if($accion=='inhabitable'){
         $res = peticion_http('http://turismoreal.xyz/api/mantencion/inhabitable/'.$id,'PATCH','',$_COOKIE['token']);
-        if($res['contenido']==200){
-            header('Location:'.GESTION.'/#'.GESTION_MANTENCIONES);
+        if($res['statusCode']==200){
+            echo '<html>
+                    <head>
+                    </head>
+                    <body>
+                        <script>
+                        window.top.location.href="'.GESTION.'/index.php#'.GESTION_MANTENCIONES.'";
+                        </script>
+                    </body>
+                    </html>';
             die();
         }else{
             MostrarError(ERROR_CONEXION);

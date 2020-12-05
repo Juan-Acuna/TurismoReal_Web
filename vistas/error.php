@@ -1,15 +1,17 @@
 <?php include_once 'global.php';
 if(isset($_SERVER['REDIRECT_STATUS'])){
     if($_SERVER['REDIRECT_STATUS']==404){
-    
         MostrarError(ERROR_404);
     }
 }
 ValidarGet('codigo-error','source');
+$fuente = base64_decode(urldecode($_GET['source']));
 $codigo = $_GET['codigo-error'];
+$destino = base64_decode(urldecode($_GET['to']));
 $t = '';
 $d = '';
 $s = '';
+$f = '';
 switch($codigo){
     case ERROR_PETICION:
         $t = 'Ha ocurrido un error procesando la petición';
@@ -20,6 +22,7 @@ switch($codigo){
         $t = 'No se ha podido encontrar la página';
         $d = 'La página que busca no se encuentra disponible o no existe en el sitio web.';
         $s = 'Evite ingresar manualmente la ruta en su navegador, en cambio, utilice la navegación ofrecida por la página web.';
+        $f = 'Destino: '.$destino;
     break;
     case ERROR_CONEXION:
         $t = 'Ha ocurrido un error de conexión';
@@ -55,9 +58,10 @@ echo '<!DOCTYPE html>
 <head>';
 include F_HEAD;
 echo '</head>
-<body>';
+<body>
+<div id="cont-nav">';
 include F_NAVBAR;
-echo '<div class="container vh">
+echo '</div><div class="container vh">
         <div class="row">
         <div class="h1 col-sm-12 mb-4">'.$t.'</div> 
         </div>
@@ -65,11 +69,20 @@ echo '<div class="container vh">
             <div class="col-sm-12 col-md-6">
                 <div class="col-sm-12 h3 mb-3">'.$d.'</div>
                 <div class="col-sm-12"><b>Solución: '.$s.'</b></div>
+                <div class="col-sm-12">'.$f.'</div>
                 </div>
             <img class="col-sm-12 col-md-6" src="'.IMG.'/error.png" height="400px" width="auto" alt=""/>
         </div>
     </div>';
     include F_FOOTER;?>
+    <script>
+    window.onload=function(){
+        var spl = window.top.location.href.split("/");
+        if(spl[spl.length-1]=="gestion" || spl[spl.length-2]=="gestion" || spl[spl.length-3]=="gestion"){
+            DestruirObjeto(document.getElementById("cont-nav"));
+        }
+    }
+    </script>
         <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
         <script src="<?php echo JS;?>/popper.min.js"></script>
         <script src="<?php echo JS;?>/bootstrap.min.js"></script>

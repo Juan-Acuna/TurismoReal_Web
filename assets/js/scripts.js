@@ -22,7 +22,7 @@ function LimpiarError(id){
     papa = document.getElementById(id).parentElement;
     papa.removeChild(document.getElementById(id));
 }
-function Autodestruir(obj){
+function DestruirObjeto(obj){
     papa = obj.parentElement;
     papa.removeChild(obj);
 }

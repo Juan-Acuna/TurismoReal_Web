@@ -11,7 +11,7 @@ if(isset($_COOKIE['token'])){
         }
     }
 }
-echo '<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
+echo '<nav id="NAVBAR" class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
             <a href="'.VISTAS.'/" class="navbar-brand"><span class="h3">Turismo Real</span> </a>
             <button type="button" class="navbar-toggler btn btn-primary" data-toggle="collapse" data-target="#menu-principal"
             aria-expanded="false" aria-label="Desplegar menú de navegacion"><span class="navbar-toggler-icon"></span>

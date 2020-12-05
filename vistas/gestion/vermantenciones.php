@@ -1,7 +1,6 @@
 <?php
     include_once 'global.php';
     include_once F_PETICION;
-    ValidarLogin();
     ValidarRol(4);
     $ms = peticion_http('http://turismoreal.xyz/api/mantencion/funcionario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],LISTA_MANTENCION);
     function Parchar(){
@@ -35,13 +34,13 @@
                 if($t['statusCode']!=200){
                     MostrarError(ERROR_DATOS);
                 }
-                echo '<tr>
+                echo '<tr> 
                         <td>'.$item->Id_mantencion.'</td>
                         <td>'.$d['contenido']->Nombre.'</td>
                         <td>'.$t['contenido']->Nombre.'</td>
                         <td>'.date("d/m/Y",strtotime($item->Fecha)).'</td>
                         <td><a href="'.FUNCIONES.'/mantenciones.php?data='.urlencode(base64_encode($item->Id_mantencion.',realizada')).'" class="btn btn-primary">Mantención Realizada</a></td>
-                        <td><a href="'.FUNCIONES.'/mantenciones.php?data='.urlencode(base64_encode($item->Id_mantencion.',inhabitable')).'" class="btn btn-primary">Departamento Inhabitable</a></td>
+                        <td><a target="_top" href="'.FUNCIONES.'/mantenciones.php?data='.urlencode(base64_encode($item->Id_mantencion.',inhabitable')).'" class="btn btn-primary">Departamento Inhabitable</a></td>
                     </tr>';
             }
         }
