@@ -1,6 +1,7 @@
 <?php
 /* RUTAS BASE */
-define("OFFLINE_URL","http://localhost/Agencia");
+define("HOST_URL","http://localhost");
+define("OFFLINE_URL",HOST_URL."/Agencia");
 define("ONLINE_URL","https://turismoreal-2020.000webhostapp.com");
 define("API_URL","http://turismoreal.xyz");
 define("BASE_URL",OFFLINE_URL);
@@ -37,9 +38,17 @@ define('ERROR_404',550104);
 define('ERROR_DATOS',550105);
 define('ERROR_SESION',400106);
 define('ERROR_SERVIDOR',550107);
+/* OTRAS VARIABLES */
+define('GESTION_MULTAS','Multas');
+define('GESTION_RESERVAS','Reservas');
+define('GESTION_SERVICIOS','Servicios');
+define('GESTION_TRANSPORTE','Transporte');
+define('GESTION_CHECKIN','CheckIn');
+define('GESTION_CHECKOUT','CheckOut');
+define('GESTION_MANTENCIONES','Mantenciones');
 /* FUNCIONES */
 function MostrarError($error = ERROR_CONEXION){
-    header('Location:'.ERROR.'?codigo-error='.$error.'&source='.urlencode(base64_encode(str_shuffle('0123456789.-+´{}[]¨*_/abcdefghijklmnopqrstuvwxyzAFEHKQTUOPLJGDSXBN'))));
+    header('Location:'.ERROR.'?codigo-error='.$error.'&source='.urlencode(base64_encode($_SERVER['SCRIPT_FILENAME'])).'&to='.urlencode(base64_encode(HOST_URL.$_SERVER['REQUEST_URI'])));
     die();
 }
 function ValidarCookie(...$variables){
