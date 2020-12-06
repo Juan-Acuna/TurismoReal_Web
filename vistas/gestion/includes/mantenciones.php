@@ -53,10 +53,12 @@
         MostrarError(ERROR_SERVIDOR);
     }
 ?>
-
-       
-                
-            
+    <script>
+        window.onload=function(){
+            DestruirObjeto(window.top.document.getElementById("loading-img"));
+            window.top.document.getElementById("iFRAME").classList.remove("d-none");
+        }
+    </script>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>

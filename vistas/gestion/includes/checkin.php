@@ -7,6 +7,12 @@ echo '<html>
 include F_HEAD;
 echo '</head>
 <body class="col-lg-10 text-center text-lg-left">
+<script>
+window.onload=function(){
+    DestruirObjeto(window.top.document.getElementById("loading-img"));
+    window.top.document.getElementById("iFRAME").classList.remove("d-none");
+}
+</script>
 <h2>Check</h2><br>
     <h3>Check-In</h3>
     <table class="table table-bordered">

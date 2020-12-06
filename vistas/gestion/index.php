@@ -47,7 +47,7 @@ echo '<div class="container-fluid"style="margin-top:80px;">
                 case 7: s="'.GESTION_INCLUDES.'/mantenciones.php"; 
                 break;
               }
-              cont.innerHTML="<iframe src=\""+s+"\" frameborder=\"0\" class=\"h-100 w-100 p-0 m-0\"></iframe>";
+              cont.innerHTML="<div id=\"loading-img\" class=\"w-100 h-100 text-center bt-xs-2 bt-md-5 pt-xs-2 pt-md-5\"><img src=\"'.IMG.'/cargando.gif\" class=\"bt-xs-2 bt-md-5 pt-xs-2 pt-md-5\"></div><iframe id=\"iFRAME\" src=\""+s+"\" frameborder=\"0\" class=\"h-100 w-100 p-0 m-0 d-none\"></iframe>";
             }
             function VerificarVista(){
               var vst = window.location.href.split("#");
