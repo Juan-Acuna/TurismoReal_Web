@@ -80,6 +80,8 @@ echo '</div><div class="container vh">
         var spl = window.top.location.href.split("/");
         if(spl[spl.length-1]=="gestion" || spl[spl.length-2]=="gestion" || spl[spl.length-3]=="gestion"){
             DestruirObjeto(document.getElementById("cont-nav"));
+            DestruirObjeto(window.top.document.getElementById("loading-img"));
+            window.top.document.getElementById("iFRAME").classList.remove("d-none");
         }
     }
     </script>
