@@ -19,7 +19,7 @@ if(isset($_GET['error-data']))
 <?php
 include F_NAVBAR;
 ?>
-<form class=" formularioiniciosesion   " style="background-color:transparent; margin-top:100px;" method="POST" action="<?php echo FUNCIONES;?>/iniciarsesion.php">
+<form class="formularioiniciosesion" style="background-color:transparent; margin-top:100px;" method="POST" action="<?php echo FUNCIONES;?>/iniciarsesion.php">
     <div class="container vh">
         <h1 class="text-center display-3 mb-3 text-primary">INICIO SESIÓN</h1>
         <div class="row d-flex justify-content-center " >

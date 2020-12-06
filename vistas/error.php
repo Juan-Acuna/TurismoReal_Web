@@ -4,7 +4,7 @@ if(isset($_SERVER['REDIRECT_STATUS'])){
         MostrarError(ERROR_404);
     }
 }
-ValidarGet('codigo-error','source');
+ValidarGet('codigo-error','source','to');
 $fuente = base64_decode(urldecode($_GET['source']));
 $codigo = $_GET['codigo-error'];
 $destino = base64_decode(urldecode($_GET['to']));

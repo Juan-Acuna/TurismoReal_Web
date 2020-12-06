@@ -1,7 +1,7 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
     include_once F_PETICION;
-    ValidarRol(4);
+    ValidarRol(1,4);
     $ms = peticion_http('http://turismoreal.xyz/api/mantencion/funcionario/'.$_COOKIE['username'],'GET','',$_COOKIE['token'],LISTA_MANTENCION);
     function Parchar(){
         echo '<html>
