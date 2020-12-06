@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
-include "peticion.php";
+include F_PETICION;
 
 if(isset($_POST['json']) && isset($_COOKIE['token'])){
     $j = json_decode($_POST['json'],true);
@@ -85,18 +85,12 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
             </body>
             </html>';
         }else{
-            echo 'Error en reserva';
-            echo $reserva['statusText'].' - ';
-            var_dump($reserva['contenido']);
+            MostrarError(ERROR_PETICION);
         }
     }else{
-        echo 'Error en depto';
-        echo $dep['statusText'].' - ';
-        var_dump($dep['contenido']);
+        MostrarError(ERROR_PETICION);
     }
 }else{
-    echo 'ERROR';
-    var_dump($_COOKIE['token']);
-    var_dump($_POST['json']);
+    MostrarError(ERROR_PETICION);
 }
 ?>

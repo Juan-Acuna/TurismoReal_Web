@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
-include 'peticion.php';
+include F_PETICION;
 
 $bclave = !empty($_POST['clave']);
 if(!empty($_POST['nombres']) 

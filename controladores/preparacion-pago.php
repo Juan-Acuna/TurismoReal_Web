@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
-include 'peticion.php';
+include F_PETICION;
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
     echo '<!DOCTYPE html>

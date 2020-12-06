@@ -1,12 +1,10 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
-    include 'peticion.php';
+    include F_PETICION;
     if($_GET['origen']=='web')
    {
-       
     if($_GET['password']!=null)
     {
-        
         if(isset($_COOKIE['tok']))
         {
             $body=array('Usuario'=>array('Clave'=>$_GET['password']));
@@ -17,7 +15,6 @@
                 die();
             }
         }
-
    }
     }else 
     {
@@ -28,8 +25,6 @@
             setcookie('username',($resultado['contenido'])['username'], time()+3600, '/');
             header('Location: '.CUENTA.'/restablecer.php'); 
             die();
-
         }
-        
     }
 ?>

@@ -71,7 +71,7 @@ echo '</div><div class="container vh">
                 <div class="col-sm-12"><b>Solución: '.$s.'</b></div>
                 <div class="col-sm-12">'.$f.'</div>
                 </div>
-            <img class="col-sm-12 col-md-6" src="'.IMG.'/error.jpg" height="400px" width="auto" alt=""/>
+            <img class="col-sm-12 col-md-6" src="'.IMG.'/error.png" height="400px" width="auto" alt=""/>
         </div>
     </div>';
     include F_FOOTER;?>

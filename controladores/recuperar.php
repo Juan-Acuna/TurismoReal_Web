@@ -1,6 +1,6 @@
 <?php
-    include 'peticion.php';
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
+    include F_PETICION;
     
     if($_POST['email']!=null)
     {
