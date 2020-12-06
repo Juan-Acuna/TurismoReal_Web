@@ -1,6 +1,7 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
     include_once F_PETICION;
+    ValidarRol(4);
 ?>
 <html>
   <head>

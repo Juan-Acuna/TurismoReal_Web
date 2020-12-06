@@ -1,6 +1,7 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
     include_once F_PETICION;
+    ValidarRol(4);
 echo '<html>
 <head>';
 include F_HEAD;
@@ -44,10 +45,10 @@ echo '</head>
                         </table>';
             }
 echo '</tbody>
-            </table>
-        <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
-        <script src="<?php echo JS;?>/popper.min.js" ></script>
-        <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
-    </body>
-    </html>';
-            ?>
+        </table>
+    <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
+    <script src="<?php echo JS;?>/popper.min.js" ></script>
+    <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
+</body>
+</html>';
+?>

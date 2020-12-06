@@ -19,6 +19,7 @@ define("BOOSTRAP",VENDOR);
 /* RUTAS */
 define("DEPTOS",VISTAS."/deptos");
 define("GESTION",VISTAS."/gestion");
+define("GESTION_INCLUDES",GESTION."/includes");
 define("CUENTA",VISTAS."/cuenta");
 define("NOTIFICACIONES",CUENTA."/notificaciones");
 define("RESERVAS",CUENTA."/reservas");

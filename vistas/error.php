@@ -14,7 +14,7 @@ $s = '';
 $f = '';
 switch($codigo){
     case ERROR_PETICION:
-        $t = 'Ha ocurrido un error procesando la petición';
+        $t = 'Error procesando la petición';
         $d = 'Ha ocurrido un error durante el intento de carga de la página, a la cual no era posible acceder en ese momento';
         $s = 'Evite manipular la URL del sitio web o verifique que las cookies se encuentran activadas para este sitio.';
     break;
@@ -25,12 +25,12 @@ switch($codigo){
         $f = 'Destino: '.$destino;
     break;
     case ERROR_CONEXION:
-        $t = 'Ha ocurrido un error de conexión';
+        $t = 'Error de conexión';
         $d = 'Ha ocurrido un error al tratar de obtener un recurso desde el servicio web de Turismo Real.';
         $s = 'Compruebe su conexión a internet e intentelo mas tarde.';
     break;
     case ERROR_DATOS:
-        $t = 'No se encontraron los datoss solicitados';
+        $t = 'No se encontraron los datos solicitados';
         $d = 'Ha ocurrido un error al solicitar datos al servidor y este no ha respondido a tiempo o la respuesta no corresponde.';
         $s = 'Intentelo mas tarde.';
     break;
@@ -45,8 +45,8 @@ switch($codigo){
         $s = 'Intentelo mas tarde.';
     break;
     case ERROR_SESION:
-        $t = 'Hubo un error en la sesión';
-        $d = 'Hubo un error en la sesión actual, esto debido a un error en los cookies.';
+        $t = 'Error en la sesión';
+        $d = 'Hubo un error en la sesión actual, esto debido a un error en los cookies o su sesión expiró.';
         $s = 'Asegurese de tener los cookies activados para este sitio e inicie sesión nuevamente.';
         setcookie('token', '', time()-3600,  '/');
         setcookie('rol', '', time()-3600,  '/');
