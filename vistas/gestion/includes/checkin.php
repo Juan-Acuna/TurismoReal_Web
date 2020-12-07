@@ -25,29 +25,27 @@
                 </tr>   
             </thead>
             <tbody>';
-            foreach($res['contenido'] as $s){
-                foreach($res['contenido'] as $r){
-                    if($r->Id_estado==2){
-                        $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
-                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
-                        echo '<tr>
-                        <td>'.$r->Id_reserva.'</td>
-                        <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
-                        <td>'.$d->Nombre.'</td>
-                        <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
-                        if(date("d/m/Y",strtotime($r->Inicio_estadia))==date("d/m/Y")){
-                            echo '<td>Listo para Check</td>
-                            <td><a href="'.GESTION.'/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>';
-                        }else{
-                            echo '<td>Esperando fecha</td>
-                            <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';
-                        }
-                        echo '</tr>';
+            foreach($res['contenido'] as $r){
+                if($r->Id_estado==2){
+                    $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
+                    $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
+                    echo '<tr>
+                    <td>'.$r->Id_reserva.'</td>
+                    <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
+                    <td>'.$d->Nombre.'</td>
+                    <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
+                    if(date("d/m/Y",strtotime($r->Inicio_estadia))>=date("d/m/Y")){
+                        echo '<td>Listo para Check</td>
+                        <td><a href="'.GESTION.'/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>';
+                    }else{
+                        echo '<td>Esperando fecha</td>
+                        <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';
                     }
+                    echo '</tr>';
                 }
-                echo '</tbody>
-                </table>';
             }
+            echo '</tbody>
+            </table>';
         break;
         case 400:
           Parchar();
