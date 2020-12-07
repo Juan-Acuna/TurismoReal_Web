@@ -38,6 +38,8 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
         }/*else{
             //WEBPAY
         }*/
+        var_dump($j['estadia']['inicio']);
+        var_dump($j['estadia']['fin']);
         $body = new Reserva();
             $body->Valor_total = $total;
             $body->Inicio_estadia = $j['estadia']['inicio'];
@@ -85,10 +87,10 @@ if(isset($_POST['json']) && isset($_COOKIE['token'])){
             </body>
             </html>';
         }else{
-            MostrarError(ERROR_PETICION);
+            MostrarError(ERROR_SERVIDOR);
         }
     }else{
-        MostrarError(ERROR_PETICION);
+        MostrarError(ERROR_DATOS);
     }
 }else{
     MostrarError(ERROR_PETICION);

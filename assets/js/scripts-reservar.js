@@ -208,7 +208,7 @@ function quitarContenedorServicio(id,costo,index){
     }else{
         txtServicios.innerText="";
     }
-    if(cuentaS>=1){
+    if(cuentaS>0){
         contenedorS.classList.add("d-flex");
         contenedorS.classList.remove("d-none");
     }else{

@@ -6,7 +6,7 @@ class ClaveReset{
     public $Codigo = '';
     public $Fecha = '';
     public $Vencimiento = '';
-    public $Canjeado = '\0';
+    public $Canjeado = '0';
     public $Username = '';
 }
 ?>

@@ -5,12 +5,11 @@ class Reserva{
     public $Id_reserva = 0; //PRIMARY KEY
     public $Valor_total = 0;
     public $Valor_pagado = 0;
-    public $Fecha = '';
     public $Inicio_estadia = '';
     public $Fin_estadia = '';
-    public $Checkin = '\0';
-    public $Confirmado = '\0';
-    public $Checkout = '\0';
+    public $Checkin = '0';
+    public $Confirmado = '0';
+    public $Checkout = '0';
     public $Desc_checkin = '';
     public $Desc_checkout = '';
     public $Multa_total = 0;

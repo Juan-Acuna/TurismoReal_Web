@@ -1,7 +1,7 @@
 <?php
     include "global.php";
     include_once F_PETICION;
-    ValidarPost('depaid');
+    ValidarGet('depaid');
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];

@@ -8,7 +8,7 @@ class Servicio{
     public $Inicio = '';
     public $Fin = '';
     public $Cupos = 0;
-    public $Semana = '\0';
+    public $Semana = '0';
     public $Id_localidad = 0;
     public $Id_centro = 0;
 }
