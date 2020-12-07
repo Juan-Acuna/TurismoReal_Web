@@ -55,7 +55,7 @@ include F_NAVBAR;
                                 {
                                     $actual = $fotos['contenido'][0]->Ruta;
                                 } 
-                                echo '<form action="detalles.php" method="GET" class="depa-item d-flex" category="'.$item->Id_localidad.'">
+                                echo '<form action="detalles.php?depaid='.$item->Id_depto.'" method="GET" class="depa-item d-flex" category="'.$item->Id_localidad.'">
                                         <div class="row text-center text-lg-left mb-2 border  rounded" >
                                             <img class="col-xs-12 col-lg-4 fotoaa img-fluid" src="'.$actual.'" alt="'.$item->Nombre.'">
                                             <input name="depaid" type="hidden" value="'.$item->Id_depto.'"></input>
