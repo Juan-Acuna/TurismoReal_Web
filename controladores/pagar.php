@@ -227,6 +227,9 @@ switch($_SERVER['REQUEST_METHOD']){
                                 var_dump($pago);
                             }        
                         }
+                    }else{
+                        head('Location:'.RESERVAS.'/');
+                        die();
                     }
                 }
             break;
