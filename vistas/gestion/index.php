@@ -11,11 +11,11 @@
 <head>
   <?php include F_HEAD;?>
 </head>
-<body style="overflow:hidden;">
+<body><!--style="overflow:hidden;"-->
 <?php
 include F_NAVBAR;
 echo '<div class="container-fluid"style="margin-top:80px;">
-        <div class="row h-100">
+        <div class="row vh">
           <div  class="col-lg-2 bg-light border-right">  
             <h3>Contenidos</h3>
             
@@ -47,7 +47,7 @@ echo '<div class="container-fluid"style="margin-top:80px;">
                 case 7: s="'.GESTION_INCLUDES.'/mantenciones.php"; 
                 break;
               }
-              cont.innerHTML="<div id=\"loading-img\" class=\"w-100 h-100 text-center bt-xs-2 bt-md-5 pt-xs-2 pt-md-5\"><img src=\"'.IMG.'/cargando.gif\" class=\"bt-xs-2 bt-md-5 pt-xs-2 pt-md-5\"></div><iframe id=\"iFRAME\" src=\""+s+"\" frameborder=\"0\" class=\"h-100 w-100 p-0 m-0 d-none\"></iframe>";
+              cont.innerHTML="<div id=\"loading-img\" class=\"w-100 h-100 text-center bt-xs-2 bt-md-5 pt-xs-2 pt-md-5\"><img src=\"'.IMG.'/cargando.gif\" class=\"bt-xs-2 bt-md-5 pt-xs-2 pt-md-5\"></div><iframe id=\"iFRAME\" src=\""+s+"\" frameborder=\"0\" class=\"w-100 p-0 m-0 d-none\" onload=\"resizeIframe(this)\"></iframe>";
             }
             function VerificarVista(){
               var vst = window.location.href.split("#");
@@ -91,8 +91,8 @@ echo '<div class="container-fluid"style="margin-top:80px;">
     echo '</div><div id="contVista" class="col-lg-10 text-center text-lg-left">
     </div>
   </div>';
+  include F_FOOTER;
 ?>
-    <?php include F_FOOTER;?>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>

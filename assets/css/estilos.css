@@ -6,6 +6,9 @@ html, body {
   padding-bottom:0px!important;
   
 }
+.v{
+  min-height: 100vh!important;
+}
 .vh{
   min-height: 100vh!important;
   margin-top:80px!important;
@@ -118,3 +121,153 @@ a:focus {
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem; } }
 /*# sourceMappingURL=estilos.css.map */
+.p-6{
+  padding:24px!important;
+}
+.p-7{
+  padding:28px!important;
+}
+.p-8{
+  padding:32px!important;
+}
+.p-9{
+  padding:36px!important;
+}
+.p-10{
+  padding:40px!important;
+}
+.pt-6{
+  padding-top:24px!important;
+}
+.pt-7{
+  padding-top:28px!important;
+}
+.pt-8{
+  padding-top:32px!important;
+}
+.pt-9{
+  padding-top:36px!important;
+}
+.pt-10{
+  padding-top:40px!important;
+}
+.pr-6{
+  padding-right:24px!important;
+}
+.pr-7{
+  padding-right:28px!important;
+}
+.pr-8{
+  padding-right:32px!important;
+}
+.pr-9{
+  padding-right:36px!important;
+}
+.pr-10{
+  padding-right:40px!important;
+}
+.pb-6{
+  padding-bottom:24px!important;
+}
+.pb-7{
+  padding-bottom:28px!important;
+}
+.pb-8{
+  padding-bottom:32px!important;
+}
+.pb-9{
+  padding-bottom:36px!important;
+}
+.pb-10{
+  padding-bottom:40px!important;
+}
+.pl-6{
+  padding-left:24px!important;
+}
+.pl-7{
+  padding-left:28px!important;
+}
+.pl-8{
+  padding-left:32px!important;
+}
+.pl-9{
+  padding-left:36px!important;
+}
+.pl-10{
+  padding-left:40px!important;
+}
+.m-6{
+  margin:24px!important;
+}
+.m-7{
+  margin:28px!important;
+}
+.m-8{
+  margin:32px!important;
+}
+.m-9{
+  margin:36px!important;
+}
+.m-10{
+  margin:40px!important;
+}
+.mt-6{
+  margin-top:24px!important;
+}
+.mt-7{
+  margin-top:28px!important;
+}
+.mt-8{
+  margin-top:32px!important;
+}
+.mt-9{
+  margin-top:36px!important;
+}
+.mt-10{
+  margin-top:40px!important;
+}
+.mr-6{
+  margin-right:24px!important;
+}
+.mr-7{
+  margin-right:28px!important;
+}
+.mr-8{
+  margin-right:32px!important;
+}
+.mr-9{
+  margin-right:36px!important;
+}
+.mr-10{
+  margin-right:40px!important;
+}
+.mb-6{
+  margin-bottom:24px!important;
+}
+.mb-7{
+  margin-bottom:28px!important;
+}
+.mb-8{
+  margin-bottom:32px!important;
+}
+.mb-9{
+  margin-bottom:36px!important;
+}
+.mb-10{
+  margin-bottom:40px!important;
+}
+.ml-6{
+  margin-left:24px!important;
+}
+.ml-7{
+  margin-left:28px!important;
+}
+.ml-8{
+  margin-left:32px!important;
+}
+.ml-9{
+  margin-left:36px!important;
+}
+.ml-10{
+  margin-left:40px!important;
+}

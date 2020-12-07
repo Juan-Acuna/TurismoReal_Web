@@ -73,6 +73,8 @@ echo '</div><div class="container vh">
                 </div>
             <img class="col-sm-12 col-md-6" src="'.IMG.'/error.png" height="400px" width="auto" alt=""/>
         </div>
+        <span class="d-none">Fuente: "'.$fuente.'"</span>
+        <span class="d-none">Destino: "'.$destino.'"</span>
     </div>';
     include F_FOOTER;?>
     <script>

@@ -1,33 +1,31 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
-    include_once F_PETICION;
     ValidarRol(1,4);
-echo '<html>
-<head>';
-include F_HEAD;
-echo '</head>
-<body class="col-lg-10 text-center text-lg-left">
-<script>
-window.onload=function(){
-    DestruirObjeto(window.top.document.getElementById("loading-img"));
-    window.top.document.getElementById("iFRAME").classList.remove("d-none");
-}
-</script>
-<h2>Check</h2><br>
-    <h3>Check-In</h3>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="th-sm">Id Reserva</th>
-                <th class="th-sm">Nombre Cliente</th>
-                <th class="th-sm">Nombre Depto</th>
-                <th class="th-sm">Fecha Inicio Estadia</th>
-                <th class="th-sm">Estado</th>
-            </tr>   
-        </thead>
-        <tbody>';
-            $res =peticion_http('http://turismoreal.xyz/api/reserva','GET','',$_COOKIE['token'],LISTA_RESERVA);
-            if($res['statusCode']==200){
+    include_once F_PETICION;
+    $res =peticion_http('http://turismoreal.xyz/api/reserva','GET','',$_COOKIE['token'],LISTA_RESERVA);
+    function Parchar(){
+        echo '<html>
+        <head>';
+        include F_HEAD;
+        echo '</head>
+        <body class="col-lg-10 text-center text-lg-left">
+        <h2>Check In</h2><br>';
+    }
+    switch($res['statusCode']){
+        case 200:
+            Parchar();
+            echo '<table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="th-sm">Id Reserva</th>
+                    <th class="th-sm">Nombre Cliente</th>
+                    <th class="th-sm">Nombre Depto</th>
+                    <th class="th-sm">Fecha Inicio Estadia</th>
+                    <th class="th-sm">Estado</th>
+                </tr>   
+            </thead>
+            <tbody>';
+            foreach($res['contenido'] as $s){
                 foreach($res['contenido'] as $r){
                     if($r->Id_estado==2){
                         $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
@@ -47,14 +45,34 @@ window.onload=function(){
                         echo '</tr>';
                     }
                 }
-                    echo '</tbody>
-                        </table>';
+                echo '</tbody>
+                </table>';
             }
-echo '</tbody>
-        </table>
+        break;
+        case 400:
+          Parchar();
+          echo '<h6 class="text-muted p-5">No hay reservas.</h6>';
+        break;
+        case 401:
+        case 403:
+          MostrarError(ERROR_SESION);
+        break;
+        case 404:
+          MostrarError(ERROR_DATOS);
+        break;
+        default:
+          MostrarError(ERROR_SERVIDOR);
+        break;
+    }
+?>
+<script>
+    window.onload=function(){
+        DestruirObjeto(window.top.document.getElementById("loading-img"));
+        window.top.document.getElementById("iFRAME").classList.remove("d-none");
+    }
+</script>
     <script src="<?php echo JS;?>/jquery-3.5.1.min.js"></script>
     <script src="<?php echo JS;?>/popper.min.js" ></script>
     <script src="<?php echo JS;?>/bootstrap.min.js" ></script>
 </body>
-</html>';
-?>
+</html>

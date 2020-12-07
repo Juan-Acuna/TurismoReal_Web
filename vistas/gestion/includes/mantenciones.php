@@ -9,8 +9,7 @@
                 include F_HEAD;
         echo   '</head>
                 <body class="col-lg-10 text-center text-lg-left">
-                    <h2>Mantenciones</h2><br>
-                        <h3>Lista de Mantenciones</h3>';
+                    <h2>Mantenciones</h2>';
     }
     if($ms['statusCode']==200){
         Parchar();

@@ -7,7 +7,7 @@ class Viaje{
     public $Origen = '';
     public $Destino = '';
     public $Ida = '\0';
-    public $Id_chofer = 0;
+    public $Id_chofer = null;
     public $Confirmado = '\0';
     public $Salida = '\0';
     public $Hora_salida = '';

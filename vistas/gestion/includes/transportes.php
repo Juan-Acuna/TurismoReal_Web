@@ -1,93 +1,97 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';
-    include F_PETICION;
     ValidarRol(1,3);
+    include F_PETICION;
+    $res = peticion_http('http://turismoreal.xyz/api/viaje','','',$_COOKIE['token'],LISTA_VIAJE);
+    function Parchar(){
+      echo '<html>
+      <head>';
+      include F_HEAD;
+      echo '</head>
+      <body class="col-lg-10 text-center text-lg-left">
+        <h2>Servicios de transporte</h2><br>';
+    }
+    switch($res['statusCode']){
+      case 200:
+        Parchar();
+        echo '<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="th-sm">Cliente</th>
+                <th class="th-sm">Fecha</th>
+                <th class="th-sm">Departamento</th>
+                <th class="th-sm">Origen</th>
+                <th class="th-sm">Destino</th>
+                <th class="th-sm">Ida/Vuelta</th>
+                <th class="th-sm">Iniciado</th>
+                <th class="th-sm">Terminado</th>
+                <th class="th-sm">Chofer</th>
+                <th class="th-sm">Vehiculo</th>
+            </tr>   
+        </thead>
+        <tbody>';
+        foreach($res['contenido'] as $t){
+          $r = peticion_http('http://turismoreal.xyz/api/reserva/'.$t->Id_reserva,'','',$_COOKIE['token'],CLASE_RESERVA)['contenido'];
+          $d = peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'','','',CLASE_DEPARTAMENTO)['contenido'];
+          $chofer ='';
+          $vehiculo ='';
+          if($t->Id_chofer==0 || $t->Id_chofer=='' || $t->Id_chofer==null){
+            $chofer = 'No asignado';
+          }else{
+            echo '<td></td>';
+            $c = peticion_http('http://turismoreal.xyz/api/chofer/'.$t->Id_chofer,'','',$_COOKIE['token'],CLASE_PERSONACHOFER)['contenido'];
+            $chofer = $c->Persona->Nombres.' '.$c->Persona->Apellidos;
+            if($t->Confirmado=='0'){
+              $chofer = $chofer.'(No confirmado)';
+            }
+          }
+          if($t->Patente=='' || $t->Patente==null){
+            $vehiculo = 'No asignado';
+          }else{
+            $vehiculo = $t->Patente;
+          }
+          $u = peticion_http('http://turismoreal.xyz/api/usuario/'.$r->username,'','',$_COOKIE['token'],CLASE_PERSONAUSUARIO)['contenido'];
+          echo '<tr>
+                  <td>'.$u->Persona->Nombres .' '.$u->Persona->Apellidos.'</td>
+                  <td>'.date("d/m/Y",strtotime($t->Fecha)).'</td>
+                  <td>'.$d->Nombre.'</td>
+                  <td>'.$t->Origen.'</td>
+                  <td>'.$t->Destino.'</td>';
+          if($t->Ida=='1'){
+            echo '<td>Ida</td>';
+          }else{
+            echo '<td>Vuelta</td>';
+          }
+          if($t->Salida=='1'){
+            echo '<td>Si</td>';
+          }else{
+            echo '<td>No</td>';
+          }
+          if($t->Llegada=='1'){
+            echo '<td>Si</td>';
+          }else{
+            echo '<td>No</td>';
+          }
+            echo '<td>'.$chofer.'</td>';
+            echo '<td>'.$vehiculo.'</td>
+              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Asignar</button></td>
+            </tr>';
+        }
+        echo '</tbody>
+        </table>';
+      break;
+      case 400:
+        Parchar();
+        echo '<h3 class="text-muted">No hay Viajes programados.</h3>';
+      break;
+      case 417:
+        MostrarError(ERROR_SESION);
+      break;
+      default:
+        MostrarError(ERROR_SERVIDOR);
+      break;
+  }
 ?>
-<html>
-  <head>
-  <?php include F_HEAD;?>
-  </head>
-  <body class="col-lg-10 text-center text-lg-left">
-    <h2>Administrador de Servicios</h2><br>
-<h3>Ver Transporte</h3>
-       <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th class="th-sm">Nombre Cliente</th>
-                    <th class="th-sm">Fecha</th>
-                    <th class="th-sm">Nombre Dpto</th>
-                    <th class="th-sm">Origen</th>
-                    <th class="th-sm">Destino</th>
-                    <th class="th-sm">Ida/Vuelta</th>
-                    <th class="th-sm">Iniciado</th>
-                    <th class="th-sm">Terminado</th>
-                    <th class="th-sm">Vehiculo</th>
-                    <th class="th-sm">Nombre Chofer</th>
-                </tr>   
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Juana Macckena</td>
-                    <td>23/11/2020
-                    </td>
-                    <td>Departamento Colombia</td>
-                    <td>Calle Bolivia</td>
-                    <td>Calle Autralia</td>
-                    <td>Ida</td>
-                    <td>Si</td>
-                    <td>No</td>
-                    <td>Javier Melendez</td>
-                    <td>Vehiculo A</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Asignar</button></td>
-                </tr>
-                <tr>
-                    <td>Oscar Leandro</td>
-                    <td>03/09/2050
-                    </td>
-                    <td>Departamento PentBerg</td>
-                    <td>Calle Bolivia</td>
-                    <td>Calle Autralia</td>
-                    <td>Ida</td>
-                    <td>Si</td>
-                    <td>No</td>
-                    <td>Javier Melendez</td>
-                    <td>Vehiculo B</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Asignar</button></td>
-                </tr>
-                <tr>
-                    <td>Nome Obliguesa Usarel Serebro</td>
-                    <td>24/06/2019
-                    </td>
-                    <td>Departamento McMiller</td>
-                    <td>Calle Bolivia</td>
-                    <td>Calle Autralia</td>
-                    <td>Ida</td>
-                    <td>Si</td>
-                    <td>No</td>
-                    <td>Javier Melendez</td>
-                    <td>Vehiculo D</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Asignar</button></td>
-                </tr>
-                <tr>
-                    <td>Don dima don</td>
-                    <td>23/11/2020
-                    </td>
-                    <td>Departamento Buena Vista</td>
-                    <td>Calle Bolivia</td>
-                    <td>Calle Autralia</td>
-                    <td>Ida</td>
-                    <td>Si</td>
-                    <td>No</td>
-                    <td>Javier Melendez</td>
-                    <td>Vehiculo C</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Asignar</button></td>
-                   
-                </tr>  
-            </tbody>
-        </table>
-        
-        
-
 <!-- Modal -->
 <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
