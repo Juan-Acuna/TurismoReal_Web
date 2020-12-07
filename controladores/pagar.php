@@ -226,10 +226,10 @@ switch($_SERVER['REQUEST_METHOD']){
                                 echo 'Error en transaccion 224';
                                 var_dump($pago);
                             }        
+                        }else{
+                            head('Location:'.RESERVAS.'/');
+                            die();
                         }
-                    }else{
-                        head('Location:'.RESERVAS.'/');
-                        die();
                     }
                 }
             break;
