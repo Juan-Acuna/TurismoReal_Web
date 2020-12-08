@@ -18,6 +18,7 @@
             echo '<table class="table table-bordered">
             <thead>
                 <tr>
+                    <th class="th-sm">Id</th>
                     <th class="th-sm">Nombre Cliente</th>
                     <th class="th-sm">Inicio Estadía</th>
                     <th class="th-sm">Fin Estadía</th>
@@ -31,6 +32,7 @@
                 $e = peticion_http('http://turismoreal.xyz/api/estadoreserva/'.$r->Id_estado,'','',$_COOKIE['token'],CLASE_ESTADORESERVA)['contenido'];
                 $pu = peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'','',$_COOKIE['token'],CLASE_PERSONAUSUARIO)['contenido'];
                 echo '<tr>
+                        <td>'.$r->Id_reserva.'</td>
                         <td>'.$pu->Persona->Nombres.' '.$pu->Persona->Apellidos.'</td>
                         <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>
                         <td>'.date("d/m/Y",strtotime($r->Fin_estadia)).'</td>
@@ -40,10 +42,7 @@
                     </tr>';
             }
             echo '</tbody>
-                    </table>
-                </div>
-            </div>
-            </div>';
+                    </table>';
         break;
         case 400:
             Parchar();

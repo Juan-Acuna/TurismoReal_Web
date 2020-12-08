@@ -14,38 +14,48 @@
     switch($res['statusCode']){
         case 200:
             Parchar();
-            echo '<table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th class="th-sm">Id Reserva</th>
-                    <th class="th-sm">Nombre Cliente</th>
-                    <th class="th-sm">Nombre Depto</th>
-                    <th class="th-sm">Fecha Inicio Estadia</th>
-                    <th class="th-sm">Estado</th>
-                </tr>   
-            </thead>
-            <tbody>';
+            $cuenta = 0;
             foreach($res['contenido'] as $r){
-                if($r->Id_estado==2){
-                    $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
-                    $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
-                    echo '<tr>
-                    <td>'.$r->Id_reserva.'</td>
-                    <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
-                    <td>'.$d->Nombre.'</td>
-                    <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
-                    if(date("d/m/Y",strtotime($r->Inicio_estadia))>=date("d/m/Y")){
-                        echo '<td>Listo para Check</td>
-                        <td><a href="'.GESTION.'/ingresarcheckin.php" class="btn btn-primary">Comenzar Check-In</a></td>';
-                    }else{
-                        echo '<td>Esperando fecha</td>
-                        <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';
-                    }
-                    echo '</tr>';
+                if($r->Id_estado==3){
+                    $cuenta++;
                 }
+            }if($cuenta>0){
+                echo '<table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="th-sm">Id</th>
+                        <th class="th-sm">Nombre Cliente</th>
+                        <th class="th-sm">Nombre Depto</th>
+                        <th class="th-sm">Fecha Inicio Estadia</th>
+                        <th class="th-sm">Estado</th>
+                    </tr>   
+                </thead>
+                <tbody>';
+                foreach($res['contenido'] as $r){
+                    if($r->Id_estado==2){
+                        $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
+                        $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
+                        echo '<tr>
+                        <td>'.$r->Id_reserva.'</td>
+                        <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
+                        <td>'.$d->Nombre.'</td>
+                        <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
+                        if(date("d/m/Y",strtotime($r->Inicio_estadia))>=date("d/m/Y")){
+                            echo '<td>Listo para Check</td>
+                            <td><a href="'.GESTION.'/ingresarcheckin.php?data='.urlencode(base64_encode()).'" class="btn btn-primary">Comenzar Check-In</a></td>';
+                        }else{
+                            echo '<td>Esperando fecha</td>
+                            <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';
+                        }
+                        echo '</tr>';
+                    }
+                }
+                echo '</tbody>
+                </table>';
+            }else{
+                echo '<h6 class="text-muted p-5">No hay reservas.</h6>';
             }
-            echo '</tbody>
-            </table>';
+            
         break;
         case 400:
           Parchar();

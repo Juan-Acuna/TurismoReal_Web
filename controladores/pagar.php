@@ -223,8 +223,7 @@ switch($_SERVER['REQUEST_METHOD']){
                                 header('Location: '.$pago['contenido']['payment_url']);
                                 die();
                             }else{
-                                echo 'Error en transaccion 224';
-                                var_dump($pago);
+                                MostrarError(ERROR_DATOS);
                             }        
                         }else{
                             head('Location:'.RESERVAS.'/');
