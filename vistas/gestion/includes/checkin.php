@@ -42,7 +42,7 @@
                         <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
                         if(date("d/m/Y",strtotime($r->Inicio_estadia))>=date("d/m/Y")){
                             echo '<td>Listo para Check</td>
-                            <td><a href="'.GESTION.'/ingresarcheckin.php?data='.urlencode(base64_encode()).'" class="btn btn-primary">Comenzar Check-In</a></td>';
+                            <td><a href="'.GESTION.'/ingresarcheckin.php?data='.urlencode(base64_encode('supersecreto,'.$r->Id_reserva)).'" class="btn btn-primary">Comenzar Check-In</a></td>';
                         }else{
                             echo '<td>Esperando fecha</td>
                             <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';
