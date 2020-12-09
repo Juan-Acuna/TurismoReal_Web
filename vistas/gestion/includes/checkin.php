@@ -19,7 +19,7 @@
                 if($r->Id_estado==3){
                     $cuenta++;
                 }
-            }if(/*$cuenta>0*/true){
+            }if($cuenta>0){
                 echo '<table class="table table-bordered">
                 <thead>
                     <tr>
@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>';
                 foreach($res['contenido'] as $r){
-                    if(/*$r->Id_estado==2*/true){
+                    if($r->Id_estado==2){
                         $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
                         $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
                         echo '<tr>
