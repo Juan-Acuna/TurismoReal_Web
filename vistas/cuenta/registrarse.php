@@ -9,7 +9,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<?php include F_HEAD;?>
+<?php
+    include F_HEAD;
+    echo '<script src="'.JS.'/api_turismoreal.js"></script>';
+?>
 </head>
 <body class="fotitio" style="background-attachment:fixed;">
 <?php

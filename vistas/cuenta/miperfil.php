@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <?php include F_HEAD;?>
+    <?php include F_HEAD;echo '<script src="'.JS.'/api_turismoreal.js"></script>';?>
   </head>
   <body>
 <?php

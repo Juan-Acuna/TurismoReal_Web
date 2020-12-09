@@ -9,13 +9,14 @@
     if($data[0]!='supersecreto'){
         MostrarError(ERROR_PETICION);
     }
-    $res = peticion_http('http://turismoreal.xyz/api/resrva/'.$data[1],'','',$_COOKIE['token'],CLASE_RESERVA);
+    $res = peticion_http('http://turismoreal.xyz/api/reserva/'.$data[1],'','',$_COOKIE['token'],CLASE_RESERVA);
     switch($res['statusCode']){
         case 200:
+            $arts = peticion_http('http://turismoreal.xyz/api/articulo/proxy','','',$_COOKIE['token'],LISTA_PROXYARTICULO);
             echo '<html>
-            <head>
-              <?php include F_HEAD;?>
-            </head>
+            <head>';
+            include F_HEAD;
+            echo '</head>
             <body>';
             include F_NAVBAR;
             echo '<div class="container vh">
@@ -37,18 +38,41 @@
                               <td><input id="chkD" type="checkbox"></td>
           
                           </tr>';
-                    echo '<tr>
-                              <td>Articulo 1</td>
-                              <td><input id="chk" type="checkbox"> </td>
-          
-                          </tr>';  
+                    foreach($arts['contenido'] as $a){
+                        if($a->Asignado && $a->Depto==$res['contenido']->Id_depto){
+                            echo '<tr>
+                                    <td>'.$a->Articulo->Nombre.'</td>
+                                    <td><input id="chk'.$a->Articulo->Id_articulo.'" type="checkbox"></td>
+                                </tr>';
+                        }
+                    }
                 echo '</tbody>
-                  </table>
-                  <button class="btn btn-primary">Confirmar</button>
-                  <button class="btn btn-secondary">Cancelar</button>
-                      </div>
-                  </div>
-              </div>';
+                </table>
+                <button onclick="CargarCheckIn()" class="btn btn-primary">Confirmar</button>
+                <button class="btn btn-secondary">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var sender;
+                window.onload=function(){
+                    sender = Obj("sender");
+                }
+                function CargarCheckIn(){
+                    sender.value = (ObjVal("chkD")?"1":"0")';
+                    foreach($arts['contenido'] as $a){
+                        if($a->Asignado && $a->Depto==$res['contenido']->Id_depto){
+                            echo '+(ObjVal("chk'.$a->Articulo->Id_articulo.'")?"-1":"-0")';
+                        }
+                    }
+                    echo ';
+                    document.forms["ff"].submit();
+                }
+            </script>
+            <form name="ff" action="'.FUNCIONES.'/checkin.php" method="POST" class="d-none">
+                <input id="sender" type="hidden" name="data">
+                <input name="idres" type="hidden" value="'.$res['contenido']->Id_reserva.'">
+            </form>';
         break;
         case 400:
             MostrarError(ERROR_DATOS);

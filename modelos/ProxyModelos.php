@@ -34,6 +34,7 @@ include_once MODELOS.'/Viaje.php';
 include_once MODELOS.'/PersonaUsuario.php';
 include_once MODELOS.'/PersonaAcompanante.php';
 include_once MODELOS.'/PersonaChofer.php';
+include_once MODELOS.'/ProxyArticulo.php';
 
 //VARIABLES CONSTANTES PARA SELECCIONAR CLASES
 define('CLASE_LISTA','LISTA');
@@ -107,4 +108,6 @@ define('CLASE_PERSONAACOMPANANTE', 'PersonaAcompanante');
 define('LISTA_PERSONAACOMPANANTE', 'Lista_PersonaAcompanante');
 define('CLASE_PERSONACHOFER', 'PersonaChofer');
 define('LISTA_PERSONACHOFER', 'Lista_PersonaChofer');
+define('CLASE_PROXYARTICULO', 'ProxyArticulo');
+define('LISTA_PROXYARTICULO', 'Lista_ProxyArticulo');
 ?>

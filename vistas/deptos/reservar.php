@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include F_HEAD;?>
+    <?php include F_HEAD;echo '<script src="'.JS.'/api_turismoreal.js"></script>';?>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
     <script src="<?php echo JS;?>/scripts-reservar.js"></script>
 </head>

@@ -19,7 +19,7 @@
                 if($r->Id_estado==3){
                     $cuenta++;
                 }
-            }if($cuenta>0){
+            }if(/*$cuenta>0*/true){
                 echo '<table class="table table-bordered">
                 <thead>
                     <tr>
@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>';
                 foreach($res['contenido'] as $r){
-                    if($r->Id_estado==2){
+                    if(/*$r->Id_estado==2*/true){
                         $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
                         $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
                         echo '<tr>
@@ -40,9 +40,9 @@
                         <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
                         <td>'.$d->Nombre.'</td>
                         <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
-                        if(date("d/m/Y",strtotime($r->Inicio_estadia))>=date("d/m/Y")){
+                        if(date("d/m/Y",strtotime($r->Inicio_estadia))<=date("d/m/Y")){
                             echo '<td>Listo para Check</td>
-                            <td><a href="'.GESTION.'/ingresarcheckin.php?data='.urlencode(base64_encode('supersecreto,'.$r->Id_reserva)).'" class="btn btn-primary">Comenzar Check-In</a></td>';
+                            <td><a onclick="window.top.location.href=\''.GESTION.'/ingresarcheckin.php?data='.urlencode(base64_encode('supersecreto,'.$r->Id_reserva)).'\'" class="btn btn-primary">Comenzar Check-In</a></td>';
                         }else{
                             echo '<td>Esperando fecha</td>
                             <td><a disabled class="btn btn-primary">Comenzar Check-In</a></td>';

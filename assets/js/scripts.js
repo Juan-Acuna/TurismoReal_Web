@@ -28,4 +28,10 @@ function DestruirObjeto(obj){
 }
 function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-  }
+}
+function Obj(id){
+    return document.getElementById(id);
+}
+function ObjVal(id){
+    return Obj(id).value;
+}
