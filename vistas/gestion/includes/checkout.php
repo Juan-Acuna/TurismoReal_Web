@@ -41,7 +41,7 @@
                                 <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
                                 <td>'.$d->Nombre.'</td>
                                 <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
-                        echo   '<td><a href="<?php echo GESTION;?>/ingresarcheckout.php" class="btn btn-primary">Comenzar Check-Out</a></td>
+                        echo   '<td><a href="'.GESTION.'/ingresarcheckout.php?data='.urlencode(base64_encode('data-valido,'.$r->Id_reserva)).'" class="btn btn-primary">Comenzar Check-Out</a></td>
                             </tr>';
                     }
                 }

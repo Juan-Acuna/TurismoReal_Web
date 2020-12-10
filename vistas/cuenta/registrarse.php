@@ -1,5 +1,5 @@
 <?php
-    include "global.php";
+    include_once $_SERVER['DOCUMENT_ROOT'].'/Agencia/assets/includes/global.php';;
     include_once F_PETICION;
     $rol=5;
     if(isset($_COOKIE['rol'])){
@@ -30,21 +30,21 @@ include F_NAVBAR;
         <div class="contenedor text-center col-xs-12  col-md-5 col-lg-4" >
         <h1 class="text-primary text-center mb-4 display-4">Registrarse</h1>
 
-            <input class="form-control mb-3" type="text" name="rut"  placeholder="Rut"/>     
-            <input class="form-control mb-3" type="text" name="nombres" placeholder="Nombres"/>
-            <input class="form-control mb-3" type="text" name="apellidos" placeholder="Apellidos" />
-            <input class="form-control mb-3" type="date" name="fnacimiento" placeholder="Fecha Nacimiento" />
-            <input class="form-control mb-3" type="text" name="email" placeholder="Email" />
-            <input class="form-control mb-3" type="text" name="telefono" placeholder="Telefono" />
-            <input class="form-control mb-3" type="text" name="direccion" placeholder="Direccion" />
-            <select class="form-control mb-3" class="form-control"  name="region" placeholder="Región" id="regiones"> </select>
-            <select class="form-control mb-3" name="comuna" placeholder="Comuna" id="comunas"> </select>
-            <select class="form-control mb-3"  name="sexo" placeholder="Sexo" id="genero"> </select>
-            <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Nombre Usuario" />
+            <input class="form-control mb-3" type="text" name="rut" placeholder="Rut" id="txtRut" required/>     
+            <input class="form-control mb-3" type="text" name="nombres" placeholder="Nombres" required/>
+            <input class="form-control mb-3" type="text" name="apellidos" placeholder="Apellidos" required/>
+            <input class="form-control mb-3" type="date" name="fnacimiento" placeholder="Fecha Nacimiento" required/>
+            <input class="form-control mb-3" type="text" name="email" placeholder="Email" required/>
+            <input class="form-control mb-3" type="text" name="telefono" placeholder="Telefono" required/>
+            <input class="form-control mb-3" type="text" name="direccion" placeholder="Direccion" required/>
+            <select class="form-control mb-3" class="form-control"  name="region" placeholder="Región" id="regiones" required> </select>
+            <select class="form-control mb-3" name="comuna" placeholder="Comuna" id="comunas" required> </select>
+            <select class="form-control mb-3"  name="sexo" placeholder="Sexo" id="genero" required> </select>
+            <input class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Nombre Usuario" required/>
 
             <span id="usuarioerror"></span>
             
-                <input class="form-control" type="password" name="password" placeholder="Contraseña" />
+                <input class="form-control" type="password" name="password" placeholder="Contraseña" required/>
             
             <input class="btn btn-primary btn-lg my-3" type="submit" value="Registrarse" class="button">
             <p class="text-primary">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
