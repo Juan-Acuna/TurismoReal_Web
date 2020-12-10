@@ -24,7 +24,6 @@ include F_NAVBAR;
                 <div class="row">
                     <div class="col-xs-12 col-lg-12 border pt-2">
                         <p>Numero Reserva</p>
-                        <p>Usuario</p>
                         <p>Fecha Inicio Estadia</p>
                         <p>Fecha Termino Estadia</p>
                         <p>Estado del Departamento</p>
