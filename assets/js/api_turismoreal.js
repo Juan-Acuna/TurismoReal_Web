@@ -45,7 +45,7 @@ function CargarComunas(){
     if(index>=0){
         var c = "<option>Seleccione Comuna</option>";
         for(var i=0;i<regiones[index].comunas.length;i++){
-            c += "<option value=\""+regiones[index-1].comunas[i].nombre+"\">"+regiones[index-1].comunas[i].nombre+"</option>"
+            c += "<option value=\""+regiones[index-1].comunas[i].nombre+"\">"+regiones[index-1].comunas[i].nombre+"</option>";
         }
         cbComunas.innerHTML=c;
         cbComunas.disabled = false;
