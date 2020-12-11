@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>';
                 foreach($res['contenido'] as $r){
-                    if($r->Id_estado==3){
+                    if($r->Id_estado==3 && $r->Checkout!='1'){
                         $d = (peticion_http('http://turismoreal.xyz/api/departamento/'.$r->Id_depto,'GET','','',CLASE_DEPARTAMENTO))['contenido'];
                         $u = (peticion_http('http://turismoreal.xyz/api/usuario/'.$r->Username,'GET','',$_COOKIE['token'],CLASE_PERSONAUSUARIO))['contenido'];
                         echo '<tr>
@@ -41,7 +41,7 @@
                                 <td>'.$u->Persona->Nombres.' '.$u->Persona->Apellidos.'</td>
                                 <td>'.$d->Nombre.'</td>
                                 <td>'.date("d/m/Y",strtotime($r->Inicio_estadia)).'</td>';
-                        echo   '<td><a href="'.GESTION.'/ingresarcheckout.php?data='.urlencode(base64_encode('data-valido,'.$r->Id_reserva)).'" class="btn btn-primary">Comenzar Check-Out</a></td>
+                        echo   '<td><a onclick="window.top.location.href=\''.GESTION.'/ingresarcheckout.php?data='.urlencode(base64_encode('data-valido,'.$r->Id_reserva)).'\'" class="btn btn-primary">Comenzar Check-Out</a></td>
                             </tr>';
                     }
                 }

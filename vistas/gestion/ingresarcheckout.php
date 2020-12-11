@@ -4,7 +4,7 @@
     ValidarRol(1,4);
     ValidarGet('data');
     $data = explode(',',base64_decode(urldecode($_GET['data'])));
-    if($data[0]!='supersecreto'){
+    if($data[0]!='data-valido'){
         MostrarError(ERROR_PETICION);
     }
     include_once F_PETICION;
@@ -20,7 +20,7 @@
             echo '</head>
             <body>';
             include F_NAVBAR;
-            echo '<div class="container"style="margin-top:100px">
+            echo '<div class="container vh">
             <h2>CHECKLITS DE ESTADO</h2>
             <P>A continuacion, marque la casilla correspondiente del item, si este se encuentra disponible o en buen estado</P>
                 <div class="row">
@@ -38,7 +38,7 @@
                         <td>Departamento (Inmueble)</td>
                         <td><input type="checkbox" disabled ';
                         if($chk[0]=='1'){
-                            echo 'value="on"';
+                            echo 'checked';
                         }
                         echo '></td>
                         <td><input id="chkD" type="checkbox"></td>
@@ -50,7 +50,7 @@
                                     <td>'.$a->Articulo->Nombre.'</td>
                                     <td><input type="checkbox" ';
                                     if($chk[$cont]=='1'){
-                                        echo 'value="on"';
+                                        echo 'checked';
                                     }
                                     echo ' disabled></td>
                                     <td><input id="chk'.$a->Articulo->Id_articulo.'" type="checkbox"></td>
