@@ -10,20 +10,16 @@ switch($res['statusCode']){
         header('Location:'.GESTION.'/esperando-confirmacion.php?data='.urlencode(base64_encode('data-valida,'.$_POST['idres'])));
     break;
     case 400:
-        var_dump($res);
-        //MostrarError(ERROR_CONEXION);
+        MostrarError(ERROR_CONEXION);
     break;
     case 401:
-        var_dump($res);
-        //MostrarError(ERROR_SESION);
+        MostrarError(ERROR_SESION);
     break;
     case 500:
-        var_dump($res);
-        //MostrarError(ERROR_SERVIDOR);
+        MostrarError(ERROR_SERVIDOR);
     break;
     default:
-        var_dump($res);
-        //MostrarError(ERROR_DATOS);
+        MostrarError(ERROR_DATOS);
 break;
 }
 ?>
