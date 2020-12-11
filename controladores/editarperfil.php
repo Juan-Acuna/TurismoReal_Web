@@ -31,9 +31,9 @@ if(!empty($_POST['nombres'])
         header('Location: '.CUENTA.'/miperfil.php');
         die();
     }else{
-        //Error
+        MostrarError(ERROR_DATOS);
     }
 }else{
-    //Error
+    MostrarError(ERROR_PETICION);
 }
 ?>

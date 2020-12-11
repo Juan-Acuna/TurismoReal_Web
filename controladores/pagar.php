@@ -226,7 +226,7 @@ switch($_SERVER['REQUEST_METHOD']){
                                 MostrarError(ERROR_DATOS);
                             }        
                         }else{
-                            head('Location:'.RESERVAS.'/');
+                            header('Location:'.RESERVAS.'/');
                             die();
                         }
                     }
