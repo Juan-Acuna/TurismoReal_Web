@@ -3,6 +3,7 @@
     include_once F_PETICION;
     ValidarLogin();
     ValidarRol(5);
+    ValidarGet('idres');
     $rol=5;
     if(isset($_COOKIE['rol'])){
         $rol=$_COOKIE['rol'];
